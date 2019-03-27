@@ -35,17 +35,6 @@ export class AppComponent implements OnInit {
     this.divStack.push(this.child);
     this.child.context = 0; // qui se serve si può passare un intero oggetto, che potrebbe essere un'eventuale conoscienza condivisa
 
-/*     this.addLeafChild();
-    this.addDivChild();
-      this.addLeafChild();
-      this.addLeafChild();
-      this.addDivChild();
-        this.addLeafChild();
-        this.endDivEditing();
-      this.addLeafChild();
-      this.endDivEditing();
-    this.addLeafChild(); */
-
     const jsonPage = JSONPage;
 /*     const jsonString = JSON.stringify(jsonPage);
      */
@@ -57,18 +46,18 @@ export class AppComponent implements OnInit {
 // -------- questi metodi gestiscono il traversamento dell'oggetto ottenuto dal JSON -------------
 
     public traverseTree(form: Object, nestingLevel: number) {
-      const nestingIdx = nestingLevel;
+      const nestingIdx = this.divStack[nestingLevel];
       for (const element in form) {
         if (typeof form[element] !== 'object') { // ho trovato una leaf
-          // console.log(form[element]);
-          this.addLeafChildToContainer(nestingIdx);
+          this.addLeafChildToContainer(nestingIdx, form[element]);
           // qui poi bisogna capire se un elemento è l'ultimo dell'array, in questo modo si può fare il pop dallo stack
 
-        } else { // ho un div, perchè form[element] è di tipo Object[], cioè un Array
+        } else { // ho un div, perchè form[element] è di tipo Object
           // qui si entra nel div nuovo, è dove si farebbe il push allo stack di riferimenti ai div
           console.log(typeof form[element]);
           this.addDivChildToContainer(nestingIdx);
-          this.traverseTree(form[element], nestingIdx + 1);
+          this.traverseTree(form[element], nestingLevel + 1);
+          this.divStack.pop();
         }
       }
     }
@@ -79,24 +68,13 @@ export class AppComponent implements OnInit {
 
 
 // -------- questi metodi potrebbe essere bellino averli su un builder ----------------------------
-  public addDivChild() {
-    const TOS = this.divStack.length - 1 ;
-    const newDiv: DivDynamicComponent = this.divStack[TOS].addDivChildComponent(this.DIV_Factory);
+  public addDivChildToContainer(index: DivDynamicComponent) {
+    const newDiv: DivDynamicComponent = index.addDivChildComponent(this.DIV_Factory);
     this.divStack.push(newDiv);
   }
 
-  public addDivChildToContainer(index: number) {
-    const newDiv: DivDynamicComponent = this.divStack[index].addDivChildComponent(this.DIV_Factory);
-    this.divStack.push(newDiv);
-  }
-
-  public addLeafChild() {
-    const TOS = this.divStack.length - 1 ;
-    this.divStack[TOS].addLeafChildComponent(this.P_Factory);
-  }
-
-  public addLeafChildToContainer(index: number) {
-    this.divStack[index].addLeafChildComponent(this.P_Factory);
+  public addLeafChildToContainer(parentElem: DivDynamicComponent, value: string|number) {
+    parentElem.addLeafChildComponent(this.P_Factory, value);
   }
 
   endDivEditing(): DivDynamicComponent {

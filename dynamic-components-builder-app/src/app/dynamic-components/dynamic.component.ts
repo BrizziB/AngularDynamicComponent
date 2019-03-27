@@ -1,7 +1,7 @@
 import { v4 as uuid } from 'uuid';
 
 export abstract class DynamicComponent {
-  context: number;
+  context: any;
   protected uuid: string;
 
   constructor() {

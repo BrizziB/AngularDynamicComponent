@@ -10,7 +10,7 @@ import {
   selector: 'app-dynamic-div',
   template: `
       <div id='content-div'>
-          <div #container>DIV: {{uuid}} - profondità: {{context}} </div>
+          <div #container></div>
       </div>
   `
 })
@@ -44,10 +44,10 @@ export class DivDynamicComponent extends DynamicComponent implements OnInit, OnD
   }
 
 
-  addLeafChildComponent(factory: ComponentFactory<DynamicComponent>): DynamicComponent {
+addLeafChildComponent(factory: ComponentFactory<DynamicComponent>, value: string|number): DynamicComponent {
     const newComponentRef: ComponentRef<DynamicComponent> = (this.container.createComponent(factory));
     const instance = newComponentRef.instance;
-    instance.context = this.context + 1;
+    instance.context = value.toString();
     this.containedLeaves.push(instance);
     return instance;
 

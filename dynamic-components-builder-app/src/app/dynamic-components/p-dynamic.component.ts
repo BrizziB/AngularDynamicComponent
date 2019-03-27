@@ -8,7 +8,7 @@ import {
 
 @Component({
   selector: 'app-dynamic-p',
-  template: `<p>Sono il  Paragraph ({{uuid}}) a profondità {{context}}</p>`
+  template: `<p>{{context}}</p>`
 })
 export class PDynamicComponent extends DynamicComponent {
 
