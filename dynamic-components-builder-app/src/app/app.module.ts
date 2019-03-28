@@ -6,6 +6,7 @@ import { DivDynamicComponent} from './dynamic-components/div-dynamic.component';
 
 import { AppComponent } from './app.component';
 import { PDynamicComponent } from './dynamic-components/p-dynamic.component';
+import { PageBuildingService } from './services/page-building.service';
 
 
 @NgModule({
@@ -22,7 +23,7 @@ import { PDynamicComponent } from './dynamic-components/p-dynamic.component';
     DivDynamicComponent,
     PDynamicComponent
   ],
-  providers: [],
+  providers: [PageBuildingService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
