@@ -2,7 +2,7 @@ import {Component, Input, OnInit, OnDestroy,
   ViewChild, ViewContainerRef,
   ComponentFactoryResolver, ComponentRef, ComponentFactory} from '@angular/core';
 import { DynamicComponent } from './dynamic-components/dynamic.component';
-import { DivDynamicComponent } from './dynamic-components/div-dynamic.component';
+import { PlainDivDynamicComponent } from './dynamic-components/plainDiv-dynamic.component';
 import { PDynamicComponent } from './dynamic-components/p-dynamic.component';
 
 import { JSONPage } from './mock/jsonPage';
@@ -23,8 +23,8 @@ export class AppComponent implements OnInit {
     private pageBuildingService: PageBuildingService
   ) {}
 
-  @ViewChild(DivDynamicComponent)
-  private child: DivDynamicComponent;
+  @ViewChild(PlainDivDynamicComponent)
+  private child: PlainDivDynamicComponent;
 
   ngOnInit() {
     this.pageBuildingDirector.init(this.child);

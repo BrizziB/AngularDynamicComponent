@@ -1,15 +1,12 @@
 /* You can add global styles to this file, and also import other style files */
-#content-div{
-  border-width: 2px;
-  border-style: solid;
-  min-height: 20px;
-  height: 80%;
-  width: 80%;
-  margin: 20px;
-  padding: 5px;
+@import '../node_modules/bootstrap/dist/css/bootstrap.css';
+html, body {
+  height: 100%;
+  margin: 0;
+  margin-left: 4%;
+  margin-right:4%;
+  padding: 0;
 }
 
-p{
-  margin-left: 40px;
-}
+
 

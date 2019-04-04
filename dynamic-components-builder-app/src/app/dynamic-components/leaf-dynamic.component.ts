@@ -4,14 +4,13 @@ import {
   ViewChild, ViewContainerRef,
   ComponentFactoryResolver, ComponentRef, ComponentFactory
 } from '@angular/core';
-import { LeafDynamicComponent } from './leaf-dynamic.component';
 
 
 @Component({
   selector: 'app-dynamic-p',
-  template: `<p>{{context}}</p>`
+  template: `non dovresti vedermi `
 })
-export class PDynamicComponent extends LeafDynamicComponent {
+export abstract class LeafDynamicComponent extends DynamicComponent {
 
   constructor() {
       super();
