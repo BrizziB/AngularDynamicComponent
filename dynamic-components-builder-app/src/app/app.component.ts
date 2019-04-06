@@ -1,6 +1,6 @@
 import {Component, Input, OnInit, OnDestroy,
   ViewChild, ViewContainerRef,
-  ComponentFactoryResolver, ComponentRef, ComponentFactory} from '@angular/core';
+  ComponentFactoryResolver, ComponentRef, ComponentFactory, AfterViewChecked} from '@angular/core';
 import { DynamicComponent } from './dynamic-components/dynamic.component';
 import { PlainDivDynamicComponent } from './dynamic-components/plainDiv-dynamic.component';
 import { PDynamicComponent } from './dynamic-components/p-dynamic.component';
@@ -31,4 +31,6 @@ export class AppComponent implements OnInit {
     const pageScheme = this.pageBuildingService.getPage();
     this.pageBuildingDirector.buildPageFromScheme(pageScheme);
     }
+
+
   }

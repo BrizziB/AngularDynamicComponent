@@ -34,7 +34,6 @@ export abstract class ContainerDynamicComponent extends DynamicComponent impleme
   addDivChildComponent(factory: ComponentFactory<ContainerDynamicComponent>): ContainerDynamicComponent {
     const newComponentRef: ComponentRef<ContainerDynamicComponent> = (this.container.createComponent(factory));
     const instance = <ContainerDynamicComponent>newComponentRef.instance;
-    instance.context = this.context;
     this.containedComponents.push(instance);
     return instance;
   }
@@ -49,7 +48,7 @@ addLeafChildComponent(factory: ComponentFactory<LeafDynamicComponent>, value: st
     const instance = newComponentRef.instance;
 
     if (!isNullOrUndefined(value)) {
-      instance.context = value.toString();
+      instance.context = (value.toString());
     }
 
     this.containedLeaves.push(instance);

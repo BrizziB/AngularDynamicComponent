@@ -8,5 +8,18 @@ html, body {
   padding: 0;
 }
 
+.plain-div{
+  border-width: 1px;
+  border-style: dashed;
+  border-color: greenyellow;
+  margin:10px;
+  margin-bottom: 30px;
+}
 
+.content-box-div{
+  border-width: 1px;
+  border-style: solid;
+  margin:10px;
+  margin-bottom: 30px;
 
+}

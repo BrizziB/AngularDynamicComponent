@@ -63,66 +63,70 @@ export class PageBuildingDirector {
     for (const component in form) {
       const element = form[component];
 
+      if (typeof element !== 'object') {
+        if ( component !== 'type') {
+          nestingIdx.context[component] = element;
+          console.log('leaf found with UUID:' + nestingIdx.getUUID());
+        }
+
+      }
+      // tslint:disable-next-line:one-line
+      else{
+        switch (element.type) {
+          case 'page': {
+            console.log('trovato page ' + element);
+            currentContainer = this.pageBuilder.addPlainDiv(nestingIdx);
+            this.keepAdding(element, currentContainer, nestingLevel);
+            break;
+          }
+
+          case 'tabbed-panel': {
+            console.log('trovato tabbed-panel ' + element);
+            currentContainer = this.pageBuilder.addTabbedPanel(nestingIdx);
+            this.keepAdding(element, currentContainer, nestingLevel);
+            break;
+          }
+
+          case 'views': { // sempre contenuto in un tabbed-panel
+            console.log('trovato tabs array ' + element);
+            const components: NavElement[] = [];
+            this.addViewsToTabbedPage(element, nestingLevel, <TabbedPanelDynamicComponent>nestingIdx);
+            break;
+          }
+
+          case 'output-text': {
+            console.log('trovata foglia output' + element);
+            currentContainer = this.pageBuilder.addPlainDiv(nestingIdx);
+            this.keepAdding(element, currentContainer, nestingLevel);
+            break;
+            // this.pageBuilder.addOutputChildToContainer(nestingIdx, element);
+          }
+        }
+      }
       // qui vediamo un po' come farlo, alla fine non penso si potrà prescindere dai check sulle string :(
-      switch (component) {
-
-        case 'id': {
-          console.log('trovato id ' + element);
-          nestingIdx.context.id = element;
-          break;
-        }
-        case 'page': {
-          console.log('trovato page ' + element);
-          currentContainer = this.pageBuilder.addPlainDiv(nestingIdx);
-          this.addElement(element, currentContainer, nestingLevel);
-          break;
-        }
-        case 'tabbed-panel': {
-          console.log('trovato tabbed-panel ' + element);
-          currentContainer = this.pageBuilder.addTabbedPanel(nestingIdx);
-          this.addElement(element, currentContainer, nestingLevel);
-          break;
-        }
-
-        case 'tabs': {
-          console.log('trovato tabs array ' + element);
-          const components: NavElement[] = [];
-          element.forEach(elem => {
-            components.push(elem);
-          });
-          this.pageBuilder.addTabsToPanel(<TabbedPanelDynamicComponent>nestingIdx, components);
 
 
-          break;
-        }
+    }
+  }
 
+  private addViewsToTabbedPage(viewsObject, nestingLevel: number, tabbedPage: ContainerDynamicComponent) {
+    for (const element in viewsObject) { // aggiungo le label
+      if (!isNullOrUndefined(element) && element !== 'type') {
+        const navElem = new NavElement(viewsObject[element].id, element);
+        this.pageBuilder.addTabToPanel(<TabbedPanelDynamicComponent>tabbedPage, navElem);
+        const currentContainer = this.pageBuilder.addBoxDiv(tabbedPage);
+        this.keepAdding(viewsObject[element], currentContainer, nestingLevel);
+        // potrebbe mancare la gestione di ulteriori annidamenti, guardaci
       }
     }
   }
 
-  private addElement(elem, newDiv: ContainerDynamicComponent, nestingLevel: number) {
+  private keepAdding(elem, newDiv: ContainerDynamicComponent, nestingLevel: number) {
     this.divStack.push(newDiv);
     this.traverseTree(elem, nestingLevel + 1);
     this.divStack.pop();
   }
 
-  private isLeaf(form, element): boolean { // deve ritornare true per tutti gli elementi che non possono contenerne altri.
-    // sicuramente ci sarà da modificare la condizione
-    if (element === 'leaf') {
-      return true;
-    } else { return false; }
-  }
 
-  private insertElement(nestingIdx: ContainerDynamicComponent, divType: string) {
-  // e questa sarà una funzione stile lookup-table bruttissima ma credo inevitabile
-    switch (divType) {
-      case 'tabbed-panel': {
-        return this.pageBuilder.addTabbedPanel(nestingIdx);
-      }
-      case 'page': {
-        return this.pageBuilder.addPlainDiv(nestingIdx);
-      }
-    }
-  }
 
 }

@@ -1,51 +1,46 @@
 export const JSONPage = { // qui c'è da rivedere un po' come strutturare questo json
-  'page': {
+  'pagina': {
+    'type': 'page',
     'id': '0',
-    'tabbed-panel': {
+    'riassunto-visita': { // corrispondere al composite type iniziale
+      'type': 'tabbed-panel',
       'id': '00',
-      'tabs': [
-        {
-          'id': '01',
-          'value': 'Anagrafica',
-        },
-        {
-          'id': '02',
-          'value': 'Anamnesi',
-        },
-        {
-          'id': '03',
-          'value': 'Caratterizzazione cefalea',
-        },
-        {
-          'id': '04',
-          'value': 'Esame obiettivo',
-        },
-        {
-          'id': '05',
-          'value': 'Esami effettuati',
-        },
-        {
-          'id': '06',
-          'value': 'Terapia effettuata',
-        },
-        {
-          'id': '07',
-          'value': 'Diagnosi',
-        },
-        {
-          'id': '08',
-          'value': 'Terapia consigliata',
-        },
-        {
-          'id': '09',
-          'value': 'Indagini consigliate',
-        },
-        {
-          'id': '10',
-          'value': 'Lettera finale',
-        }
+      'views': {
+          'type' : 'views',
+          'anagrafica': {
+            'id': '01',
+            'numero-cartella': {
+              'type': 'output-text',
+              'value': '1'
+            },
+            'stato-civile': {
+              'type': 'output-text',
+              'value': 'celibe'
+            },
+            'gelato-preferito': {
+              'type': 'output-text',
+              'value': 'pistacchio'
+            },
+          },
 
-      ]
+          'anamnesi': {
+            'id': '02',
+            'descriz-anamnesi': 'prova2',
+            'altre-info': 'altra-prova2'
+          },
+
+          'diagnosi': {
+            'id': '03',
+            'diagnosi corrente': 'prova3',
+            'altre-info': 'altra-prova3'
+          },
+
+          'terapia': {
+            'id': '04',
+            'descriz-terapia': 'prova4',
+            'altre-info': 'altra-prova4'
+          }
+      }
     }
   }
 };
