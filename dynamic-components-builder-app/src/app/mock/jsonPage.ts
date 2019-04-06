@@ -11,15 +11,15 @@ export const JSONPage = { // qui c'è da rivedere un po' come strutturare questo
             'id': '01',
             'numero-cartella': {
               'type': 'output-text',
-              'value': '1'
+              'numero cartella': '1'
             },
             'stato-civile': {
               'type': 'output-text',
-              'value': 'celibe'
+              'stato civile': 'celibe'
             },
             'gelato-preferito': {
               'type': 'output-text',
-              'value': 'pistacchio'
+              'gelato preferito': 'pistacchio'
             },
           },
 

@@ -9,9 +9,9 @@ html, body {
 }
 
 .plain-div{
-  border-width: 1px;
+  border-width: 3px;
   border-style: dashed;
-  border-color: greenyellow;
+  border-color: darkgreen;
   margin:10px;
   margin-bottom: 30px;
 }
