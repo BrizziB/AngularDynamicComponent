@@ -31,35 +31,36 @@ export abstract class ContainerDynamicComponent extends DynamicComponent impleme
   ngOnInit() {
   }
 
-  addDivChildComponent(factory: ComponentFactory<ContainerDynamicComponent>): ContainerDynamicComponent {
+  public addDivChildComponent(factory: ComponentFactory<ContainerDynamicComponent>, name: string): ContainerDynamicComponent {
     const newComponentRef: ComponentRef<ContainerDynamicComponent> = (this.container.createComponent(factory));
     const instance = <ContainerDynamicComponent>newComponentRef.instance;
+    instance.context.name = name;
     this.containedComponents.push(instance);
     return instance;
   }
 
-  getContainer(): ViewContainerRef {
+  public getContainer(): ViewContainerRef {
     return this.container;
   }
 
 
-addLeafChildComponent(factory: ComponentFactory<LeafDynamicComponent>, value: string|number): DynamicComponent {
+  public addLeafChildComponent(factory: ComponentFactory<LeafDynamicComponent>, value: string|number): DynamicComponent {
     const newComponentRef: ComponentRef<LeafDynamicComponent> = (this.container.createComponent(factory));
     const instance = newComponentRef.instance;
 
     if (!isNullOrUndefined(value)) {
-      instance.context = (value.toString());
+      instance.context = (value);
     }
 
     this.containedLeaves.push(instance);
     return instance;
   }
 
-  getContainedComponents(): ContainerDynamicComponent[] {
+  public getContainedComponents(): ContainerDynamicComponent[] {
     return this.containedComponents;
   }
 
-  getContainedLeaves(): DynamicComponent[] {
+  public getContainedLeaves(): DynamicComponent[] {
     return this.containedLeaves;
   }
 

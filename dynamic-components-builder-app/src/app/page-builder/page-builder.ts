@@ -8,6 +8,8 @@ import { NavElemDynamicComponent } from '../dynamic-components/_prove/navElem-dy
 import { NavElement } from '../dynamic-components/leaves/navElement';
 import { BoxDivDynamicComponent } from '../dynamic-components/boxDiv-dynamic.component';
 import { OutputDynamicComponent } from '../dynamic-components/output-dynamic.component';
+import { LeafDynamicComponent } from '../dynamic-components/leaf-dynamic.component';
+import { TableDynamicComponent } from '../dynamic-components/table-dynamic.component';
 
 
 @Injectable({
@@ -24,6 +26,9 @@ export class PageBuilder{
   private BOX_Factory: ComponentFactory<BoxDivDynamicComponent> =
       this.componentFactoryResolver.resolveComponentFactory(BoxDivDynamicComponent);
 
+  private TABLE_Factory: ComponentFactory<TableDynamicComponent> =
+      this.componentFactoryResolver.resolveComponentFactory(TableDynamicComponent);
+
   private OUTPUT_Factory: ComponentFactory<OutputDynamicComponent> =
       this.componentFactoryResolver.resolveComponentFactory(OutputDynamicComponent);
 
@@ -34,18 +39,23 @@ export class PageBuilder{
     private componentFactoryResolver: ComponentFactoryResolver
   ) { }
 
-  public addPlainDiv(index: ContainerDynamicComponent): ContainerDynamicComponent {
-    const newDiv: ContainerDynamicComponent = index.addDivChildComponent(this.DIV_Factory);
+  public addPlainDiv(index: ContainerDynamicComponent, name: string): ContainerDynamicComponent {
+    const newDiv: ContainerDynamicComponent = index.addDivChildComponent(this.DIV_Factory, name);
     return newDiv;
   }
 
-  public addTabbedPanel(index: ContainerDynamicComponent): ContainerDynamicComponent {
-    const newDiv: ContainerDynamicComponent = (index.addDivChildComponent(this.NAVTAB_Factory));
+  public addTabbedPanel(index: ContainerDynamicComponent, name: string): ContainerDynamicComponent {
+    const newDiv: ContainerDynamicComponent = (index.addDivChildComponent(this.NAVTAB_Factory, name));
     return newDiv;
   }
 
-  public addBoxDiv(index: ContainerDynamicComponent): ContainerDynamicComponent {
-    const newDiv: ContainerDynamicComponent = (index.addDivChildComponent(this.BOX_Factory));
+  public addBox(index: ContainerDynamicComponent, name: string): ContainerDynamicComponent {
+    const newDiv: ContainerDynamicComponent = (index.addDivChildComponent(this.BOX_Factory, name));
+    return newDiv;
+  }
+
+  public addTable(index: ContainerDynamicComponent, name: string): ContainerDynamicComponent {
+    const newDiv: ContainerDynamicComponent = (index.addDivChildComponent(this.TABLE_Factory, name));
     return newDiv;
   }
 
@@ -61,11 +71,13 @@ export class PageBuilder{
   }
 
   public addLeafChildToContainer(parentElem: ContainerDynamicComponent, value: string|number) {
-    parentElem.addLeafChildComponent(this.P_Factory, value);
+    const newLeaf: PDynamicComponent = <PDynamicComponent>parentElem.addLeafChildComponent(this.P_Factory, value);
+    return newLeaf;
   }
 
   public addOutputChildToContainer(parentElem: ContainerDynamicComponent, value: string|number) {
-    parentElem.addLeafChildComponent(this.OUTPUT_Factory, value);
+    const newLeaf: OutputDynamicComponent = <OutputDynamicComponent>parentElem.addLeafChildComponent(this.OUTPUT_Factory, value);
+    return newLeaf;
   }
 
 }

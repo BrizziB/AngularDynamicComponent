@@ -7,6 +7,8 @@ import { ɵangular_packages_platform_browser_platform_browser_k } from '@angular
 import { DynamicComponent } from '../dynamic-components/dynamic.component';
 import { TabbedPanelDynamicComponent } from '../dynamic-components/tabbedPanel-dynamic.component';
 import { NavElement } from '../dynamic-components/leaves/navElement';
+import { LeafDynamicComponent } from '../dynamic-components/leaf-dynamic.component';
+import { OutputDynamicComponent } from '../dynamic-components/output-dynamic.component';
 
 @Injectable({
   providedIn: 'root'
@@ -62,27 +64,17 @@ export class PageBuildingDirector {
     // tslint:disable-next-line:forin
     for (const component in form) {
       const element = form[component];
-
-      if (typeof element !== 'object') {
-        if ( component !== 'type') {
-          nestingIdx.context[component] = element;
-          console.log('leaf found with UUID:' + nestingIdx.getUUID());
-        }
-
-      }
-      // tslint:disable-next-line:one-line
-      else{
         switch (element.type) {
-          case 'page': {
+          case ('container'): { // genera un div standard
             console.log('trovato page ' + element);
-            currentContainer = this.pageBuilder.addPlainDiv(nestingIdx);
+            currentContainer = this.pageBuilder.addPlainDiv(nestingIdx, component);
             this.keepAdding(element, currentContainer, nestingLevel);
             break;
           }
 
           case 'tabbed-panel': {
             console.log('trovato tabbed-panel ' + element);
-            currentContainer = this.pageBuilder.addTabbedPanel(nestingIdx);
+            currentContainer = this.pageBuilder.addTabbedPanel(nestingIdx, component);
             this.keepAdding(element, currentContainer, nestingLevel);
             break;
           }
@@ -90,18 +82,35 @@ export class PageBuildingDirector {
           case 'views': { // sempre contenuto in un tabbed-panel
             console.log('trovato tabs array ' + element);
             const components: NavElement[] = [];
-            this.addViewsToTabbedPage(element, nestingLevel, <TabbedPanelDynamicComponent>nestingIdx);
+            this.addViewsToTabbedPage(element, nestingLevel, <TabbedPanelDynamicComponent>nestingIdx, component);
+            break;
+          }
+
+          case 'table': {
+            console.log('trovato table' + element);
+            currentContainer = this.pageBuilder.addTable(nestingIdx, component);
+            this.keepAdding(element, currentContainer, nestingLevel);
             break;
           }
 
           case 'output-text': {
-            console.log('trovata foglia output' + element);
-            currentContainer = this.pageBuilder.addPlainDiv(nestingIdx);
-            this.keepAdding(element, currentContainer, nestingLevel);
+            console.log('trovata foglia output : ' + element.value);
+            const currentLeaf: OutputDynamicComponent = this.pageBuilder.addOutputChildToContainer(nestingIdx, element);
+            currentLeaf.propertyName = component;
+            currentLeaf.propertyValue = element.value;
             break;
-            // this.pageBuilder.addOutputChildToContainer(nestingIdx, element);
           }
-        }
+
+          case undefined: {
+            if ( component === 'id') {
+              nestingIdx.context[component] = element;
+            }
+            break;
+          }
+
+          default: {
+            console.log('se mi vedi, qualche type non viene letto bene o rimane qualche componente in giro');
+          }
       }
       // qui vediamo un po' come farlo, alla fine non penso si potrà prescindere dai check sulle string :(
 
@@ -109,14 +118,15 @@ export class PageBuildingDirector {
     }
   }
 
-  private addViewsToTabbedPage(viewsObject, nestingLevel: number, tabbedPage: ContainerDynamicComponent) {
+  private addViewsToTabbedPage(viewsObject, nestingLevel: number, tabbedPage: ContainerDynamicComponent, component) {
     for (const element in viewsObject) { // aggiungo le label
-      if (!isNullOrUndefined(element) && element !== 'type') {
+      if (element !== 'type') {
         const navElem = new NavElement(viewsObject[element].id, element);
         this.pageBuilder.addTabToPanel(<TabbedPanelDynamicComponent>tabbedPage, navElem);
-        const currentContainer = this.pageBuilder.addBoxDiv(tabbedPage);
-        this.keepAdding(viewsObject[element], currentContainer, nestingLevel);
-        // potrebbe mancare la gestione di ulteriori annidamenti, guardaci
+        const currentContainer = this.pageBuilder.addBox(tabbedPage, component);
+        currentContainer.context.id = viewsObject[element].id;
+        const tmp = viewsObject[element];
+        this.keepAdding({ tmp }, currentContainer, nestingLevel);
       }
     }
   }

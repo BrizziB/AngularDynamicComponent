@@ -1,44 +1,108 @@
 export const JSONPage = { // qui c'è da rivedere un po' come strutturare questo json
   'pagina': {
-    'type': 'page',
+    'type': 'container',
     'id': '0',
     'riassunto-visita': { // corrispondere al composite type iniziale
       'type': 'tabbed-panel',
       'id': '00',
-      'views': {
+      'pagine': {
           'type' : 'views',
+
           'anagrafica': {
+            'type': 'table',
             'id': '01',
             'numero-cartella': {
               'type': 'output-text',
-              'numero cartella': '1'
+              'value': '1'
             },
             'stato-civile': {
-              'type': 'output-text',
-              'stato civile': 'celibe'
+              'type': 'container',
+
+              'stato civile': {
+                'type': 'output-text',
+                'value': 'coniugato'
+              },
+              'tempo': {
+                'type': 'output-text',
+                'value': '2 anni'
+              }
             },
             'gelato-preferito': {
               'type': 'output-text',
-              'gelato preferito': 'pistacchio'
+              'value': 'pistacchio'
             },
           },
-
           'anamnesi': {
+            'type': 'table',
             'id': '02',
-            'descriz-anamnesi': 'prova2',
-            'altre-info': 'altra-prova2'
-          },
+            'numero-ANAMNESI': {
+              'type': 'output-text',
+              'value': '1'
+            },
+            'stato-civile': {
+              'type': 'container',
 
+              'stato civile': {
+                'type': 'output-text',
+                'value': 'coniugato'
+              },
+              'tempo': {
+                'type': 'output-text',
+                'value': '2 anni'
+              }
+            },
+            'gelato-preferito': {
+              'type': 'output-text',
+              'value': 'pistacchio'
+            },
+          },
           'diagnosi': {
+            'type': 'table',
             'id': '03',
-            'diagnosi corrente': 'prova3',
-            'altre-info': 'altra-prova3'
-          },
+            'numero-DIAGNOSI': {
+              'type': 'output-text',
+              'value': '1'
+            },
+            'stato-civile': {
+              'type': 'container',
 
+              'stato civile': {
+                'type': 'output-text',
+                'value': 'coniugato'
+              },
+              'tempo': {
+                'type': 'output-text',
+                'value': '2 anni'
+              }
+            },
+            'gelato-preferito': {
+              'type': 'output-text',
+              'value': 'pistacchio'
+            },
+          },
           'terapia': {
+            'type': 'table',
             'id': '04',
-            'descriz-terapia': 'prova4',
-            'altre-info': 'altra-prova4'
+            'numero-TERAPIA': {
+              'type': 'output-text',
+              'value': '1'
+            },
+            'stato-civile': {
+              'type': 'container',
+
+              'stato civile': {
+                'type': 'output-text',
+                'value': 'coniugato'
+              },
+              'tempo': {
+                'type': 'output-text',
+                'value': '2 anni'
+              }
+            },
+            'gelato-preferito': {
+              'type': 'output-text',
+              'value': 'pistacchio'
+            },
           }
       }
     }

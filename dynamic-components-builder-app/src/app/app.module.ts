@@ -12,6 +12,7 @@ import { PlainDivDynamicComponent } from './dynamic-components/plainDiv-dynamic.
 import { NavElemDynamicComponent } from './dynamic-components/_prove/navElem-dynamic.component';
 import { BoxDivDynamicComponent } from './dynamic-components/boxDiv-dynamic.component';
 import { OutputDynamicComponent } from './dynamic-components/output-dynamic.component';
+import { TableDynamicComponent } from './dynamic-components/table-dynamic.component';
 
 
 @NgModule({
@@ -22,7 +23,8 @@ import { OutputDynamicComponent } from './dynamic-components/output-dynamic.comp
     PDynamicComponent,
     NavElemDynamicComponent,
     BoxDivDynamicComponent,
-    OutputDynamicComponent
+    OutputDynamicComponent,
+    TableDynamicComponent
   ],
   imports: [
     BrowserModule,
@@ -34,7 +36,8 @@ import { OutputDynamicComponent } from './dynamic-components/output-dynamic.comp
     PDynamicComponent,
     NavElemDynamicComponent,
     BoxDivDynamicComponent,
-    OutputDynamicComponent
+    OutputDynamicComponent,
+    TableDynamicComponent
   ],
   providers: [PageBuildingService],
   bootstrap: [AppComponent]
