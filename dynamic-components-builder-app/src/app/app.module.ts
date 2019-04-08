@@ -11,8 +11,9 @@ import { PageBuildingService } from './services/page-building.service';
 import { PlainDivDynamicComponent } from './dynamic-components/plainDiv-dynamic.component';
 import { NavElemDynamicComponent } from './dynamic-components/_prove/navElem-dynamic.component';
 import { BoxDivDynamicComponent } from './dynamic-components/boxDiv-dynamic.component';
-import { OutputDynamicComponent } from './dynamic-components/output-dynamic.component';
+import { StdInputDynamicComponent } from './dynamic-components/stdInput-dynamic.component';
 import { TableDynamicComponent } from './dynamic-components/table-dynamic.component';
+import { ComboInputDynamicComponent } from './dynamic-components/comboInput-dynamic.component';
 
 
 @NgModule({
@@ -23,8 +24,9 @@ import { TableDynamicComponent } from './dynamic-components/table-dynamic.compon
     PDynamicComponent,
     NavElemDynamicComponent,
     BoxDivDynamicComponent,
-    OutputDynamicComponent,
-    TableDynamicComponent
+    StdInputDynamicComponent,
+    TableDynamicComponent,
+    ComboInputDynamicComponent
   ],
   imports: [
     BrowserModule,
@@ -36,8 +38,9 @@ import { TableDynamicComponent } from './dynamic-components/table-dynamic.compon
     PDynamicComponent,
     NavElemDynamicComponent,
     BoxDivDynamicComponent,
-    OutputDynamicComponent,
-    TableDynamicComponent
+    StdInputDynamicComponent,
+    TableDynamicComponent,
+    ComboInputDynamicComponent
   ],
   providers: [PageBuildingService],
   bootstrap: [AppComponent]

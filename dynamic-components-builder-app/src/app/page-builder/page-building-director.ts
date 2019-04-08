@@ -8,7 +8,8 @@ import { DynamicComponent } from '../dynamic-components/dynamic.component';
 import { TabbedPanelDynamicComponent } from '../dynamic-components/tabbedPanel-dynamic.component';
 import { NavElement } from '../dynamic-components/leaves/navElement';
 import { LeafDynamicComponent } from '../dynamic-components/leaf-dynamic.component';
-import { OutputDynamicComponent } from '../dynamic-components/output-dynamic.component';
+import { StdInputDynamicComponent } from '../dynamic-components/stdInput-dynamic.component';
+import { ComboInputDynamicComponent } from '../dynamic-components/comboInput-dynamic.component';
 
 @Injectable({
   providedIn: 'root'
@@ -93,11 +94,19 @@ export class PageBuildingDirector {
             break;
           }
 
-          case 'output-text': {
+          case 'std-input': {
             console.log('trovata foglia output : ' + element.value);
-            const currentLeaf: OutputDynamicComponent = this.pageBuilder.addOutputChildToContainer(nestingIdx, element);
+            const currentLeaf: StdInputDynamicComponent = this.pageBuilder.addStdInputChildToContainer(nestingIdx, element);
             currentLeaf.propertyName = component;
             currentLeaf.propertyValue = element.value;
+            break;
+          }
+
+          case 'combo-input': {
+            console.log('trovata foglia output : ' + element.value);
+            const currentLeaf: ComboInputDynamicComponent = this.pageBuilder.addComboInputChildToContainer(nestingIdx, element);
+            currentLeaf.propertyName = component;
+            currentLeaf.values = element.values;
             break;
           }
 
@@ -109,7 +118,7 @@ export class PageBuildingDirector {
           }
 
           default: {
-            console.log('se mi vedi, qualche type non viene letto bene o rimane qualche componente in giro');
+            console.log('se mi vedi, qualche type non viene letto bene o rimane qualche componente in giro MEKEMEKE');
           }
       }
       // qui vediamo un po' come farlo, alla fine non penso si potrà prescindere dai check sulle string :(

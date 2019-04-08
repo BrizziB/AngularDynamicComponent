@@ -7,9 +7,10 @@ import {Injectable, ComponentFactoryResolver, ComponentRef, ComponentFactory} fr
 import { NavElemDynamicComponent } from '../dynamic-components/_prove/navElem-dynamic.component';
 import { NavElement } from '../dynamic-components/leaves/navElement';
 import { BoxDivDynamicComponent } from '../dynamic-components/boxDiv-dynamic.component';
-import { OutputDynamicComponent } from '../dynamic-components/output-dynamic.component';
+import { StdInputDynamicComponent } from '../dynamic-components/stdInput-dynamic.component';
 import { LeafDynamicComponent } from '../dynamic-components/leaf-dynamic.component';
 import { TableDynamicComponent } from '../dynamic-components/table-dynamic.component';
+import { ComboInputDynamicComponent } from '../dynamic-components/comboInput-dynamic.component';
 
 
 @Injectable({
@@ -29,8 +30,11 @@ export class PageBuilder{
   private TABLE_Factory: ComponentFactory<TableDynamicComponent> =
       this.componentFactoryResolver.resolveComponentFactory(TableDynamicComponent);
 
-  private OUTPUT_Factory: ComponentFactory<OutputDynamicComponent> =
-      this.componentFactoryResolver.resolveComponentFactory(OutputDynamicComponent);
+  private STDINPUT_Factory: ComponentFactory<StdInputDynamicComponent> =
+      this.componentFactoryResolver.resolveComponentFactory(StdInputDynamicComponent);
+
+  private COMBOINPUT_Factory: ComponentFactory<ComboInputDynamicComponent> =
+  this.componentFactoryResolver.resolveComponentFactory(ComboInputDynamicComponent);
 
   private P_Factory: ComponentFactory<PDynamicComponent> =
       this.componentFactoryResolver.resolveComponentFactory(PDynamicComponent);
@@ -71,12 +75,20 @@ export class PageBuilder{
   }
 
   public addLeafChildToContainer(parentElem: ContainerDynamicComponent, value: string|number) {
-    const newLeaf: PDynamicComponent = <PDynamicComponent>parentElem.addLeafChildComponent(this.P_Factory, value);
+    const newLeaf: PDynamicComponent =
+      <PDynamicComponent>parentElem.addLeafChildComponent(this.P_Factory, value);
     return newLeaf;
   }
 
-  public addOutputChildToContainer(parentElem: ContainerDynamicComponent, value: string|number) {
-    const newLeaf: OutputDynamicComponent = <OutputDynamicComponent>parentElem.addLeafChildComponent(this.OUTPUT_Factory, value);
+  public addStdInputChildToContainer(parentElem: ContainerDynamicComponent, value: string|number) {
+    const newLeaf: StdInputDynamicComponent =
+      <StdInputDynamicComponent>parentElem.addLeafChildComponent(this.STDINPUT_Factory, value);
+    return newLeaf;
+  }
+
+  public addComboInputChildToContainer(parentElem: ContainerDynamicComponent, value: string|number) {
+    const newLeaf: ComboInputDynamicComponent =
+      <ComboInputDynamicComponent>parentElem.addLeafChildComponent(this.COMBOINPUT_Factory, value);
     return newLeaf;
   }
 
