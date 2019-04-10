@@ -9,13 +9,18 @@ import { LeafDynamicComponent } from './leaf-dynamic.component';
 
 @Component({
   selector: 'app-dynamic-std-input',
-  template: `
-    <span style='font-weight: bold'>
-      {{propertyName}}:
-    </span>
-    <input type='text' [value]="propertyValue" >
-    <br>
-  `
+  template: `<div class='std-input-outer'>
+    <div class='property-div'>
+      <span>
+        {{propertyName}}:
+      </span>
+    </div>
+    <div class='value-div'>
+      <input class='value-input' type='text' [value]="propertyValue">
+    </div>
+  </div>
+  `,
+  styleUrls: ['input.css']
 })
 export class StdInputDynamicComponent extends LeafDynamicComponent {
 

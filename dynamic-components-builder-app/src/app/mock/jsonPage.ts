@@ -157,7 +157,7 @@ export const JSONPage = { // qui c'è da rivedere un po' come strutturare questo
           },
           'Esami effettuati': {
             'type': 'table',
-            'id': '04',
+            'id': '05',
             'numero-TERAPIA': {
               'type': 'std-input',
               'value': '1'
@@ -181,7 +181,7 @@ export const JSONPage = { // qui c'è da rivedere un po' come strutturare questo
           },
           'Terapia effettuata': {
             'type': 'table',
-            'id': '04',
+            'id': '06',
             'numero-TERAPIA': {
               'type': 'std-input',
               'value': '1'
@@ -205,7 +205,7 @@ export const JSONPage = { // qui c'è da rivedere un po' come strutturare questo
           },
           'Diagnosi': {
             'type': 'table',
-            'id': '04',
+            'id': '07',
             'numero-TERAPIA': {
               'type': 'std-input',
               'value': '1'
@@ -229,7 +229,7 @@ export const JSONPage = { // qui c'è da rivedere un po' come strutturare questo
           },
           'Terapia consigliata': {
             'type': 'table',
-            'id': '04',
+            'id': '08',
             'numero-TERAPIA': {
               'type': 'std-input',
               'value': '1'
@@ -253,7 +253,7 @@ export const JSONPage = { // qui c'è da rivedere un po' come strutturare questo
           },
           'Indagini consigliate': {
             'type': 'table',
-            'id': '04',
+            'id': '09',
             'numero-TERAPIA': {
               'type': 'std-input',
               'value': '1'
@@ -277,7 +277,7 @@ export const JSONPage = { // qui c'è da rivedere un po' come strutturare questo
           },
           'Lettera finale': {
             'type': 'table',
-            'id': '04',
+            'id': '10',
             'numero-TERAPIA': {
               'type': 'std-input',
               'value': '1'

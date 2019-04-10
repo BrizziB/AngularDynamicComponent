@@ -6,20 +6,63 @@ html, body {
   margin-left: 4%;
   margin-right:4%;
   padding: 0;
+
+}
+
+
+.table-div .plain-div{
+
+  border-radius: 8px;
+  padding: 20px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  background: lightcoral;
+  border-style: solid;
+  border-width: 1px;
+  border-color: rgb(148, 45, 45);
+
 }
 
 .plain-div{
-  border-width: 3px;
+/*   border-width: 3px;
   border-style: dashed;
   border-color: darkgreen;
-  margin:10px;
+   margin:10px;
+
+  margin-top: 30px;
   margin-bottom: 30px;
 }
 
 .content-box-div{
-  border-width: 1px;
-  border-style: solid;
-  margin:10px;
+/*   border-width: 1px;
+  border-style: solid; */
   margin-bottom: 30px;
 
 }
+
+
+
+
+/* .table-div{
+  text-align: left;
+  background-color: whitesmoke;
+  border-top-style: solid;
+  border-top-color: rgb(175, 171, 171);
+  border-top-width: 2px;
+  padding: 20px;
+}
+
+
+.table-div div{
+  text-align: left;
+  border-radius: 8px;
+  padding: 20px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  background: lightcoral;
+  border-style: solid;
+  border-width: 1px;
+  border-color: rgb(148, 45, 45);
+}
+ */
+

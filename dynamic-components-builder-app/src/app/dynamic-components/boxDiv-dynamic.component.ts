@@ -9,8 +9,10 @@ import {
 @Component({
   selector: 'app-dynamic-box-div', // *ngIf='getShowBox()'
   template: `
-      <div [hidden]='getHidden()' class='content-box-div'>
-          <ng-template #container></ng-template>
+      <div [hidden]='getHidden()' class='content-box-div'
+      style='
+            align-content: center;'>
+          <ng-container #container></ng-container>
       </div>
 
 

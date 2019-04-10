@@ -17,7 +17,7 @@ import { BoxDivDynamicComponent } from './boxDiv-dynamic.component';
           <ul>
             <li *ngFor="let tab of navElements"><a (click)='this.showTab(tab)' href='#'>{{tab.value}}</a></li>
           </ul>
-          <ng-template #container></ng-template>
+          <ng-container #container></ng-container>
         </div>
 
   `,

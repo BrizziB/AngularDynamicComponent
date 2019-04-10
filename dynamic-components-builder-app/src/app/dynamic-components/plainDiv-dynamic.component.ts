@@ -15,9 +15,9 @@ import {
   template: `
       <div class='plain-div'>
 
-          <ng-template
+          <ng-container
               #container>
-          </ng-template>
+          </ng-container>
       </div>
   `,
 })

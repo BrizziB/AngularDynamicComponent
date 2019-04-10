@@ -10,13 +10,19 @@ import { LeafDynamicComponent } from './leaf-dynamic.component';
 @Component({
   selector: 'app-dynamic-combo-input',
   template: `
-    <span style='font-weight: bold'> {{propertyName}}: </span>
-    <select>
-      <option selected></option>
-      <option *ngFor="let entry of values" [value]="entry" > {{entry}} </option>
-    </select>
-    <br>
-  `
+  <div class='combo-input-outer'>
+    <div class='property-div'>
+      <span> {{propertyName}}: </span>
+    </div>
+    <div class='value-div'>
+      <select class='value-input'>
+        <option selected></option>
+        <option class='value-input' *ngFor="let entry of values" [value]="entry" > {{entry}} </option>
+      </select>
+    </div>
+  </div>
+  `,
+  styleUrls: ['input.css']
 })
 export class ComboInputDynamicComponent extends LeafDynamicComponent {
 
