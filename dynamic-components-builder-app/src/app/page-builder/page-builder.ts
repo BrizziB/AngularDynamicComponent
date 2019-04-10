@@ -4,11 +4,9 @@ import { ContainerDynamicComponent } from '../dynamic-components/container-dynam
 import { PDynamicComponent } from '../dynamic-components/p-dynamic.component';
 
 import {Injectable, ComponentFactoryResolver, ComponentRef, ComponentFactory} from '@angular/core';
-import { NavElemDynamicComponent } from '../dynamic-components/_prove/navElem-dynamic.component';
-import { NavElement } from '../dynamic-components/leaves/navElement';
+import { NavElement } from '../dynamic-components/non-component-leaves/navElement';
 import { BoxDivDynamicComponent } from '../dynamic-components/boxDiv-dynamic.component';
 import { StdInputDynamicComponent } from '../dynamic-components/stdInput-dynamic.component';
-import { LeafDynamicComponent } from '../dynamic-components/leaf-dynamic.component';
 import { TableDynamicComponent } from '../dynamic-components/table-dynamic.component';
 import { ComboInputDynamicComponent } from '../dynamic-components/comboInput-dynamic.component';
 
@@ -16,7 +14,7 @@ import { ComboInputDynamicComponent } from '../dynamic-components/comboInput-dyn
 @Injectable({
     providedIn: 'root'
   })
-export class PageBuilder{
+export class PageBuilder {
 
   private NAVTAB_Factory: ComponentFactory<TabbedPanelDynamicComponent> =
       this.componentFactoryResolver.resolveComponentFactory(TabbedPanelDynamicComponent);

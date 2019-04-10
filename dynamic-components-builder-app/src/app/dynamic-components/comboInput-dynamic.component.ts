@@ -22,7 +22,7 @@ import { LeafDynamicComponent } from './leaf-dynamic.component';
     </div>
   </div>
   `,
-  styleUrls: ['input.css']
+  styleUrls: ['./dynamical-component-styles/input.css']
 })
 export class ComboInputDynamicComponent extends LeafDynamicComponent {
 

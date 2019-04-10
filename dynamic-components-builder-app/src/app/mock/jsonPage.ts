@@ -59,7 +59,7 @@ export const JSONPage = { // qui c'è da rivedere un po' come strutturare questo
                     'Altro'
                   ]
               },
-              'professione(altro)': {
+              'professione (altro)': {
                 'type': 'std-input',
                 'value': 'NO'
               },

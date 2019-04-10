@@ -1,9 +1,6 @@
 import { DynamicComponent } from './dynamic.component';
 import {
-  Component, Input, OnInit, OnDestroy,
-  ViewChild, ViewContainerRef,
-  ComponentFactoryResolver, ComponentRef, ComponentFactory
-} from '@angular/core';
+  Component } from '@angular/core';
 import { LeafDynamicComponent } from './leaf-dynamic.component';
 
 
@@ -20,7 +17,7 @@ import { LeafDynamicComponent } from './leaf-dynamic.component';
     </div>
   </div>
   `,
-  styleUrls: ['input.css']
+  styleUrls: ['./dynamical-component-styles/input.css']
 })
 export class StdInputDynamicComponent extends LeafDynamicComponent {
 

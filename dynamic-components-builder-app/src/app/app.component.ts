@@ -1,11 +1,5 @@
-import {Component, Input, OnInit, OnDestroy,
-  ViewChild, ViewContainerRef,
-  ComponentFactoryResolver, ComponentRef, ComponentFactory, AfterViewChecked} from '@angular/core';
-import { DynamicComponent } from './dynamic-components/dynamic.component';
+import {Component, OnInit, ViewChild} from '@angular/core';
 import { PlainDivDynamicComponent } from './dynamic-components/plainDiv-dynamic.component';
-import { PDynamicComponent } from './dynamic-components/p-dynamic.component';
-
-import { JSONPage } from './mock/jsonPage';
 import { PageBuildingDirector } from './page-builder/page-building-director';
 import { PageBuildingService } from './services/page-building.service';
 

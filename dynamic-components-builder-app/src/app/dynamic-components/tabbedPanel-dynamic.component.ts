@@ -1,12 +1,8 @@
 import { ContainerDynamicComponent } from './container-dynamic.component';
 import {
-  Component, Input, OnInit, OnDestroy,
-  ViewChild, ViewContainerRef,
-  ComponentFactoryResolver, ComponentRef, ComponentFactory
+  Component, OnInit, OnDestroy, ComponentFactoryResolver
 } from '@angular/core';
-import { NavElemDynamicComponent } from './_prove/navElem-dynamic.component';
-import { LeafDynamicComponent } from './leaf-dynamic.component';
-import { NavElement } from './leaves/navElement';
+import { NavElement } from './non-component-leaves/navElement';
 import { BoxDivDynamicComponent } from './boxDiv-dynamic.component';
 
 
@@ -21,7 +17,7 @@ import { BoxDivDynamicComponent } from './boxDiv-dynamic.component';
         </div>
 
   `,
-  styleUrls: ['./tabbedPanel-dynamic.component.css']
+  styleUrls: ['./dynamical-component-styles/tabbedPanel.css']
 })
 
 /** questa specializzazione del container dinamico prevede una navbar che indicizza tutti

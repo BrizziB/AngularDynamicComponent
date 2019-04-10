@@ -6,7 +6,7 @@ import { isNullOrUndefined } from 'util';
 import { ɵangular_packages_platform_browser_platform_browser_k } from '@angular/platform-browser';
 import { DynamicComponent } from '../dynamic-components/dynamic.component';
 import { TabbedPanelDynamicComponent } from '../dynamic-components/tabbedPanel-dynamic.component';
-import { NavElement } from '../dynamic-components/leaves/navElement';
+import { NavElement } from '../dynamic-components/non-component-leaves/navElement';
 import { LeafDynamicComponent } from '../dynamic-components/leaf-dynamic.component';
 import { StdInputDynamicComponent } from '../dynamic-components/stdInput-dynamic.component';
 import { ComboInputDynamicComponent } from '../dynamic-components/comboInput-dynamic.component';
@@ -29,35 +29,6 @@ export class PageBuildingDirector {
   public buildPageFromScheme(form: Object) {
     this.traverseTree(form, 0);
   }
-/*
-  private traverseTree(form: Object, nestingLevel: number) {
-    const nestingIdx = this.divStack[nestingLevel];
-    // tslint:disable-next-line:forin
-    for (const element in form) {
-      if (element === 'leaf') { // ho trovato una leaf
-        this.pageBuilder.addLeafChildToContainer(nestingIdx, form[element].value);
-      } else
-      if (element === 'type') {
-        // non fa niente
-      } else
-      if (Array.isArray(form[element])) {
-        const components = (Array)(form[element]); // il casting è inevitabile penso
-        // tslint:disable-next-line:forin
-        for (let i = 0; i < components.length; i ++) {
-          this.traverseTree(components[i], nestingLevel);
-        }
-      } else {
-        // qui si entra nel div nuovo, è dove si farebbe il push allo stack di riferimenti ai div
-        const elem = form[element];
-        const divType = elem.type;
-        const newDiv = this.insertElement(nestingIdx, divType);
-        this.divStack.push(newDiv);
-        this.traverseTree(elem, nestingLevel + 1);
-        this.divStack.pop();
-      }
-    }
-  } */
-
 
   private traverseTree(form: Object, nestingLevel: number) {
     const nestingIdx: ContainerDynamicComponent = this.divStack[nestingLevel];
@@ -82,7 +53,6 @@ export class PageBuildingDirector {
 
           case 'views': { // sempre contenuto in un tabbed-panel
             console.log('trovato tabs array ' + element);
-            const components: NavElement[] = [];
             this.addViewsToTabbedPage(element, nestingLevel, <TabbedPanelDynamicComponent>nestingIdx, component);
             break;
           }
@@ -121,10 +91,15 @@ export class PageBuildingDirector {
             console.log('se mi vedi, qualche type non viene letto bene o rimane qualche componente in giro MEKEMEKE');
           }
       }
-      // qui vediamo un po' come farlo, alla fine non penso si potrà prescindere dai check sulle string :(
-
 
     }
+  }
+
+
+  private keepAdding(elem, newDiv: ContainerDynamicComponent, nestingLevel: number) {
+    this.divStack.push(newDiv);
+    this.traverseTree(elem, nestingLevel + 1);
+    this.divStack.pop();
   }
 
   private addViewsToTabbedPage(viewsObject, nestingLevel: number, tabbedPage: ContainerDynamicComponent, component) {
@@ -140,11 +115,6 @@ export class PageBuildingDirector {
     }
   }
 
-  private keepAdding(elem, newDiv: ContainerDynamicComponent, nestingLevel: number) {
-    this.divStack.push(newDiv);
-    this.traverseTree(elem, nestingLevel + 1);
-    this.divStack.pop();
-  }
 
 
 

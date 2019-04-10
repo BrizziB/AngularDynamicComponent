@@ -6,10 +6,6 @@ import {
 } from '@angular/core';
 
 
-/* <p *ngFor="let elem of objectKeys(context)">
-{{elem}}: {{context[elem]}}
-</p> */
-
 @Component({
   selector: 'app-dynamic-plain-div',
   template: `

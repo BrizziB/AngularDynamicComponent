@@ -1,10 +1,6 @@
 import { ContainerDynamicComponent } from './container-dynamic.component';
 import {
-  Component, Input, OnInit, OnDestroy,
-  ViewChild, ViewContainerRef,
-  ComponentFactoryResolver, ComponentRef, ComponentFactory, AfterViewInit
-} from '@angular/core';
-import { DynamicComponent } from './dynamic.component';
+  Component, OnInit, OnDestroy, ComponentFactoryResolver } from '@angular/core';
 
 
 @Component({
@@ -17,9 +13,9 @@ import { DynamicComponent } from './dynamic.component';
         </ng-container>
       </div>
   `,
-  styleUrls: ['table-dynamic.component.css']
+  styleUrls: ['./dynamical-component-styles/table.css']
 })
-export class TableDynamicComponent extends ContainerDynamicComponent implements OnInit, OnDestroy, AfterViewInit {
+export class TableDynamicComponent extends ContainerDynamicComponent implements OnInit, OnDestroy {
 
   protected objectKeys = Object.keys;
 
@@ -27,10 +23,7 @@ export class TableDynamicComponent extends ContainerDynamicComponent implements 
       super(componentFactoryResolver);
   }
 
-  ngAfterViewInit() {
 
-    //forse da qui?
-}
 
 
 
