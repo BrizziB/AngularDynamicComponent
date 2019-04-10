@@ -1,7 +1,7 @@
-import { DynamicComponent } from './dynamic.component';
+import { DynamicComponent } from './__dynamic.component';
 import {
   Component } from '@angular/core';
-import { LeafDynamicComponent } from './leaf-dynamic.component';
+import { LeafDynamicComponent } from './_leaf-dynamic.component';
 
 
 @Component({

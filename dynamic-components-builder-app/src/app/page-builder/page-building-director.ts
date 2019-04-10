@@ -1,13 +1,9 @@
 import {Injectable} from '@angular/core';
 
 import { PageBuilder } from './page-builder';
-import { ContainerDynamicComponent } from '../dynamic-components/container-dynamic.component';
-import { isNullOrUndefined } from 'util';
-import { ɵangular_packages_platform_browser_platform_browser_k } from '@angular/platform-browser';
-import { DynamicComponent } from '../dynamic-components/dynamic.component';
+import { ContainerDynamicComponent } from '../dynamic-components/_container-dynamic.component';
 import { TabbedPanelDynamicComponent } from '../dynamic-components/tabbedPanel-dynamic.component';
 import { NavElement } from '../dynamic-components/non-component-leaves/navElement';
-import { LeafDynamicComponent } from '../dynamic-components/leaf-dynamic.component';
 import { StdInputDynamicComponent } from '../dynamic-components/stdInput-dynamic.component';
 import { ComboInputDynamicComponent } from '../dynamic-components/comboInput-dynamic.component';
 

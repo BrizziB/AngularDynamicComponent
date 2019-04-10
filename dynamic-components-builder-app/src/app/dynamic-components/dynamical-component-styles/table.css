@@ -1,0 +1,24 @@
+
+
+
+.table-div{
+  text-align: left;
+  background-color: lightblue;
+  border-top-style: solid;
+  border-top-color: rgb(175, 171, 171);
+  border-bottom-style: solid;
+  border-bottom-color: rgb(175, 171, 171);
+  border-top-width: 2px;
+  padding: 20px;
+  width: 70%;
+  margin-left:15%;
+}
+
+
+@media only screen and (max-width: 600px) {
+  .table-div{
+    background-color: lightblue;
+    margin-left:0;
+    width: 100%;
+  }
+}

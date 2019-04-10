@@ -1,4 +1,4 @@
-import { ContainerDynamicComponent } from './container-dynamic.component';
+import { ContainerDynamicComponent } from './_container-dynamic.component';
 import {
   Component, OnInit, OnDestroy, ComponentFactoryResolver
 } from '@angular/core';

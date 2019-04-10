@@ -1,5 +1,4 @@
-import { DynamicComponent } from './dynamic.component';
-import { Component } from '@angular/core';
+import { DynamicComponent } from './__dynamic.component';
 
 
 export abstract class LeafDynamicComponent extends DynamicComponent {

@@ -1,6 +1,6 @@
 import { TabbedPanelDynamicComponent } from '../dynamic-components/tabbedPanel-dynamic.component';
 import { PlainDivDynamicComponent } from '../dynamic-components/plainDiv-dynamic.component';
-import { ContainerDynamicComponent } from '../dynamic-components/container-dynamic.component';
+import { ContainerDynamicComponent } from '../dynamic-components/_container-dynamic.component';
 import { PDynamicComponent } from '../dynamic-components/p-dynamic.component';
 
 import {Injectable, ComponentFactoryResolver, ComponentRef, ComponentFactory} from '@angular/core';
