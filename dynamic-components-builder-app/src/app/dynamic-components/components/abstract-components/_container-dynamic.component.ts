@@ -1,20 +1,20 @@
-import { DynamicComponent } from './__dynamic.component';
+import { DynamicComponent } from './__base-dynamic.component';
 import {
   Component, Input, OnInit, OnDestroy,
   ViewChild, ViewContainerRef,
   ComponentFactoryResolver, ComponentRef, ComponentFactory
 } from '@angular/core';
-import { LeafDynamicComponent } from './_leaf-dynamic.component';
+import { LeafDynamicComponent } from './_input-dynamic.component';
 import { isNullOrUndefined } from 'util';
 
 
 @Component({
   selector: 'app-dynamic-div',
-  template: `ERROR`
+  template: `no-template`
 })
 export abstract class ContainerDynamicComponent extends DynamicComponent implements OnInit, OnDestroy {
 
-  constructor(protected componentFactoryResolver: ComponentFactoryResolver) {
+  constructor() {
       super();
       this.containedComponents = [];
       this.containedLeaves = [];
@@ -26,7 +26,7 @@ export abstract class ContainerDynamicComponent extends DynamicComponent impleme
   container: ViewContainerRef;
 
   @Input()
-  context: any;
+  context: any ;
 
   ngOnInit() {
   }

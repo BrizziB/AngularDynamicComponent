@@ -14,19 +14,27 @@ export const JSONPage = { // qui c'è da rivedere un po' come strutturare questo
 
             'numero-cartella': {
               'type': 'std-input',
-              'value': '1'
+              'value': '1',
+              'fact': {
+                'id': '',
+                'value': ''
+                }
             },
             'stato-civile': {
               'type': 'container',
               'stato civile': {
-                'type': 'combo-input',
+                'view-type': 'combo-input',
                 'values': [
                   'Celibe/Nubile',
                   'Coniugato/a',
                   'Divorziato/a',
                   'Separato/a',
                   'Vedovo/a'
-                ]
+                ],
+                'fact': {
+                  'id': '',
+                  'value': ''
+                }
               },
               'tempo': {
                 'type': 'std-input',
@@ -45,7 +53,7 @@ export const JSONPage = { // qui c'è da rivedere un po' come strutturare questo
             },
             'figli': {
               'type': 'combo-input',
-                'values': ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10']
+                'values': ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '10']
             },
             'professione': {
               'type': 'container',

@@ -1,4 +1,4 @@
-import { DynamicComponent } from './__dynamic.component';
+import { DynamicComponent } from './__base-dynamic.component';
 
 
 export abstract class LeafDynamicComponent extends DynamicComponent {
@@ -6,9 +6,5 @@ export abstract class LeafDynamicComponent extends DynamicComponent {
   constructor() {
       super();
   }
-
-
-
-
 
 }

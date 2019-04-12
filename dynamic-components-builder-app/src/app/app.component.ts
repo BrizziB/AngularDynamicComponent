@@ -1,7 +1,10 @@
 import {Component, OnInit, ViewChild} from '@angular/core';
-import { PlainDivDynamicComponent } from './dynamic-components/plainDiv-dynamic.component';
+import { ContainerPlainDynamicComponent } from './dynamic-components/components/abstract-components/container-plain-dynamic.component';
 import { PageBuildingDirector } from './page-builder/page-building-director';
 import { PageBuildingService } from './services/page-building.service';
+import { MaterialPlainComponent } from './dynamic-components/components/material-components/material-plain-container.component';
+
+
 
 @Component({
   selector: 'app-root',
@@ -10,15 +13,15 @@ import { PageBuildingService } from './services/page-building.service';
 })
 export class AppComponent implements OnInit {
 
-  private title = 'dynamic-components-builder';
+  private title = 'Dynamical Components';
 
   constructor(
     private pageBuildingDirector: PageBuildingDirector,
     private pageBuildingService: PageBuildingService
-  ) {}
+  ) { }
 
-  @ViewChild(PlainDivDynamicComponent)
-  private child: PlainDivDynamicComponent;
+  @ViewChild(MaterialPlainComponent)
+  private child: MaterialPlainComponent; // TODO risolvi questa brutta cosa !
 
   ngOnInit() {
     this.pageBuildingDirector.init(this.child);

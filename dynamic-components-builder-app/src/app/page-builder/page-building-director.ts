@@ -1,11 +1,11 @@
 import {Injectable} from '@angular/core';
 
 import { PageBuilder } from './page-builder';
-import { ContainerDynamicComponent } from '../dynamic-components/_container-dynamic.component';
-import { TabbedPanelDynamicComponent } from '../dynamic-components/tabbedPanel-dynamic.component';
+import { ContainerDynamicComponent } from '../dynamic-components/components/abstract-components/_container-dynamic.component';
+import { ContainerTabbedDynamicComponent } from '../dynamic-components/components/abstract-components/container-tabbed-dynamic.component';
 import { NavElement } from '../dynamic-components/non-component-leaves/navElement';
-import { StdInputDynamicComponent } from '../dynamic-components/stdInput-dynamic.component';
-import { ComboInputDynamicComponent } from '../dynamic-components/comboInput-dynamic.component';
+import { InputPlainDynamicComponent } from '../dynamic-components/components/abstract-components/input-plain-dynamic.component';
+import { InputComboDynamicComponent } from '../dynamic-components/components/abstract-components/input-combo-dynamic.component';
 
 @Injectable({
   providedIn: 'root'
@@ -49,7 +49,7 @@ export class PageBuildingDirector {
 
           case 'views': { // sempre contenuto in un tabbed-panel
             console.log('trovato tabs array ' + element);
-            this.addViewsToTabbedPage(element, nestingLevel, <TabbedPanelDynamicComponent>nestingIdx, component);
+            this.addViewsToTabbedPage(element, nestingLevel, <ContainerTabbedDynamicComponent>nestingIdx, component);
             break;
           }
 
@@ -62,7 +62,7 @@ export class PageBuildingDirector {
 
           case 'std-input': {
             console.log('trovata foglia output : ' + element.value);
-            const currentLeaf: StdInputDynamicComponent = this.pageBuilder.addStdInputChildToContainer(nestingIdx, element);
+            const currentLeaf: InputPlainDynamicComponent = this.pageBuilder.addStdInputChildToContainer(nestingIdx, element);
             currentLeaf.propertyName = component;
             currentLeaf.propertyValue = element.value;
             break;
@@ -70,7 +70,7 @@ export class PageBuildingDirector {
 
           case 'combo-input': {
             console.log('trovata foglia output : ' + element.value);
-            const currentLeaf: ComboInputDynamicComponent = this.pageBuilder.addComboInputChildToContainer(nestingIdx, element);
+            const currentLeaf: InputComboDynamicComponent = this.pageBuilder.addComboInputChildToContainer(nestingIdx, element);
             currentLeaf.propertyName = component;
             currentLeaf.values = element.values;
             break;
@@ -102,7 +102,7 @@ export class PageBuildingDirector {
     for (const element in viewsObject) { // aggiungo le label
       if (element !== 'type') {
         const navElem = new NavElement(viewsObject[element].id, element);
-        this.pageBuilder.addTabToPanel(<TabbedPanelDynamicComponent>tabbedPage, navElem);
+        this.pageBuilder.addTabToPanel(<ContainerTabbedDynamicComponent>tabbedPage, navElem);
         const currentContainer = this.pageBuilder.addBox(tabbedPage, component);
         currentContainer.context.id = viewsObject[element].id;
         const tmp = viewsObject[element];

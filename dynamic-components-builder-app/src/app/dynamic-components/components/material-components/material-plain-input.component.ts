@@ -1,11 +1,9 @@
-import { DynamicComponent } from './__dynamic.component';
-import {
-  Component } from '@angular/core';
-import { LeafDynamicComponent } from './_leaf-dynamic.component';
+import {  Component } from '@angular/core';
+import { InputPlainDynamicComponent } from '../abstract-components/input-plain-dynamic.component';
 
 
 @Component({
-  selector: 'app-dynamic-std-input',
+  selector: 'app-dynamic-mat-stdinput',
   template: `<div class='std-input-outer'>
     <div class='property-div'>
       <span>
@@ -17,9 +15,9 @@ import { LeafDynamicComponent } from './_leaf-dynamic.component';
     </div>
   </div>
   `,
-  styleUrls: ['./dynamical-component-styles/input.css']
+  styleUrls: ['../../dynamical-component-styles/input.css']
 })
-export class StdInputDynamicComponent extends LeafDynamicComponent {
+export class MaterialPlainInputComponent extends InputPlainDynamicComponent {
 
   propertyName: string;
   propertyValue: string|number;

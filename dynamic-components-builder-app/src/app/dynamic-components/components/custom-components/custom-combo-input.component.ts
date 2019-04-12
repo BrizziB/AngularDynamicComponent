@@ -1,14 +1,9 @@
-import { DynamicComponent } from './__dynamic.component';
-import {
-  Component, Input, OnInit, OnDestroy,
-  ViewChild, ViewContainerRef,
-  ComponentFactoryResolver, ComponentRef, ComponentFactory
-} from '@angular/core';
-import { LeafDynamicComponent } from './_leaf-dynamic.component';
+import { Component } from '@angular/core';
+import { InputComboDynamicComponent } from '../abstract-components/input-combo-dynamic.component';
 
 
 @Component({
-  selector: 'app-dynamic-combo-input',
+  selector: 'app-dynamic-custom-comboinput',
   template: `
   <div class='combo-input-outer'>
     <div class='property-div'>
@@ -22,20 +17,19 @@ import { LeafDynamicComponent } from './_leaf-dynamic.component';
     </div>
   </div>
   `,
-  styleUrls: ['./dynamical-component-styles/input.css']
+  styleUrls: ['../../dynamical-component-styles/input.css']
 })
-export class ComboInputDynamicComponent extends LeafDynamicComponent {
+export class CustomComboInputComponent extends InputComboDynamicComponent {
 
   propertyName: string;
   values: string[] = [];
+
 
   selectedValue: string;
 
   constructor() {
       super();
   }
-
-
 
 
 

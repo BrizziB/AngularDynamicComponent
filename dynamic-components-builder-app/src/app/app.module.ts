@@ -1,42 +1,66 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
 import { NgModule } from '@angular/core';
-
-import { TabbedPanelDynamicComponent} from './dynamic-components/tabbedPanel-dynamic.component';
+import { HttpModule } from '@angular/http';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AppComponent } from './app.component';
-import { PDynamicComponent } from './dynamic-components/p-dynamic.component';
 import { PageBuildingService } from './services/page-building.service';
-import { PlainDivDynamicComponent } from './dynamic-components/plainDiv-dynamic.component';
-import { BoxDivDynamicComponent } from './dynamic-components/boxDiv-dynamic.component';
-import { StdInputDynamicComponent } from './dynamic-components/stdInput-dynamic.component';
-import { TableDynamicComponent } from './dynamic-components/table-dynamic.component';
-import { ComboInputDynamicComponent } from './dynamic-components/comboInput-dynamic.component';
+
+import { MaterialModule } from './material.module';
+import { MaterialBoxComponent } from './dynamic-components/components/material-components/material-box-container.component';
+import { MaterialComboInputComponent } from './dynamic-components/components/material-components/material-combo-input.component';
+import { MaterialPlainComponent } from './dynamic-components/components/material-components/material-plain-container.component';
+import { MaterialPlainInputComponent } from './dynamic-components/components/material-components/material-plain-input.component';
+import { MaterialTabbedComponent } from './dynamic-components/components/material-components/material-tabbed-container.component';
+import { MaterialTableComponent } from './dynamic-components/components/material-components/material-table-container.component';
+import { CustomBoxComponent } from './dynamic-components/components/custom-components/custom-box-container.component';
+import { CustomComboInputComponent } from './dynamic-components/components/custom-components/custom-combo-input.component';
+import { CustomPlainComponent } from './dynamic-components/components/custom-components/custom-plain-container.component';
+import { CustomPlainInputComponent } from './dynamic-components/components/custom-components/custom-plain-input.component';
+import { CustomTabbedComponent } from './dynamic-components/components/custom-components/custom-tabbed-container.component';
+import { CustomTableComponent } from './dynamic-components/components/custom-components/custom-table-container.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    TabbedPanelDynamicComponent,
-    PlainDivDynamicComponent,
-    PDynamicComponent,
-    BoxDivDynamicComponent,
-    StdInputDynamicComponent,
-    TableDynamicComponent,
-    ComboInputDynamicComponent
+    MaterialBoxComponent,
+    MaterialComboInputComponent,
+    MaterialPlainComponent,
+    MaterialPlainInputComponent,
+    MaterialTabbedComponent,
+    MaterialTableComponent,
+
+    CustomBoxComponent,
+    CustomComboInputComponent,
+    CustomPlainComponent,
+    CustomPlainInputComponent,
+    CustomTabbedComponent,
+    CustomTableComponent
   ],
   imports: [
     BrowserModule,
-    FormsModule
+    FormsModule,
+    HttpModule,
+    BrowserAnimationsModule,
+    MaterialModule
+
   ],
   entryComponents: [
-    TabbedPanelDynamicComponent,
-    PlainDivDynamicComponent,
-    PDynamicComponent,
-    BoxDivDynamicComponent,
-    StdInputDynamicComponent,
-    TableDynamicComponent,
-    ComboInputDynamicComponent
+    MaterialBoxComponent,
+    MaterialComboInputComponent,
+    MaterialPlainComponent,
+    MaterialPlainInputComponent,
+    MaterialTabbedComponent,
+    MaterialTableComponent,
+
+    CustomBoxComponent,
+    CustomComboInputComponent,
+    CustomPlainComponent,
+    CustomPlainInputComponent,
+    CustomTabbedComponent,
+    CustomTableComponent
   ],
   providers: [PageBuildingService],
   bootstrap: [AppComponent]

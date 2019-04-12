@@ -1,13 +1,11 @@
-import { ContainerDynamicComponent } from './_container-dynamic.component';
-import {
-  Component, OnInit, OnDestroy, ComponentFactoryResolver
-} from '@angular/core';
-import { NavElement } from './non-component-leaves/navElement';
-import { BoxDivDynamicComponent } from './boxDiv-dynamic.component';
+import { Component, OnInit, OnDestroy, ComponentFactoryResolver} from '@angular/core';
+import { NavElement } from '../../non-component-leaves/navElement';
+import { ContainerBoxDynamicComponent } from '../abstract-components/container-box-dynamic.component';
+import { ContainerTabbedDynamicComponent } from '../abstract-components/container-tabbed-dynamic.component';
 
 
 @Component({
-  selector: 'app-dynamic-tabbed-panel',
+  selector: 'app-dynamic-mat-tab',
   template: `
         <div id='tabbed-nav'>
           <ul>
@@ -17,7 +15,7 @@ import { BoxDivDynamicComponent } from './boxDiv-dynamic.component';
         </div>
 
   `,
-  styleUrls: ['./dynamical-component-styles/tabbedPanel.css']
+  styleUrls: ['../../dynamical-component-styles/tabbedPanel.css']
 })
 
 /** questa specializzazione del container dinamico prevede una navbar che indicizza tutti
@@ -25,10 +23,10 @@ import { BoxDivDynamicComponent } from './boxDiv-dynamic.component';
   * oltre a questo prevede di poter contenere una lista di generici container dinamici, che vengono visualizzati
   * in corrispondenza con i NavElement
 *******************************************************************************************************************/
-export class TabbedPanelDynamicComponent extends ContainerDynamicComponent implements OnInit, OnDestroy {
+export class MaterialTabbedComponent extends ContainerTabbedDynamicComponent implements OnInit, OnDestroy {
 
   protected navElements: NavElement[];
-  protected containedComponents: BoxDivDynamicComponent[];
+  protected containedComponents: ContainerBoxDynamicComponent[];
 
   showTab(tab: any) {
     this.containedComponents.forEach(container => {
@@ -48,8 +46,8 @@ export class TabbedPanelDynamicComponent extends ContainerDynamicComponent imple
     this.navElements.push(elem);
   }
 
-  constructor(protected componentFactoryResolver: ComponentFactoryResolver) {
-    super(componentFactoryResolver);
+  constructor() {
+    super();
     this.navElements = [];
   }
 
