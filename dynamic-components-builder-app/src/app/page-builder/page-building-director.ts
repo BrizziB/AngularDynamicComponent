@@ -6,6 +6,7 @@ import { ContainerTabbedDynamicComponent } from '../dynamic-components/component
 import { NavElement } from '../dynamic-components/non-component-leaves/navElement';
 import { InputPlainDynamicComponent } from '../dynamic-components/components/abstract-components/input-plain-dynamic.component';
 import { InputComboDynamicComponent } from '../dynamic-components/components/abstract-components/input-combo-dynamic.component';
+import { MaterialTabbedComponent } from '../dynamic-components/components/material-components/material-tabbed-container.component';
 
 @Injectable({
   providedIn: 'root'

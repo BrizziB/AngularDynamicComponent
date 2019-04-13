@@ -10,7 +10,7 @@ export const JSONPage = { // qui c'è da rivedere un po' come strutturare questo
 
           'Anagrafica': {
             'type': 'table',
-            'id': '01',
+            'id': '0',
 
             'numero-cartella': {
               'type': 'std-input',
@@ -93,7 +93,7 @@ export const JSONPage = { // qui c'è da rivedere un po' come strutturare questo
           },
           'Anamnesi': {
             'type': 'table',
-            'id': '02',
+            'id': '1',
             'numero-ANAMNESI': {
               'type': 'std-input',
               'value': '1'
@@ -117,7 +117,7 @@ export const JSONPage = { // qui c'è da rivedere un po' come strutturare questo
           },
           'Caratterizzazione cefalea': {
             'type': 'table',
-            'id': '03',
+            'id': '2',
             'numero-DIAGNOSI': {
               'type': 'std-input',
               'value': '1'
@@ -141,7 +141,7 @@ export const JSONPage = { // qui c'è da rivedere un po' come strutturare questo
           },
           'Esame obiettivo': {
             'type': 'table',
-            'id': '04',
+            'id': '3',
             'numero-TERAPIA': {
               'type': 'std-input',
               'value': '1'
@@ -165,7 +165,7 @@ export const JSONPage = { // qui c'è da rivedere un po' come strutturare questo
           },
           'Esami effettuati': {
             'type': 'table',
-            'id': '05',
+            'id': '4',
             'numero-TERAPIA': {
               'type': 'std-input',
               'value': '1'
@@ -189,7 +189,7 @@ export const JSONPage = { // qui c'è da rivedere un po' come strutturare questo
           },
           'Terapia effettuata': {
             'type': 'table',
-            'id': '06',
+            'id': '5',
             'numero-TERAPIA': {
               'type': 'std-input',
               'value': '1'
@@ -213,7 +213,7 @@ export const JSONPage = { // qui c'è da rivedere un po' come strutturare questo
           },
           'Diagnosi': {
             'type': 'table',
-            'id': '07',
+            'id': '6',
             'numero-TERAPIA': {
               'type': 'std-input',
               'value': '1'
@@ -237,7 +237,7 @@ export const JSONPage = { // qui c'è da rivedere un po' come strutturare questo
           },
           'Terapia consigliata': {
             'type': 'table',
-            'id': '08',
+            'id': '7',
             'numero-TERAPIA': {
               'type': 'std-input',
               'value': '1'
@@ -261,7 +261,7 @@ export const JSONPage = { // qui c'è da rivedere un po' come strutturare questo
           },
           'Indagini consigliate': {
             'type': 'table',
-            'id': '09',
+            'id': '8',
             'numero-TERAPIA': {
               'type': 'std-input',
               'value': '1'
@@ -285,7 +285,7 @@ export const JSONPage = { // qui c'è da rivedere un po' come strutturare questo
           },
           'Lettera finale': {
             'type': 'table',
-            'id': '10',
+            'id': '9',
             'numero-TERAPIA': {
               'type': 'std-input',
               'value': '1'

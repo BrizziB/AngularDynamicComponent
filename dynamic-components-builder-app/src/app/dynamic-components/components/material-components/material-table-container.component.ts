@@ -12,7 +12,7 @@ import { ContainerTableDynamicComponent } from '../abstract-components/container
         </ng-container>
       </div>
   `,
-  styleUrls: ['../../dynamical-component-styles/table.css']
+  styleUrls: ['./styles/table.css']
 })
 export class MaterialTableComponent extends ContainerTableDynamicComponent implements OnInit, OnDestroy {
 

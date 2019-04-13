@@ -21,6 +21,7 @@ export class PageBuilder {
   constructor(
     private componentFactoryResolver: ComponentFactoryResolver) {
     this.componentFactory = new MaterialComponentFactory(componentFactoryResolver);
+    // this.componentFactory = new CustomComponentFactory(componentFactoryResolver);
    }
 
   public addPlainDiv(index: ContainerDynamicComponent, name: string): ContainerDynamicComponent {

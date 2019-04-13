@@ -5,9 +5,8 @@ import { ContainerBoxDynamicComponent } from '../abstract-components/container-b
 @Component({
   selector: 'app-dynamic-mat-box', // *ngIf='getShowBox()'
   template: `
-      <div [hidden]='getHidden()' class='content-box-div'
-      style='
-            align-content: center;'>
+      <div [hidden] = "isHidden"  class='mat-box-div'
+      style='align-content: center;'>
           <ng-container #container></ng-container>
       </div>
 
@@ -17,14 +16,14 @@ import { ContainerBoxDynamicComponent } from '../abstract-components/container-b
 export class MaterialBoxComponent extends ContainerBoxDynamicComponent implements OnInit, OnDestroy {
 
   protected objectKeys = Object.keys;
-  public hidden = false;
+  public isHidden = true;
 
   public setHidden(hidden: boolean) {
-    this.hidden = hidden;
+    this.isHidden = hidden;
   }
 
   public getHidden(): boolean {
-    return this.hidden;
+    return this.isHidden;
   }
 
   constructor() {

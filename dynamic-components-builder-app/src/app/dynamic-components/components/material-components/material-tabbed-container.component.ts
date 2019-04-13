@@ -1,21 +1,27 @@
-import { Component, OnInit, OnDestroy, ComponentFactoryResolver} from '@angular/core';
+import { Component, OnInit, OnDestroy, ViewContainerRef, ViewChild,
+  ViewChildren, QueryList, ComponentRef, ComponentFactory, AfterViewInit, AfterContentInit} from '@angular/core';
+
+import { ContainerDynamicComponent } from '../abstract-components/_container-dynamic.component';
+
 import { NavElement } from '../../non-component-leaves/navElement';
 import { ContainerBoxDynamicComponent } from '../abstract-components/container-box-dynamic.component';
 import { ContainerTabbedDynamicComponent } from '../abstract-components/container-tabbed-dynamic.component';
+import { container } from '@angular/core/src/render3/instructions';
 
 
 @Component({
   selector: 'app-dynamic-mat-tab',
   template: `
         <div id='tabbed-nav'>
-          <ul>
-            <li *ngFor="let tab of navElements"><a (click)='this.showTab(tab)' href='#'>{{tab.value}}</a></li>
-          </ul>
-          <ng-container #container></ng-container>
+          <mat-tab-group (selectedTabChange)="tabClick($event)">
+            <mat-tab *ngFor="let tab of navElements" label ="{{tab.value}}">
+            </mat-tab>
+          </mat-tab-group>
+          <ng-container #container> </ng-container>
         </div>
 
   `,
-  styleUrls: ['../../dynamical-component-styles/tabbedPanel.css']
+  styleUrls: ['./styles/tab.css']
 })
 
 /** questa specializzazione del container dinamico prevede una navbar che indicizza tutti
@@ -23,35 +29,43 @@ import { ContainerTabbedDynamicComponent } from '../abstract-components/containe
   * oltre a questo prevede di poter contenere una lista di generici container dinamici, che vengono visualizzati
   * in corrispondenza con i NavElement
 *******************************************************************************************************************/
-export class MaterialTabbedComponent extends ContainerTabbedDynamicComponent implements OnInit, OnDestroy {
+export class MaterialTabbedComponent extends ContainerTabbedDynamicComponent implements OnInit, OnDestroy, AfterContentInit {
 
   protected navElements: NavElement[];
   protected containedComponents: ContainerBoxDynamicComponent[];
+  protected containers: ViewContainerRef[];
+  private counter;
 
-  showTab(tab: any) {
-    this.containedComponents.forEach(container => {
-      if (container.context.id === tab.id) {
-          container.setHidden(false);
+  @ViewChild('container', { read: ViewContainerRef })
+  container: ViewContainerRef;
+
+  protected tabClick($event) {
+    console.log($event);
+    this.showTab($event.index);
+  }
+
+  showTab(tab: number) {
+    this.containedComponents.forEach(comp => {
+      if (comp.context.id === tab.toString()) {
+          comp.setHidden(false);
       } else {
-        container.setHidden(true);
+        comp.setHidden(true);
       }
     });
   }
 
-  public setNavElements(elems: NavElement[]) {
-    this.navElements = elems;
-  }
-
-  public addNavElement(elem: NavElement) {
-    this.navElements.push(elem);
+  ngAfterContentInit(): void {
+    this.showTab(0);
   }
 
   constructor() {
     super();
-    this.navElements = [];
+    this.counter = 0;
   }
 
 
+
+//   (click)="this.showTab(tab)" *ngFor="let tab of navElements" label ="{{tab.value}}"
 
 
 

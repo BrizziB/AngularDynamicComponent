@@ -11,7 +11,8 @@ import { ContainerTableDynamicComponent } from '../abstract-components/container
               #container>
         </ng-container>
       </div>
-  `
+  `,
+  styleUrls: ['../../dynamical-component-styles/table.css']
 })
 export class CustomTableComponent extends ContainerTableDynamicComponent implements OnInit, OnDestroy {
 
