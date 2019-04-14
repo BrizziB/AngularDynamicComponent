@@ -23,7 +23,7 @@ export const JSONPage = { // qui c'è da rivedere un po' come strutturare questo
             'stato-civile': {
               'type': 'container',
               'stato civile': {
-                'view-type': 'combo-input',
+                'type': 'combo-input',
                 'values': [
                   'Celibe/Nubile',
                   'Coniugato/a',

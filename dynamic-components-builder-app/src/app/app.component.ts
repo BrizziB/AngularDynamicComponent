@@ -1,8 +1,8 @@
 import {Component, OnInit, ViewChild} from '@angular/core';
-import { ContainerPlainDynamicComponent } from './dynamic-components/components/abstract-components/container-plain-dynamic.component';
 import { PageBuildingDirector } from './page-builder/page-building-director';
 import { PageBuildingService } from './services/page-building.service';
 import { MaterialPlainComponent } from './dynamic-components/components/material-components/material-plain-container.component';
+import { BaseComponent } from './base.component';
 
 
 
@@ -20,10 +20,11 @@ export class AppComponent implements OnInit {
     private pageBuildingService: PageBuildingService
   ) { }
 
-  @ViewChild(MaterialPlainComponent)
-  private child: MaterialPlainComponent; // TODO risolvi questa brutta cosa !
+  @ViewChild(BaseComponent)
+  protected child: BaseComponent; // è un componente cui si possono aggiungere dinamicamente altri componenti
+  // del tutto simile ad un  PlainContainer
 
-  ngOnInit() {
+  ngOnInit(): void {
     this.pageBuildingDirector.init(this.child);
     const pageScheme = this.pageBuildingService.getPage();
     this.pageBuildingDirector.buildPageFromScheme(pageScheme);

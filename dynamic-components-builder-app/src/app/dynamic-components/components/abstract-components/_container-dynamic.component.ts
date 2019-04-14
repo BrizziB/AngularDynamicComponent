@@ -2,7 +2,7 @@ import { DynamicComponent } from './__base-dynamic.component';
 import {
   Component, Input, OnInit, OnDestroy,
   ViewChild, ViewContainerRef,
-  ComponentFactoryResolver, ComponentRef, ComponentFactory
+  ComponentRef, ComponentFactory
 } from '@angular/core';
 import { LeafDynamicComponent } from './_input-dynamic.component';
 import { isNullOrUndefined } from 'util';
@@ -23,7 +23,7 @@ export abstract class ContainerDynamicComponent extends DynamicComponent impleme
   protected containedLeaves: DynamicComponent[];
 
   @ViewChild('container', { read: ViewContainerRef })
-  container: ViewContainerRef;
+  public container: ViewContainerRef;
 
   @Input()
   context: any ;

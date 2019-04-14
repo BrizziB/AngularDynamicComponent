@@ -5,12 +5,11 @@ import { ContainerTableDynamicComponent } from '../abstract-components/container
 @Component({
   selector: 'app-dynamic-mat-table',
   template: `
-
-      <div class='table-div'>
+    <div class="table-div">
         <ng-container
-              #container>
+          #container>
         </ng-container>
-      </div>
+    </div>
   `,
   styleUrls: ['./styles/table.css']
 })

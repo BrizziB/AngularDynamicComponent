@@ -7,7 +7,6 @@ import { ContainerPlainDynamicComponent } from '../abstract-components/container
   selector: 'app-dynamic-mat-plain',
   template: `
       <div class='mat-plain-div'>
-
           <ng-container
               #container>
           </ng-container>

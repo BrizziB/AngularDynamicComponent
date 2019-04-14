@@ -14,12 +14,15 @@ import { MaterialPlainComponent } from './dynamic-components/components/material
 import { MaterialPlainInputComponent } from './dynamic-components/components/material-components/material-plain-input.component';
 import { MaterialTabbedComponent } from './dynamic-components/components/material-components/material-tabbed-container.component';
 import { MaterialTableComponent } from './dynamic-components/components/material-components/material-table-container.component';
+
 import { CustomBoxComponent } from './dynamic-components/components/custom-components/custom-box-container.component';
 import { CustomComboInputComponent } from './dynamic-components/components/custom-components/custom-combo-input.component';
 import { CustomPlainComponent } from './dynamic-components/components/custom-components/custom-plain-container.component';
 import { CustomPlainInputComponent } from './dynamic-components/components/custom-components/custom-plain-input.component';
 import { CustomTabbedComponent } from './dynamic-components/components/custom-components/custom-tabbed-container.component';
 import { CustomTableComponent } from './dynamic-components/components/custom-components/custom-table-container.component';
+
+import { BaseComponent } from './base.component';
 
 
 @NgModule({
@@ -37,7 +40,9 @@ import { CustomTableComponent } from './dynamic-components/components/custom-com
     CustomPlainComponent,
     CustomPlainInputComponent,
     CustomTabbedComponent,
-    CustomTableComponent
+    CustomTableComponent,
+    BaseComponent
+
   ],
   imports: [
     BrowserModule,
@@ -60,7 +65,9 @@ import { CustomTableComponent } from './dynamic-components/components/custom-com
     CustomPlainComponent,
     CustomPlainInputComponent,
     CustomTabbedComponent,
-    CustomTableComponent
+    CustomTableComponent,
+    BaseComponent
+
   ],
   providers: [PageBuildingService],
   bootstrap: [AppComponent]
