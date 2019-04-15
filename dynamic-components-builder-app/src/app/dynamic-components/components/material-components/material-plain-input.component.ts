@@ -26,9 +26,6 @@ import { InputPlainDynamicComponent } from '../abstract-components/input-plain-d
 })
 export class MaterialPlainInputComponent extends InputPlainDynamicComponent {
 
-  propertyName: string;
-  propertyValue: string|number;
-
   constructor() {
       super();
   }

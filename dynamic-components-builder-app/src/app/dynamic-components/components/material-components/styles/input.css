@@ -10,8 +10,6 @@
   align-items: baseline;
   }
 
-
-
   .property-div{
     width: 30%;
     text-align: right;
@@ -30,8 +28,19 @@
     height: 100%;
   }
 
+  .text-div{
+    width: 60%;
+  }
 
- /*  .cleaning-btn{
-    border:none;
-    background: none;
-  } */
+  .form-field{
+    width:60%;
+  }
+
+  .text-input{
+    width:100%;
+    padding-left: 2%;
+    height: 100%;
+
+  }
+
+

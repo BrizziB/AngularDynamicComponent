@@ -1,7 +1,6 @@
 import {Component, OnInit, ViewChild} from '@angular/core';
 import { PageBuildingDirector } from './page-builder/page-building-director';
 import { PageBuildingService } from './services/page-building.service';
-import { MaterialPlainComponent } from './dynamic-components/components/material-components/material-plain-container.component';
 import { BaseComponent } from './base.component';
 
 

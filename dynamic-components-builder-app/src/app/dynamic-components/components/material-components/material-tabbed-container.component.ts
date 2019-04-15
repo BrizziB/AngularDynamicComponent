@@ -7,6 +7,7 @@ import { NavElement } from '../../non-component-leaves/navElement';
 import { ContainerBoxDynamicComponent } from '../abstract-components/container-box-dynamic.component';
 import { ContainerTabbedDynamicComponent } from '../abstract-components/container-tabbed-dynamic.component';
 import { container } from '@angular/core/src/render3/instructions';
+import { MaterialBoxComponent } from './material-box-container.component';
 
 
 @Component({
@@ -31,13 +32,6 @@ import { container } from '@angular/core/src/render3/instructions';
 *******************************************************************************************************************/
 export class MaterialTabbedComponent extends ContainerTabbedDynamicComponent implements OnInit, OnDestroy, AfterContentInit {
 
-  protected navElements: NavElement[];
-  protected containedComponents: ContainerBoxDynamicComponent[];
-  protected containers: ViewContainerRef[];
-  private counter;
-
-  @ViewChild('container', { read: ViewContainerRef })
-  container: ViewContainerRef;
 
   protected tabClick($event) {
     console.log($event);
@@ -45,7 +39,7 @@ export class MaterialTabbedComponent extends ContainerTabbedDynamicComponent imp
   }
 
   showTab(tab: number) {
-    this.containedComponents.forEach(comp => {
+    this.containedComponents.forEach( (comp: MaterialBoxComponent) => {
       if (comp.context.id === tab.toString()) {
           comp.setHidden(false);
       } else {
@@ -60,7 +54,6 @@ export class MaterialTabbedComponent extends ContainerTabbedDynamicComponent imp
 
   constructor() {
     super();
-    this.counter = 0;
   }
 
 

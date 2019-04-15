@@ -13,6 +13,6 @@ export abstract class AbstractComponentFactory {
     public abstract getTableContainerFactory();
     public abstract getComboInputFactory();
     public abstract getPlainInputFactory();
-
+    public abstract getTextInputFactory();
 
 }

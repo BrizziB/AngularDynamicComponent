@@ -6,6 +6,7 @@ import { CustomTabbedComponent } from '../dynamic-components/components/custom-c
 import { CustomTableComponent } from '../dynamic-components/components/custom-components/custom-table-container.component';
 import { CustomComboInputComponent } from '../dynamic-components/components/custom-components/custom-combo-input.component';
 import { CustomPlainInputComponent } from '../dynamic-components/components/custom-components/custom-plain-input.component';
+import { CustomTextInputComponent } from '../dynamic-components/components/custom-components/custom-text-input.component';
 
 
 export class CustomComponentFactory extends AbstractComponentFactory {
@@ -32,6 +33,9 @@ export class CustomComponentFactory extends AbstractComponentFactory {
     }
     public  getPlainInputFactory(): ComponentFactory<CustomPlainInputComponent> {
       return this.componentFactoryResolver.resolveComponentFactory(CustomPlainInputComponent);
+    }
+    public  getTextInputFactory(): ComponentFactory<CustomTextInputComponent> {
+      return this.componentFactoryResolver.resolveComponentFactory(CustomTextInputComponent);
     }
 
 

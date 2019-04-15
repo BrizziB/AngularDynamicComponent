@@ -7,6 +7,8 @@ import { NavElement } from '../dynamic-components/non-component-leaves/navElemen
 import { InputPlainDynamicComponent } from '../dynamic-components/components/abstract-components/input-plain-dynamic.component';
 import { InputComboDynamicComponent } from '../dynamic-components/components/abstract-components/input-combo-dynamic.component';
 import { MaterialTabbedComponent } from '../dynamic-components/components/material-components/material-tabbed-container.component';
+import { isNullOrUndefined } from 'util';
+import { InputTextDynamicComponent } from '../dynamic-components/components/abstract-components/input-text-dynamic.component';
 
 @Injectable({
   providedIn: 'root'
@@ -33,7 +35,13 @@ export class PageBuildingDirector {
     // tslint:disable-next-line:forin
     for (const component in form) {
       const element = form[component];
-        switch (element.type) {
+      let view = element.view;
+      if (isNullOrUndefined(view)) {
+        view = {
+          'type': null
+        };
+      }
+        switch (view.type) {
           case ('container'): { // genera un div standard
             console.log('trovato page ' + element);
             currentContainer = this.pageBuilder.addPlainDiv(nestingIdx, component);
@@ -48,7 +56,7 @@ export class PageBuildingDirector {
             break;
           }
 
-          case 'views': { // sempre contenuto in un tabbed-panel
+          case 'tabs': { // sempre contenuto in un tabbed-panel
             console.log('trovato tabs array ' + element);
             this.addViewsToTabbedPage(element, nestingLevel, <ContainerTabbedDynamicComponent>nestingIdx, component);
             break;
@@ -65,7 +73,23 @@ export class PageBuildingDirector {
             console.log('trovata foglia output : ' + element.value);
             const currentLeaf: InputPlainDynamicComponent = this.pageBuilder.addStdInputChildToContainer(nestingIdx, element);
             currentLeaf.propertyName = component;
-            currentLeaf.propertyValue = element.value;
+            currentLeaf.propertyValue = element.fact.value;
+            break;
+          }
+
+          case 'conditional-input': {
+            console.log('trovata foglia output : ' + element.value);
+            const currentLeaf: InputPlainDynamicComponent = this.pageBuilder.addStdInputChildToContainer(nestingIdx, element);
+            currentLeaf.propertyName = component;
+            currentLeaf.propertyValue = element.fact.value;
+            break;
+          }
+
+          case 'text-input': {
+            console.log('trovata foglia output : ' + element.value);
+            const currentLeaf: InputTextDynamicComponent = this.pageBuilder.addTextInputChildToContainer(nestingIdx, element);
+            currentLeaf.propertyName = component;
+            currentLeaf.propertyValue = element.fact.value;
             break;
           }
 
@@ -73,11 +97,12 @@ export class PageBuildingDirector {
             console.log('trovata foglia output : ' + element.value);
             const currentLeaf: InputComboDynamicComponent = this.pageBuilder.addComboInputChildToContainer(nestingIdx, element);
             currentLeaf.propertyName = component;
-            currentLeaf.values = element.values;
+            currentLeaf.values = element.type.values;
+            currentLeaf.selectedValue = element.fact.value;
             break;
           }
 
-          case undefined: {
+          case undefined || null : {
             if ( component === 'id') {
               nestingIdx.context[component] = element;
             }
@@ -101,7 +126,7 @@ export class PageBuildingDirector {
 
   private addViewsToTabbedPage(viewsObject, nestingLevel: number, tabbedPage: ContainerDynamicComponent, component) {
     for (const element in viewsObject) { // aggiungo le label
-      if (element !== 'type') {
+      if (element !== 'view') {
         const navElem = new NavElement(viewsObject[element].id, element);
         this.pageBuilder.addTabToPanel(<ContainerTabbedDynamicComponent>tabbedPage, navElem);
         const currentContainer = this.pageBuilder.addBox(tabbedPage, component);

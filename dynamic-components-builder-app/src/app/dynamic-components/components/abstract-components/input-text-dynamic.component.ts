@@ -3,15 +3,14 @@ import { LeafDynamicComponent } from './_input-dynamic.component';
 
 
 @Component({
-  selector: 'app-dynamic-combo-input',
+  selector: 'app-dynamic-std-input',
   template: `no template
   `
 })
-export abstract class InputComboDynamicComponent extends LeafDynamicComponent {
+export abstract class InputTextDynamicComponent extends LeafDynamicComponent {
 
   propertyName: string;
-  values: string[] = [];
-  selectedValue: string;
+  propertyValue: String;
 
   constructor() {
       super();

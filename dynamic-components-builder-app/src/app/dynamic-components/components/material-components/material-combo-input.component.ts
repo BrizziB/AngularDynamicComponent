@@ -13,7 +13,7 @@ import { InputComboDynamicComponent } from '../abstract-components/input-combo-d
     <div class='value-div'>
       <mat-form-field>
       <mat-label>{{propertyName}}</mat-label>
-      <mat-select  disableRipple>
+      <mat-select [(ngModel)]="selectedValue" > /* mostra l'eventuale valore selezionato */
         <mat-option *ngFor="let entry of values" [value]="entry"> <label> {{entry}} </label> </mat-option>
       </mat-select>
       </mat-form-field>
@@ -25,11 +25,6 @@ import { InputComboDynamicComponent } from '../abstract-components/input-combo-d
 })
 export class MaterialComboInputComponent extends InputComboDynamicComponent {
 
-  propertyName: string;
-  values: string[] = [];
-
-
-  selectedValue: string;
 
   constructor() {
       super();

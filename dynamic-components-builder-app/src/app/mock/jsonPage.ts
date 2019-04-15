@@ -1,312 +1,711 @@
+// view e type devono essere sufficienti per generare il componente
+// se il fact è già instanziato ed avvalorato si vede da 'fact' in cui è riportato valore e id de fact
+
+
 export const JSONPage = { // qui c'è da rivedere un po' come strutturare questo json
   'pagina': {
-    'type': 'container',
+    'view': {
+      'type': 'container'
+    },
     'id': '0',
+
     'riassunto-visita': { // corrispondere al composite type iniziale
-      'type': 'tabbed-panel',
-      'id': '00',
-      'pagine': {
-          'type' : 'views',
+      'view': {
+        'type': 'tabbed-panel'
+      },
+      'content': {
+          'view' : {
+            'type': 'tabs'
+          },
 
           'Anagrafica': {
-            'type': 'table',
+            'view': {
+              'type': 'table'
+            },
             'id': '0',
-
             'numero-cartella': {
-              'type': 'std-input',
-              'value': '1',
+              'view': {
+                'type': 'std-input'
+              },
+              'type': {
+                'fact-type': 'quantitative'
+              },
               'fact': {
-                'id': '',
-                'value': ''
+                'id': '01', // questo è l'id con cui il fact è persistito sul DB credo
+                'value': '1'
                 }
             },
             'stato-civile': {
-              'type': 'container',
+              'view': {
+                'type': 'container'
+              },
+
               'stato civile': {
-                'type': 'combo-input',
-                'values': [
-                  'Celibe/Nubile',
-                  'Coniugato/a',
-                  'Divorziato/a',
-                  'Separato/a',
-                  'Vedovo/a'
-                ],
+                'view': {
+                  'type': 'combo-input'
+                },
+                'type': {
+                  'values': [
+                    'Celibe/Nubile',
+                    'Coniugato/a',
+                    'Divorziato/a',
+                    'Separato/a',
+                    'Vedovo/a'
+                  ],
+                  'sorting': 'as-is' // se lessicografico o com'è passato
+                },
                 'fact': {
-                  'id': '',
-                  'value': ''
+                  'id': '011',
+                  'value': 'Coniugato/a'
                 }
               },
               'tempo': {
-                'type': 'std-input',
-                'value': '2 anni'
+                'view': {
+                  'type': 'conditional-input',
+                  'link': 'stato civile', // l'idea è che deve rimandare ad un sibling già parsato
+                  'values': ['Divorziato/a', 'Separato/a'] // valori per cui l'input è mostrato
+                },
+                'type': {
+                  'fact-type': 'quantitative',
+                  'suffix' : 'anno/i'
+                },
+                'fact': {
+                  'id' : '012',
+                  'value': '2'
+                }
               }
             },
             'scolarità': {
-              'type': 'combo-input',
+              'view': {
+                'type': 'combo-input'
+              },
+              'type': {
                 'values': [
                   'Elementare',
                   'Media inf.',
                   'Media sup.',
                   'Laurea',
                   'Barriera linguistica'
-                ]
+                ],
+                'sorting': 'as-is' // se lessicografico o com'è passato
+              },
+              'fact': {
+                'id' : '02',
+                'value': 'Laurea'
+              }
             },
             'figli': {
-              'type': 'combo-input',
-                'values': ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '10']
+              'view': {
+                'type': 'combo-input'
+              },
+              'type': {
+                'values': ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '10'],
+                'sorting': 'as-is' // se lessicografico o com'è passato
+              },
+              'fact': {
+                'id' : '03',
+                'value': '2'
+              }
             },
             'professione': {
-              'type': 'container',
+              'view': {
+                'type': 'container'
+              },
               'professione': {
-                'type': 'combo-input',
+                'view': {
+                  'type': 'combo-input'
+                },
+                'type': {
                   'values': [
                     'Dipendente',
                     'Autonomo',
                     'Disoccupato',
                     'Nuovo lavoro',
                     'Altro'
-                  ]
+                  ],
+                  'sorting': 'as-is' // se lessicografico o com'è passato
+                },
+                'fact': {
+                  'id' : '041',
+                  'value': 'Dipendente'
+                }
               },
-              'professione (altro)': {
-                'type': 'std-input',
-                'value': 'NO'
+              'professione(altro)': {
+                'view': {
+                  'type': 'std-input'
+                },
+                'type': {
+                  'fact-type': 'textual',
+                  'suffix' : 'anno/i'
+                },
+                'fact': {
+                  'id' : '042',
+                  'value': ''
+                }
               },
               'tempo': {
-                'type': 'std-input',
-                'value': '8 anni'
+                'view': {
+                  'type': 'conditional-input',
+                  'link': 'stato civile', // l'idea è che deve rimandare ad un sibling già parsato
+                  'values': ['Divorziato/a', 'Separato/a'] // valori per cui l'input è mostrato
+                },
+                'type': {
+                  'fact-type': 'quantitative',
+                  'suffix' : 'anno/i'
+                },
+                'fact': {
+                  'id' : '043',
+                  'value': '8'
+                }
               }
             },
             'inviato da': {
-              'type': 'combo-input',
+              'view': {
+                'type': 'combo-input'
+              },
+              'type': {
                 'values': [
                   'Consulenza',
                   'Medico curante',
                   'Specialista',
                   'Decisione del paziente',
                   'DEA'
-                ]
+                ],
+                'sorting': 'lex' // se lessicografico o com'è passato
+              },
+              'fact': {
+                'id' : '05',
+                'value': 'Specialista'
+              }
             },
             'medico curante': {
-              'type': 'std-input',
-              'value': 'mamma Ebe'
+              'view': {
+                'type': 'text-input'
+              },
+              'type': {
+                'fact-type': 'textual'
+              },
+              'fact': {
+                'id': '06', // questo è l'id con cui il fact è persistito sul DB credo
+                'value': 'Topo Gigio'
+                }
             }
           },
           'Anamnesi': {
-            'type': 'table',
+            'view': {
+              'type': 'table'
+            },
             'id': '1',
-            'numero-ANAMNESI': {
-              'type': 'std-input',
-              'value': '1'
+            'numero Anamnesi': {
+              'view': {
+                'type': 'std-input'
+              },
+              'type': {
+                'fact-type': 'quantitative'
+              },
+              'fact': {
+                'id': '01', // questo è l'id con cui il fact è persistito sul DB credo
+                'value': '1'
+                }
             },
             'stato-civile': {
-              'type': 'container',
+              'view': {
+                'type': 'container'
+              },
 
               'stato civile': {
-                'type': 'std-input',
-                'value': 'coniugato'
+                'view': {
+                  'type': 'combo-input'
+                },
+                'type': {
+                  'values': [
+                    'Celibe/Nubile',
+                    'Coniugato/a',
+                    'Divorziato/a',
+                    'Separato/a',
+                    'Vedovo/a'
+                  ],
+                  'sorting': 'as-is' // se lessicografico o com'è passato
+                },
+                'fact': {
+                  'id': '011',
+                  'value': 'Coniugato/a'
+                }
               },
               'tempo': {
-                'type': 'std-input',
-                'value': '2 anni'
+                'view': {
+                  'type': 'conditional-input',
+                  'link': 'stato civile', // l'idea è che deve rimandare ad un sibling già parsato
+                  'values': ['Divorziato/a', 'Separato/a'] // valori per cui l'input è mostrato
+                },
+                'type': {
+                  'fact-type': 'quantitative',
+                  'suffix' : 'anno/i'
+                },
+                'fact': {
+                  'id' : '012',
+                  'value': '2'
+                }
               }
             },
-            'gelato-preferito': {
-              'type': 'std-input',
-              'value': 'pistacchio'
+            'scolarità': {
+              'view': {
+                'type': 'combo-input'
+              },
+              'type': {
+                'values': [
+                  'Elementare',
+                  'Media inf.',
+                  'Media sup.',
+                  'Laurea',
+                  'Barriera linguistica'
+                ],
+                'sorting': 'as-is' // se lessicografico o com'è passato
+              },
+              'fact': {
+                'id' : '02',
+                'value': 'Laurea'
+              }
             },
+            'figli': {
+              'view': {
+                'type': 'combo-input'
+              },
+              'type': {
+                'values': ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '10'],
+                'sorting': 'as-is' // se lessicografico o com'è passato
+              },
+              'fact': {
+                'id' : '03',
+                'value': '2'
+              }
+            },
+            'professione': {
+              'view': {
+                'type': 'container'
+              },
+              'professione': {
+                'view': {
+                  'type': 'combo-input'
+                },
+                'type': {
+                  'values': [
+                    'Dipendente',
+                    'Autonomo',
+                    'Disoccupato',
+                    'Nuovo lavoro',
+                    'Altro'
+                  ],
+                  'sorting': 'as-is' // se lessicografico o com'è passato
+                },
+                'fact': {
+                  'id' : '041',
+                  'value': 'Dipendente'
+                }
+              },
+              'professione(altro)': {
+                'view': {
+                  'type': 'std-input'
+                },
+                'type': {
+                  'fact-type': 'textual',
+                  'suffix' : 'anno/i'
+                },
+                'fact': {
+                  'id' : '042',
+                  'value': ''
+                }
+              },
+              'tempo': {
+                'view': {
+                  'type': 'conditional-input',
+                  'link': 'stato civile', // l'idea è che deve rimandare ad un sibling già parsato
+                  'values': ['Divorziato/a', 'Separato/a'] // valori per cui l'input è mostrato
+                },
+                'type': {
+                  'fact-type': 'quantitative',
+                  'suffix' : 'anno/i'
+                },
+                'fact': {
+                  'id' : '043',
+                  'value': '8'
+                }
+              }
+            },
+            'inviato da': {
+              'view': {
+                'type': 'combo-input'
+              },
+              'type': {
+                'values': [
+                  'Consulenza',
+                  'Medico curante',
+                  'Specialista',
+                  'Decisione del paziente',
+                  'DEA'
+                ],
+                'sorting': 'lex' // se lessicografico o com'è passato
+              },
+              'fact': {
+                'id' : '05',
+                'value': 'Specialista'
+              }
+            },
+            'medico curante': {
+              'view': {
+                'type': 'text-input'
+              },
+              'type': {
+                'fact-type': 'textual'
+              },
+              'fact': {
+                'id': '06', // questo è l'id con cui il fact è persistito sul DB credo
+                'value': 'Topo Gigio'
+                }
+            }
           },
           'Caratterizzazione cefalea': {
-            'type': 'table',
+            'view': {
+              'type': 'table'
+            },
             'id': '2',
-            'numero-DIAGNOSI': {
-              'type': 'std-input',
-              'value': '1'
+            'Caratterizzazione Cefalea': {
+              'view': {
+                'type': 'std-input'
+              },
+              'type': {
+                'fact-type': 'quantitative'
+              },
+              'fact': {
+                'id': '01', // questo è l'id con cui il fact è persistito sul DB credo
+                'value': '1'
+                }
             },
             'stato-civile': {
-              'type': 'container',
+              'view': {
+                'type': 'container'
+              },
 
               'stato civile': {
-                'type': 'std-input',
-                'value': 'coniugato'
+                'view': {
+                  'type': 'combo-input'
+                },
+                'type': {
+                  'values': [
+                    'Celibe/Nubile',
+                    'Coniugato/a',
+                    'Divorziato/a',
+                    'Separato/a',
+                    'Vedovo/a'
+                  ],
+                  'sorting': 'as-is' // se lessicografico o com'è passato
+                },
+                'fact': {
+                  'id': '011',
+                  'value': 'Coniugato/a'
+                }
               },
               'tempo': {
-                'type': 'std-input',
-                'value': '2 anni'
+                'view': {
+                  'type': 'conditional-input',
+                  'link': 'stato civile', // l'idea è che deve rimandare ad un sibling già parsato
+                  'values': ['Divorziato/a', 'Separato/a'] // valori per cui l'input è mostrato
+                },
+                'type': {
+                  'fact-type': 'quantitative',
+                  'suffix' : 'anno/i'
+                },
+                'fact': {
+                  'id' : '012',
+                  'value': '2'
+                }
               }
             },
-            'gelato-preferito': {
-              'type': 'std-input',
-              'value': 'pistacchio'
+            'scolarità': {
+              'view': {
+                'type': 'combo-input'
+              },
+              'type': {
+                'values': [
+                  'Elementare',
+                  'Media inf.',
+                  'Media sup.',
+                  'Laurea',
+                  'Barriera linguistica'
+                ],
+                'sorting': 'as-is' // se lessicografico o com'è passato
+              },
+              'fact': {
+                'id' : '02',
+                'value': 'Laurea'
+              }
             },
-          },
+            'figli': {
+              'view': {
+                'type': 'combo-input'
+              },
+              'type': {
+                'values': ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '10'],
+                'sorting': 'as-is' // se lessicografico o com'è passato
+              },
+              'fact': {
+                'id' : '03',
+                'value': '2'
+              }
+            },
+            'professione': {
+              'view': {
+                'type': 'container'
+              },
+              'professione': {
+                'view': {
+                  'type': 'combo-input'
+                },
+                'type': {
+                  'values': [
+                    'Dipendente',
+                    'Autonomo',
+                    'Disoccupato',
+                    'Nuovo lavoro',
+                    'Altro'
+                  ],
+                  'sorting': 'as-is' // se lessicografico o com'è passato
+                },
+                'fact': {
+                  'id' : '041',
+                  'value': 'Dipendente'
+                }
+              },
+              'professione(altro)': {
+                'view': {
+                  'type': 'std-input'
+                },
+                'type': {
+                  'fact-type': 'textual',
+                  'suffix' : 'anno/i'
+                },
+                'fact': {
+                  'id' : '042',
+                  'value': ''
+                }
+              },
+              'tempo': {
+                'view': {
+                  'type': 'conditional-input',
+                  'link': 'stato civile', // l'idea è che deve rimandare ad un sibling già parsato
+                  'values': ['Divorziato/a', 'Separato/a'] // valori per cui l'input è mostrato
+                },
+                'type': {
+                  'fact-type': 'quantitative',
+                  'suffix' : 'anno/i'
+                },
+                'fact': {
+                  'id' : '043',
+                  'value': '8'
+                }
+              }
+            },
+            'inviato da': {
+              'view': {
+                'type': 'combo-input'
+              },
+              'type': {
+                'values': [
+                  'Consulenza',
+                  'Medico curante',
+                  'Specialista',
+                  'Decisione del paziente',
+                  'DEA'
+                ],
+                'sorting': 'lex' // se lessicografico o com'è passato
+              },
+              'fact': {
+                'id' : '05',
+                'value': 'Specialista'
+              }
+            },
+            'medico curante': {
+              'view': {
+                'type': 'text-input'
+              },
+              'type': {
+                'fact-type': 'textual'
+              },
+              'fact': {
+                'id': '06', // questo è l'id con cui il fact è persistito sul DB credo
+                'value': 'Topo Gigio'
+                }
+            }
+          }
+          /* ,
           'Esame obiettivo': {
-            'type': 'table',
+            'view': 'table',
             'id': '3',
             'numero-TERAPIA': {
-              'type': 'std-input',
+              'view': 'std-input',
               'value': '1'
             },
             'stato-civile': {
-              'type': 'container',
+              'view': 'container',
 
               'stato civile': {
-                'type': 'std-input',
+                'view': 'std-input',
                 'value': 'coniugato'
               },
               'tempo': {
-                'type': 'std-input',
+                'view': 'std-input',
                 'value': '2 anni'
               }
             },
             'gelato-preferito': {
-              'type': 'std-input',
+              'view': 'std-input',
               'value': 'pistacchio'
             },
           },
           'Esami effettuati': {
-            'type': 'table',
+            'view': 'table',
             'id': '4',
             'numero-TERAPIA': {
-              'type': 'std-input',
+              'view': 'std-input',
               'value': '1'
             },
             'stato-civile': {
-              'type': 'container',
+              'view': 'container',
 
               'stato civile': {
-                'type': 'std-input',
+                'view': 'std-input',
                 'value': 'coniugato'
               },
               'tempo': {
-                'type': 'std-input',
+                'view': 'std-input',
                 'value': '2 anni'
               }
             },
             'gelato-preferito': {
-              'type': 'std-input',
+              'view': 'std-input',
               'value': 'pistacchio'
             },
           },
           'Terapia effettuata': {
-            'type': 'table',
+            'view': 'table',
             'id': '5',
             'numero-TERAPIA': {
-              'type': 'std-input',
+              'view': 'std-input',
               'value': '1'
             },
             'stato-civile': {
-              'type': 'container',
+              'view': 'container',
 
               'stato civile': {
-                'type': 'std-input',
+                'view': 'std-input',
                 'value': 'coniugato'
               },
               'tempo': {
-                'type': 'std-input',
+                'view': 'std-input',
                 'value': '2 anni'
               }
             },
             'gelato-preferito': {
-              'type': 'std-input',
+              'view': 'std-input',
               'value': 'pistacchio'
             },
           },
           'Diagnosi': {
-            'type': 'table',
+            'view': 'table',
             'id': '6',
             'numero-TERAPIA': {
-              'type': 'std-input',
+              'view': 'std-input',
               'value': '1'
             },
             'stato-civile': {
-              'type': 'container',
+              'view': 'container',
 
               'stato civile': {
-                'type': 'std-input',
+                'view': 'std-input',
                 'value': 'coniugato'
               },
               'tempo': {
-                'type': 'std-input',
+                'view': 'std-input',
                 'value': '2 anni'
               }
             },
             'gelato-preferito': {
-              'type': 'std-input',
+              'view': 'std-input',
               'value': 'pistacchio'
             },
           },
           'Terapia consigliata': {
-            'type': 'table',
+            'view': 'table',
             'id': '7',
             'numero-TERAPIA': {
-              'type': 'std-input',
+              'view': 'std-input',
               'value': '1'
             },
             'stato-civile': {
-              'type': 'container',
+              'view': 'container',
 
               'stato civile': {
-                'type': 'std-input',
+                'view': 'std-input',
                 'value': 'coniugato'
               },
               'tempo': {
-                'type': 'std-input',
+                'view': 'std-input',
                 'value': '2 anni'
               }
             },
             'gelato-preferito': {
-              'type': 'std-input',
+              'view': 'std-input',
               'value': 'pistacchio'
             },
           },
           'Indagini consigliate': {
-            'type': 'table',
+            'view': 'table',
             'id': '8',
             'numero-TERAPIA': {
-              'type': 'std-input',
+              'view': 'std-input',
               'value': '1'
             },
             'stato-civile': {
-              'type': 'container',
+              'view': 'container',
 
               'stato civile': {
-                'type': 'std-input',
+                'view': 'std-input',
                 'value': 'coniugato'
               },
               'tempo': {
-                'type': 'std-input',
+                'view': 'std-input',
                 'value': '2 anni'
               }
             },
             'gelato-preferito': {
-              'type': 'std-input',
+              'view': 'std-input',
               'value': 'pistacchio'
             },
           },
           'Lettera finale': {
-            'type': 'table',
+            'view': 'table',
             'id': '9',
             'numero-TERAPIA': {
-              'type': 'std-input',
+              'view': 'std-input',
               'value': '1'
             },
             'stato-civile': {
-              'type': 'container',
+              'view': 'container',
 
               'stato civile': {
-                'type': 'std-input',
+                'view': 'std-input',
                 'value': 'coniugato'
               },
               'tempo': {
-                'type': 'std-input',
+                'view': 'std-input',
                 'value': '2 anni'
               }
             },
             'gelato-preferito': {
-              'type': 'std-input',
+              'view': 'std-input',
               'value': 'pistacchio'
             },
-          }
+          } */
       }
     }
   }
@@ -344,28 +743,28 @@ export const JSONPage = { // qui c'è da rivedere un po' come strutturare questo
 
 /* export const JSONPage = { // qui c'è da rivedere un po' come strutturare questo json
   'div': {
-    'type': 'plain',
+    'view': 'plain',
     'div': {
-      'type': 'nav',
+      'view': 'nav',
        'contained-divs': [
         {
-          'type': 'plain',
+          'view': 'plain',
           'leaf': {
-            'type' : 'text',
+            'view' : 'text',
             'value': 'scheda1'
           }
         },
         {
-          'type': 'plain',
+          'view': 'plain',
           'leaf': {
-            'type' : 'text',
+            'view' : 'text',
             'value': 'scheda2'
           }
         },
         {
-          'type': 'plain',
+          'view': 'plain',
           'leaf': {
-            'type' : 'text',
+            'view' : 'text',
             'value': 'scheda3'
           }
         }
@@ -373,7 +772,7 @@ export const JSONPage = { // qui c'è da rivedere un po' come strutturare questo
     }
   },
   'leaf': {
-    'type': 'text',
+    'view': 'text',
     'value': 'prova'
   }
 }; */

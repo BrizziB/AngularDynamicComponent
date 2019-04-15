@@ -15,8 +15,12 @@ import { ContainerBoxDynamicComponent } from '../abstract-components/container-b
 })
 export class MaterialBoxComponent extends ContainerBoxDynamicComponent implements OnInit, OnDestroy {
 
+
+  constructor() {
+      super();
+  }
   protected objectKeys = Object.keys;
-  public isHidden = true;
+  protected isHidden = true;
 
   public setHidden(hidden: boolean) {
     this.isHidden = hidden;
@@ -26,22 +30,8 @@ export class MaterialBoxComponent extends ContainerBoxDynamicComponent implement
     return this.isHidden;
   }
 
-  constructor() {
-      super();
-      this.context = [];
-  }
-
   ngOnInit() {
-    this.hidden = true;
   }
-
-
-
-
-
-
-
-
 
 
 }

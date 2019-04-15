@@ -8,7 +8,7 @@ import { ContainerDynamicComponent } from '../dynamic-components/components/abst
 import { ContainerTabbedDynamicComponent } from '../dynamic-components/components/abstract-components/container-tabbed-dynamic.component';
 import { InputPlainDynamicComponent } from '../dynamic-components/components/abstract-components/input-plain-dynamic.component';
 import { InputComboDynamicComponent } from '../dynamic-components/components/abstract-components/input-combo-dynamic.component';
-
+import { InputTextDynamicComponent } from '../dynamic-components/components/abstract-components/input-text-dynamic.component';
 
 
 @Injectable({
@@ -68,6 +68,12 @@ export class PageBuilder {
   public addStdInputChildToContainer(parentElem: ContainerDynamicComponent, value: string|number) {
     const newLeaf: InputPlainDynamicComponent = <InputPlainDynamicComponent>parentElem.addLeafChildComponent(
         this.componentFactory.getPlainInputFactory(), value);
+    return newLeaf;
+  }
+
+  public addTextInputChildToContainer(parentElem: ContainerDynamicComponent, value: string|number) {
+    const newLeaf: InputTextDynamicComponent = <InputTextDynamicComponent>parentElem.addLeafChildComponent(
+        this.componentFactory.getTextInputFactory(), value);
     return newLeaf;
   }
 

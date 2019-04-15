@@ -23,6 +23,8 @@ import { CustomTabbedComponent } from './dynamic-components/components/custom-co
 import { CustomTableComponent } from './dynamic-components/components/custom-components/custom-table-container.component';
 
 import { BaseComponent } from './base.component';
+import { MaterialTextInputComponent } from './dynamic-components/components/material-components/material-text-input.component';
+import { CustomTextInputComponent } from './dynamic-components/components/custom-components/custom-text-input.component';
 
 
 @NgModule({
@@ -34,6 +36,7 @@ import { BaseComponent } from './base.component';
     MaterialPlainInputComponent,
     MaterialTabbedComponent,
     MaterialTableComponent,
+    MaterialTextInputComponent,
 
     CustomBoxComponent,
     CustomComboInputComponent,
@@ -41,6 +44,8 @@ import { BaseComponent } from './base.component';
     CustomPlainInputComponent,
     CustomTabbedComponent,
     CustomTableComponent,
+    CustomTextInputComponent,
+
     BaseComponent
 
   ],
@@ -59,6 +64,7 @@ import { BaseComponent } from './base.component';
     MaterialPlainInputComponent,
     MaterialTabbedComponent,
     MaterialTableComponent,
+    MaterialTextInputComponent,
 
     CustomBoxComponent,
     CustomComboInputComponent,
@@ -66,8 +72,7 @@ import { BaseComponent } from './base.component';
     CustomPlainInputComponent,
     CustomTabbedComponent,
     CustomTableComponent,
-    BaseComponent
-
+    CustomTextInputComponent
   ],
   providers: [PageBuildingService],
   bootstrap: [AppComponent]

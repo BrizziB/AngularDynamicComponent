@@ -15,7 +15,6 @@ import { ContainerPlainDynamicComponent } from '../abstract-components/container
 })
 export class MaterialPlainComponent extends ContainerPlainDynamicComponent implements OnInit, OnDestroy {
 
-  protected objectKeys = Object.keys;
 
   constructor() {
       super();
