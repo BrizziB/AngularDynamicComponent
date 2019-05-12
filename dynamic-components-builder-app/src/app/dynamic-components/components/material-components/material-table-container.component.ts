@@ -5,7 +5,7 @@ import { ContainerTableDynamicComponent } from '../abstract-components/container
 @Component({
   selector: 'app-dynamic-mat-table',
   template: `
-    <div class="table-div">
+    <div class="mat-table-div">
         <ng-container
           #container>
         </ng-container>

@@ -14,5 +14,6 @@ export abstract class AbstractComponentFactory {
     public abstract getComboInputFactory();
     public abstract getPlainInputFactory();
     public abstract getTextInputFactory();
+    public abstract getConditionalInputFactory();
 
 }

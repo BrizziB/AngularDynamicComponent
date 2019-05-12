@@ -7,6 +7,7 @@ import { MaterialTableComponent } from '../dynamic-components/components/materia
 import { MaterialComboInputComponent } from '../dynamic-components/components/material-components/material-combo-input.component';
 import { MaterialPlainInputComponent } from '../dynamic-components/components/material-components/material-plain-input.component';
 import { MaterialTextInputComponent } from '../dynamic-components/components/material-components/material-text-input.component';
+import { MaterialConditionalInputComponent } from '../dynamic-components/components/material-components/material-conditional-input.component';
 
 
 export class MaterialComponentFactory extends AbstractComponentFactory{
@@ -36,6 +37,9 @@ export class MaterialComponentFactory extends AbstractComponentFactory{
     }
     public  getTextInputFactory(): ComponentFactory<MaterialTextInputComponent> {
       return this.componentFactoryResolver.resolveComponentFactory(MaterialTextInputComponent);
+    }
+    public getConditionalInputFactory(): ComponentFactory<MaterialConditionalInputComponent> {
+      return this.componentFactoryResolver.resolveComponentFactory(MaterialConditionalInputComponent);
     }
 
 

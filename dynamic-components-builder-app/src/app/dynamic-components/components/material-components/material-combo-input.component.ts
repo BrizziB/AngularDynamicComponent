@@ -13,8 +13,8 @@ import { InputComboDynamicComponent } from '../abstract-components/input-combo-d
     <div class='value-div'>
       <mat-form-field>
       <mat-label>{{propertyName}}</mat-label>
-      <mat-select [(ngModel)]="selectedValue" > /* mostra l'eventuale valore selezionato */
-        <mat-option *ngFor="let entry of values" [value]="entry"> <label> {{entry}} </label> </mat-option>
+      <mat-select [(ngModel)]="propertyValue" >
+        <mat-option *ngFor="let entry of values" [value]="entry" (click)="this.notifyAll()"> <label> {{entry}} </label> </mat-option>
       </mat-select>
       </mat-form-field>
     </div>

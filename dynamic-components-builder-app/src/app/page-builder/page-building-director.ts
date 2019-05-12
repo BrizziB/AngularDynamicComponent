@@ -26,7 +26,9 @@ export class PageBuildingDirector {
   }
 
   public buildPageFromScheme(form: Object) {
-    this.traverseTree(form, 0);
+    const idx = Object.keys(form);
+    const innerForm = form[idx.toString()];
+    this.traverseTree(innerForm, 0);
   }
 
   private traverseTree(form: Object, nestingLevel: number) {
@@ -34,86 +36,100 @@ export class PageBuildingDirector {
     let currentContainer: ContainerDynamicComponent;
     // tslint:disable-next-line:forin
     for (const component in form) {
-      const element = form[component];
-      let view = element.view;
-      if (isNullOrUndefined(view)) {
-        view = {
-          'type': null
-        };
-      }
-        switch (view.type) {
-          case ('container'): { // genera un div standard
-            console.log('trovato page ' + element);
-            currentContainer = this.pageBuilder.addPlainDiv(nestingIdx, component);
-            this.keepAdding(element, currentContainer, nestingLevel);
-            break;
-          }
+      if (component !== 'view') {
+        const element = form[component];
+        let view = element.view;
 
-          case 'tabbed-panel': {
-            console.log('trovato tabbed-panel ' + element);
-            currentContainer = this.pageBuilder.addTabbedPanel(nestingIdx, component);
-            this.keepAdding(element, currentContainer, nestingLevel);
-            break;
-          }
+        // bruttura D:
+        if (isNullOrUndefined(view)) {
+          view = {
+            'type': null
+          };
+        }
+        // qui se ci si fa un po'caso si leva sta cosa, però dà anche poca noia
+          switch (view.type) {
 
-          case 'tabs': { // sempre contenuto in un tabbed-panel
-            console.log('trovato tabs array ' + element);
-            this.addViewsToTabbedPage(element, nestingLevel, <ContainerTabbedDynamicComponent>nestingIdx, component);
-            break;
-          }
 
-          case 'table': {
-            console.log('trovato table' + element);
-            currentContainer = this.pageBuilder.addTable(nestingIdx, component);
-            this.keepAdding(element, currentContainer, nestingLevel);
-            break;
-          }
+  /*           case 'outer': {
+              console.log('variabile esterna');
+              this.keepAdding(element, currentContainer, nestingLevel);
+              break;
+            } */
 
-          case 'std-input': {
-            console.log('trovata foglia output : ' + element.value);
-            const currentLeaf: InputPlainDynamicComponent = this.pageBuilder.addStdInputChildToContainer(nestingIdx, element);
-            currentLeaf.propertyName = component;
-            currentLeaf.propertyValue = element.fact.value;
-            break;
-          }
-
-          case 'conditional-input': {
-            console.log('trovata foglia output : ' + element.value);
-            const currentLeaf: InputPlainDynamicComponent = this.pageBuilder.addStdInputChildToContainer(nestingIdx, element);
-            currentLeaf.propertyName = component;
-            currentLeaf.propertyValue = element.fact.value;
-            break;
-          }
-
-          case 'text-input': {
-            console.log('trovata foglia output : ' + element.value);
-            const currentLeaf: InputTextDynamicComponent = this.pageBuilder.addTextInputChildToContainer(nestingIdx, element);
-            currentLeaf.propertyName = component;
-            currentLeaf.propertyValue = element.fact.value;
-            break;
-          }
-
-          case 'combo-input': {
-            console.log('trovata foglia output : ' + element.value);
-            const currentLeaf: InputComboDynamicComponent = this.pageBuilder.addComboInputChildToContainer(nestingIdx, element);
-            currentLeaf.propertyName = component;
-            currentLeaf.values = element.type.values;
-            currentLeaf.selectedValue = element.fact.value;
-            break;
-          }
-
-          case undefined || null : {
-            if ( component === 'id') {
-              nestingIdx.context[component] = element;
+            case ('container'): { // genera un div standard
+              console.log('trovato page ' + view.type);
+              currentContainer = this.pageBuilder.addPlainDiv(nestingIdx, component);
+              this.keepAdding(element, currentContainer, nestingLevel);
+              break;
             }
-            break;
-          }
+            case ('box'): { // genera un div standard
+              console.log('trovato page ' + view.type);
+              // dovrà essere un form, di quelli col nome scritto sul riquadro
+              currentContainer = this.pageBuilder.addPlainDiv(nestingIdx, component);
+              this.keepAdding(element, currentContainer, nestingLevel);
+              break;
+            }
+            case 'tabbed-panel': {
+              console.log('trovato tabbed-panel ' + view.type);
+              currentContainer = this.pageBuilder.addTabbedPanel(nestingIdx, component);
+              this.keepAdding(element, currentContainer, nestingLevel);
+              break;
+            }
 
-          default: {
-            console.log('se mi vedi, qualche type non viene letto bene o rimane qualche componente in giro MEKEMEKE');
-          }
+            case 'tabs': { // sempre contenuto in un tabbed-panel
+              console.log('trovato tabs array ' + view.type);
+              this.addViewsToTabbedPage(element, nestingLevel, <ContainerTabbedDynamicComponent>nestingIdx, component);
+              break;
+            }
+
+            case 'table': {
+              console.log('trovato table' + view.type);
+              currentContainer = this.pageBuilder.addTable(nestingIdx, component);
+              this.keepAdding(element, currentContainer, nestingLevel);
+              break;
+            }
+
+            case 'std-input': {
+              console.log('trovata foglia output : ' + view.type);
+              this.pageBuilder.addStdInputChildToContainer(
+                nestingIdx, element, component);
+
+              break;
+            }
+
+            case 'conditional-input': {
+              console.log('trovata foglia conditional : ' + view.type);
+              this.pageBuilder.addConditionalInputChildToContainer(
+                nestingIdx, element, component);
+              break;
+            }
+
+            case 'input-text': {
+              console.log('trovata foglia output : ' + view.type);
+              this.pageBuilder.addTextInputChildToContainer(
+                nestingIdx, element, component);
+              break;
+            }
+
+            case 'combo-input': {
+              console.log('trovata foglia output : ' + view.type);
+              this.pageBuilder.addComboInputChildToContainer(
+                nestingIdx, element, component);
+              break;
+            }
+
+            case undefined || null : {
+              if ( component === 'id') {
+                nestingIdx.context[component] = element;
+              }
+              break;
+            }
+
+            default: {
+              console.log('se mi vedi, qualche type non viene letto bene o rimane qualche componente in giro MEKEMEKE');
+            }
+        }
       }
-
     }
   }
 

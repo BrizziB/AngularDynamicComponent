@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
+import { ReactiveFormsModule } from '@angular/forms';
 import { NgModule } from '@angular/core';
 import { HttpModule } from '@angular/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -25,6 +26,9 @@ import { CustomTableComponent } from './dynamic-components/components/custom-com
 import { BaseComponent } from './base.component';
 import { MaterialTextInputComponent } from './dynamic-components/components/material-components/material-text-input.component';
 import { CustomTextInputComponent } from './dynamic-components/components/custom-components/custom-text-input.component';
+import { MaterialConditionalInputComponent
+} from './dynamic-components/components/material-components/material-conditional-input.component';
+import { CustomConditionalInputComponent } from './dynamic-components/components/custom-components/custom-conditional-input.component';
 
 
 @NgModule({
@@ -37,6 +41,7 @@ import { CustomTextInputComponent } from './dynamic-components/components/custom
     MaterialTabbedComponent,
     MaterialTableComponent,
     MaterialTextInputComponent,
+    MaterialConditionalInputComponent,
 
     CustomBoxComponent,
     CustomComboInputComponent,
@@ -45,6 +50,7 @@ import { CustomTextInputComponent } from './dynamic-components/components/custom
     CustomTabbedComponent,
     CustomTableComponent,
     CustomTextInputComponent,
+    CustomConditionalInputComponent,
 
     BaseComponent
 
@@ -53,6 +59,7 @@ import { CustomTextInputComponent } from './dynamic-components/components/custom
     BrowserModule,
     FormsModule,
     HttpModule,
+    ReactiveFormsModule,
     BrowserAnimationsModule,
     MaterialModule
 
@@ -65,6 +72,7 @@ import { CustomTextInputComponent } from './dynamic-components/components/custom
     MaterialTabbedComponent,
     MaterialTableComponent,
     MaterialTextInputComponent,
+    MaterialConditionalInputComponent,
 
     CustomBoxComponent,
     CustomComboInputComponent,
@@ -72,7 +80,8 @@ import { CustomTextInputComponent } from './dynamic-components/components/custom
     CustomPlainInputComponent,
     CustomTabbedComponent,
     CustomTableComponent,
-    CustomTextInputComponent
+    CustomTextInputComponent,
+    CustomConditionalInputComponent,
   ],
   providers: [PageBuildingService],
   bootstrap: [AppComponent]

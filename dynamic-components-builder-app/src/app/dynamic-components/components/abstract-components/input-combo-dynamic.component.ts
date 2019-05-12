@@ -9,9 +9,7 @@ import { LeafDynamicComponent } from './_input-dynamic.component';
 })
 export abstract class InputComboDynamicComponent extends LeafDynamicComponent {
 
-  propertyName: string;
   values: string[] = [];
-  selectedValue: string;
 
   constructor() {
       super();

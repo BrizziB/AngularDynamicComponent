@@ -10,9 +10,9 @@ import { InputPlainDynamicComponent } from '../abstract-components/input-plain-d
       <span> {{propertyName}}: </span>
     </div>
     <div class='text-div'>
-      <mat-form-field class="form-field">
+      <mat-form-field class="form-field" floatLabel="never">
         <textarea matInput class='text-input' type="text" placeholder="{{propertyName}}"
-          [(ngModel)]="propertyValue">
+          [(ngModel)]="propertyValue"  (input)="this.notifyAll()">
               {{propertyValue}}
         </textarea>
       </mat-form-field>

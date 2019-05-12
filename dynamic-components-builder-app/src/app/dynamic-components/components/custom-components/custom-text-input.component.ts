@@ -10,14 +10,14 @@ import { InputPlainDynamicComponent } from '../abstract-components/input-plain-d
         {{propertyName}}:
       </span>
     </div>
-    <div class='value-div'>
-      <textarea
-        class='value-input' type='text' [value]="propertyValue">
+    <div class='text-div'>
+      <textarea class='value-input' type='text'
+        [(ngModel)]="propertyValue" (input)="this.notifyAll()">
       </textarea>
     </div>
   </div>
   `,
-  styleUrls: ['../../dynamical-component-styles/input.css']
+  styleUrls: ['./styles/input.css']
 })
 export  class CustomTextInputComponent extends InputPlainDynamicComponent {
 

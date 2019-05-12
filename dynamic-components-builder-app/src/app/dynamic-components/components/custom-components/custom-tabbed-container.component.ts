@@ -16,7 +16,7 @@ import { ContainerTabbedDynamicComponent } from '../abstract-components/containe
         </div>
 
   `,
-  styleUrls: ['../../dynamical-component-styles/tabbedPanel.css']
+  styleUrls: ['./styles/tabbedPanel.css']
 })
 
 /** questa specializzazione del container dinamico prevede una navbar che indicizza tutti

@@ -10,7 +10,7 @@ import { LeafDynamicComponent } from './_input-dynamic.component';
 export abstract class InputTextDynamicComponent extends LeafDynamicComponent {
 
   propertyName: string;
-  propertyValue: String;
+  propertyValue: string;
 
   constructor() {
       super();

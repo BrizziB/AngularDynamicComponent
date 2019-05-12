@@ -11,16 +11,15 @@ import { InputPlainDynamicComponent } from '../abstract-components/input-plain-d
       </span>
     </div>
     <div class='value-div'>
-      <input class='value-input' type='text' [value]="propertyValue">
+      <input class='value-input' type='text' [(ngModel)]="propertyValue"
+      (ngModelChange)="this.notifyAll()">
     </div>
   </div>
   `,
-  styleUrls: ['../../dynamical-component-styles/input.css']
+  styleUrls: ['./styles/input.css']
 })
 export  class CustomPlainInputComponent extends InputPlainDynamicComponent {
 
-  propertyName: string;
-  propertyValue: string|number;
 
   constructor() {
       super();

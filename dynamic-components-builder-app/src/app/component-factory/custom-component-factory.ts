@@ -7,6 +7,7 @@ import { CustomTableComponent } from '../dynamic-components/components/custom-co
 import { CustomComboInputComponent } from '../dynamic-components/components/custom-components/custom-combo-input.component';
 import { CustomPlainInputComponent } from '../dynamic-components/components/custom-components/custom-plain-input.component';
 import { CustomTextInputComponent } from '../dynamic-components/components/custom-components/custom-text-input.component';
+import { CustomConditionalInputComponent } from '../dynamic-components/components/custom-components/custom-conditional-input.component';
 
 
 export class CustomComponentFactory extends AbstractComponentFactory {
@@ -17,7 +18,7 @@ export class CustomComponentFactory extends AbstractComponentFactory {
     }
 
     public  getPlainContainerFactory(): ComponentFactory<CustomPlainComponent> {
-     return  this.componentFactoryResolver.resolveComponentFactory(CustomPlainComponent);
+      return  this.componentFactoryResolver.resolveComponentFactory(CustomPlainComponent);
     }
     public  getBoxContainerFactory(): ComponentFactory<CustomBoxComponent> {
       return this.componentFactoryResolver.resolveComponentFactory(CustomBoxComponent);
@@ -36,6 +37,9 @@ export class CustomComponentFactory extends AbstractComponentFactory {
     }
     public  getTextInputFactory(): ComponentFactory<CustomTextInputComponent> {
       return this.componentFactoryResolver.resolveComponentFactory(CustomTextInputComponent);
+    }
+    public getConditionalInputFactory(): ComponentFactory<CustomConditionalInputComponent> {
+      return this.componentFactoryResolver.resolveComponentFactory(CustomConditionalInputComponent);
     }
 
 

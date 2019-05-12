@@ -1,4 +1,4 @@
-.table-div{
+.mat-table-div{
   margin-top: 4%;
   text-align: left;
   background-color: whitesmoke;
@@ -9,7 +9,7 @@
 
 
 @media only screen and (max-width: 800px) {
-  .table-div{
+  .mat-table-div{
     font-size: 10px;
     padding: 0;
     margin-left:0 !important;

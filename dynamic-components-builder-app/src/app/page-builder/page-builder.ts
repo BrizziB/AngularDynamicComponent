@@ -9,6 +9,8 @@ import { ContainerTabbedDynamicComponent } from '../dynamic-components/component
 import { InputPlainDynamicComponent } from '../dynamic-components/components/abstract-components/input-plain-dynamic.component';
 import { InputComboDynamicComponent } from '../dynamic-components/components/abstract-components/input-combo-dynamic.component';
 import { InputTextDynamicComponent } from '../dynamic-components/components/abstract-components/input-text-dynamic.component';
+import { InputConditionalDynamicComponent } from '../dynamic-components/components/abstract-components/input-conditional-dynamic.component';
+import { LeafDynamicComponent } from '../dynamic-components/components/abstract-components/_input-dynamic.component';
 
 
 @Injectable({
@@ -20,8 +22,8 @@ export class PageBuilder {
 
   constructor(
     private componentFactoryResolver: ComponentFactoryResolver) {
-    this.componentFactory = new MaterialComponentFactory(componentFactoryResolver);
-    // this.componentFactory = new CustomComponentFactory(componentFactoryResolver);
+      this.componentFactory = new MaterialComponentFactory(componentFactoryResolver);
+      // this.componentFactory = new CustomComponentFactory(componentFactoryResolver);
    }
 
   public addPlainDiv(index: ContainerDynamicComponent, name: string): ContainerDynamicComponent {
@@ -48,7 +50,6 @@ export class PageBuilder {
     return newDiv;
   }
 
-  // qui c'è un bel po' di ripetizione del codice, si accorpa bene passando la factory
 
   public addTabsToPanel(index: ContainerTabbedDynamicComponent, components: NavElement[]) {
     index.setNavElements(components);
@@ -65,22 +66,43 @@ export class PageBuilder {
     return newLeaf;
   }
 
-  public addStdInputChildToContainer(parentElem: ContainerDynamicComponent, value: string|number) {
+  public addStdInputChildToContainer(parentElem: ContainerDynamicComponent, elem: any, component: any) {
     const newLeaf: InputPlainDynamicComponent = <InputPlainDynamicComponent>parentElem.addLeafChildComponent(
-        this.componentFactory.getPlainInputFactory(), value);
+        this.componentFactory.getPlainInputFactory(), elem);
+        newLeaf.propertyName = component;
+        newLeaf.propertyValue = elem.fact.value;
     return newLeaf;
   }
 
-  public addTextInputChildToContainer(parentElem: ContainerDynamicComponent, value: string|number) {
+  public addTextInputChildToContainer(parentElem: ContainerDynamicComponent, elem: any, component: any) {
     const newLeaf: InputTextDynamicComponent = <InputTextDynamicComponent>parentElem.addLeafChildComponent(
-        this.componentFactory.getTextInputFactory(), value);
+        this.componentFactory.getTextInputFactory(), elem);
+        newLeaf.propertyName = component;
+        newLeaf.propertyValue = elem.fact.value;
+    return newLeaf;
+  }
+
+  public addConditionalInputChildToContainer(parentElem: ContainerDynamicComponent, value: any, component: any) {
+    const newLeaf: InputConditionalDynamicComponent = <InputConditionalDynamicComponent>parentElem.addLeafChildComponent(
+        this.componentFactory.getConditionalInputFactory(), value);
+        newLeaf.propertyName = component;
+        newLeaf.propertyValue = value.fact.value;
+        newLeaf.activatingValues = value.view.values;
+
+        newLeaf.conditionController =
+              <LeafDynamicComponent>parentElem.getContainedLeaves().filter(
+                (comp: LeafDynamicComponent) => comp.propertyName === value.view.link)[0];
+
     return newLeaf;
   }
 
 
-  public addComboInputChildToContainer(parentElem: ContainerDynamicComponent, value: string|number) {
+  public addComboInputChildToContainer(parentElem: ContainerDynamicComponent, elem: any, component: any) {
     const newLeaf: InputComboDynamicComponent = <InputComboDynamicComponent>parentElem.addLeafChildComponent(
-      this.componentFactory.getComboInputFactory(), value);
+      this.componentFactory.getComboInputFactory(), elem); // non si riesce a passare una classe? (...)
+      newLeaf.propertyName = component;
+      newLeaf.values = elem.type.values;
+      newLeaf.propertyValue = elem.fact.value;
   return newLeaf;
 }
 

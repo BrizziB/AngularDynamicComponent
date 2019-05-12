@@ -10,22 +10,17 @@ import { InputComboDynamicComponent } from '../abstract-components/input-combo-d
       <span> {{propertyName}}: </span>
     </div>
     <div class='value-div'>
-      <select class='value-input'>
+      <select class='value-input' (change)="this.notifyAll()" [(ngModel)]="propertyValue">
         <option selected></option>
         <option class='value-input' *ngFor="let entry of values" [value]="entry" > {{entry}} </option>
       </select>
     </div>
   </div>
   `,
-  styleUrls: ['../../dynamical-component-styles/input.css']
+  styleUrls: ['./styles/input.css']
 })
 export class CustomComboInputComponent extends InputComboDynamicComponent {
 
-  propertyName: string;
-  values: string[] = [];
-
-
-  selectedValue: string;
 
   constructor() {
       super();
