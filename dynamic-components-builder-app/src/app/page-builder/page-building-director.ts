@@ -55,15 +55,21 @@ export class PageBuildingDirector {
               this.keepAdding(element, currentContainer, nestingLevel);
               break;
             } */
+            case ('composite-container'): {
+              console.log('trovato grid con composite' + view.type);
+              currentContainer = this.pageBuilder.addPlainDiv(nestingIdx, component);
+              // qui vedi come gestire la cosa, si hanno due componenti figlio da mettere adiacenti
+              break;
+            }
 
             case ('container'): { // genera un div standard
-              console.log('trovato page ' + view.type);
+              console.log('trovato grid ' + view.type);
               currentContainer = this.pageBuilder.addPlainDiv(nestingIdx, component);
               this.keepAdding(element, currentContainer, nestingLevel);
               break;
             }
             case ('box'): { // genera un div standard
-              console.log('trovato page ' + view.type);
+              console.log('trovato box ' + view.type);
               // dovrà essere un form, di quelli col nome scritto sul riquadro
               currentContainer = this.pageBuilder.addPlainDiv(nestingIdx, component);
               this.keepAdding(element, currentContainer, nestingLevel);
@@ -89,7 +95,7 @@ export class PageBuildingDirector {
               break;
             }
 
-            case 'std-input': {
+            case 'std-input': { // era std-input
               console.log('trovata foglia output : ' + view.type);
               this.pageBuilder.addStdInputChildToContainer(
                 nestingIdx, element, component);

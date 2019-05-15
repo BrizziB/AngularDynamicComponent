@@ -1,244 +1,345 @@
 // view e type devono essere sufficienti per generare il componente  ' pagina': {
 
 // se il fact è già instanziato ed avvalorato si vede da 'fact' in cui è riportato valore e id de fact
+export const JSONPage = {'personaProva': {
 
-
-export const JSONPage = {
-'personaProva': {
-  'box': {
-  'view': {
-   'type': 'box',
-   'id': 'null',
-   'label': 'personaProva'
+  'box_e711ca10-940d-4f75-9e14-eec029059006' : {
+ 'view': {
+  'type': 'box',
+  'id': 'null',
+  'label':'personaProva'
+ },
+  'grid_bc2ebcb4-b76c-44a1-bfa5-205bc541ca49' : {
+ 'view': {
+  'type': 'container',
+  'id': 'bc2ebcb4-b76c-44a1-bfa5-205bc541ca49'
+ },
+  'grid_149d2df2-77a9-49f8-bac1-ac24df3a3b1e' : {
+ 'view': {
+  'type': 'container',
+  'id': '149d2df2-77a9-49f8-bac1-ac24df3a3b1e'
+ },
+  'Nome' : {  				 'view': {
+                   'type': 'input-text'
+                 },
+                 'type': {
+                   'fact-type':'TextualFactImpl',
+                   'required' : 'false'
+                 },
+                 'fact': {
+                   'id' : 'null',
+                   'value': 'vs'
+                 }
   },
-   'grid': {
-  'view': {
-   'type': 'container',
-   'id': 'c9c1b3ce-4ae6-45b4-bf05-c3bebdccb7e5'
   },
-   'grid': {
-  'view': {
-   'type': 'container',
-   'id': '96072abf-6956-49e6-acbb-ad460741a957'
+  'grid_6400749d-b0dd-4754-8754-b2e3e3062a0f' : {
+ 'view': {
+  'type': 'container',
+  'id': '6400749d-b0dd-4754-8754-b2e3e3062a0f'
+ },
+  'Cognome' : {  				 'view': {
+                   'type': 'input-text'
+                 },
+                 'type': {
+                   'fact-type':'TextualFactImpl',
+                   'required' : 'false'
+                 },
+                 'fact': {
+                   'id' : 'null',
+                   'value': 'iogsc'
+                 }
   },
-   'Nome' : {
-   'view': {
-       'type': 'input-text'
-       },
-   'type': {
-       'fact-type': 'class it.unifi.ing.stlab.reflection.impl.model.facts.TextualFactImpl',
-
-       'suffix' : 'anno/i'
-
-          },
-
-          'fact': {
-            'id' : 'null',
-            'value': 'nqqgxuldhffxr'
-          }
-   },
-   },
-   'grid1': {
-  'view': {
-   'type': 'container',
-   'id': 'fd21f253-63f3-43e5-8d1b-893ed59eecdf'
   },
-   'Cognome' : {  				 'view': {
+  'grid_60731db1-a021-4815-bd2f-c4f607e7d972' : {
+ 'view': {
+  'type': 'container',
+  'id': '60731db1-a021-4815-bd2f-c4f607e7d972'
+ },
+  'Sesso' : {                  'view': {
+                     'type': 'combo-input'
+                   },
+                   'type': {
+                   'fact-type': 'QualitativeFactImpl',
+                   'required' : 'false'
+                     'values': [
 
-            'type': 'input-text'
+ 'F',
+ 'M',                    ],
+                     'sorting': 'as-is'
+                   },
+                   'fact': {
+                     'id': 'null',
+                     'value': 'F'
+                   }
 
-          },
-
-          'type': {
-
-            'fact-type': 'class it.unifi.ing.stlab.reflection.impl.model.facts.TextualFactImpl',
-
-            'suffix' : 'anno/i'
-
-          },
-
-          'fact': {
-
-            'id' : 'null',
-
-            'value': 'bhnsjdqxt'
-
-          }
-   },
-   },
-   'grid2': {
-  'view': {
-   'type': 'container',
-   'id': '701d1ce8-96a2-48f0-9432-897badbc66bd'
   },
-   'Sesso' : {                  'view': {
-
-            'type': 'combo-input'
-
-            },
-
-            'type': {
-
-            'values': [
-
-              'prova1',
-   'prova2',
-   'prova3'                    ],
-
-            'sorting': 'as-is'
-
-            },
-
-            'fact': {
-
-            'id': 'null',
-
-            'value': 'it.unifi.ing.stlab.reflection.model.types.Phenomenon@328671a8'
-
-            }
-
-
-   },
-   },
-   'grid3': {
-  'view': {
-   'type': 'container',
-   'id': '5069b8ca-5e31-4084-a7c1-af8f7c444468'
   },
-   'grid': {
-  'view': {
-   'type': 'container',
-   'id': '63bd5290-54d4-4360-bebd-217e0b598a7a'
+  'grid_e11e3e1f-eff4-4280-801c-228bdd83161a' : {
+ 'view': {
+  'type': 'container',
+  'id': 'e11e3e1f-eff4-4280-801c-228bdd83161a'
+ },
+  'grid_7aae2430-3af9-4ca6-bcd8-0071a96bad2f' : {
+ 'view': {
+  'type': 'container',
+  'id': '7aae2430-3af9-4ca6-bcd8-0071a96bad2f'
+ },
+  'Peso_0' : {  				 'view': {
+                   'type': 'std-input'
+                 },
+                 'type': {
+                   'fact-type':'QuantitativeFactImpl',
+                   'required' : 'false'
+                 },
+                 'fact': {
+                   'id' : 'null',
+                   'value': '33.0'
+                 }
   },
-   'Peso_0' : {  				 'view': {
+  'Peso_1' : {                  'view': {
+                     'type': 'combo-input'
+                   },
+                   'type': {
+                   'fact-type': 'QuantitativeFactImpl',
+                   'required' : 'false'
+                     'values': [
 
-            'type': 'input-text'
+ 'kg',                    ],
+                     'sorting': 'as-is'
+                   },
+                   'fact': {
+                     'id': 'null',
+                     'value': 'kg'
+                   }
 
-          },
-
-          'type': {
-
-            'fact-type': 'class it.unifi.ing.stlab.reflection.impl.model.facts.QuantitativeFactImpl',
-
-            'suffix' : 'anno/i'
-
-          },
-
-          'fact': {
-
-            'id' : 'null',
-
-            'value': 'it.unifi.ing.stlab.reflection.model.facts.Quantity@cbd96303'
-
-          }
-   },
-   'Peso_1' : {                  'view': {
-
-            'type': 'combo-input'
-
-            },
-
-            'type': {
-
-            'values': [
-
-              'prova1',
-   'prova2',
-   'prova3'                    ],
-
-            'sorting': 'as-is'
-
-            },
-
-            'fact': {
-
-            'id': 'null',
-
-            'value': 'it.unifi.ing.stlab.reflection.model.facts.Quantity@cbd96303'
-
-            }
-
-
-   },
-   },
-   },
-   'box': {
-  'view': {
-   'type': 'box',
-   'id': 'null',
-   'label': 'Indirizzo'
   },
-   'grid': {
-  'view': {
-   'type': 'container',
-   'id': '3da4c4b2-8b13-4e85-b7cc-dada331d5753'
   },
-   'grid': {
-  'view': {
-   'type': 'container',
-   'id': '7823c31e-1e1c-49cd-8584-3413c60fa558'
   },
-   'Via' : {  				 'view': {
-
-            'type': 'input-text'
-
-          },
-
-          'type': {
-
-            'fact-type': 'class it.unifi.ing.stlab.reflection.impl.model.facts.TextualFactImpl',
-
-            'suffix' : 'anno/i'
-
-          },
-
-          'fact': {
-
-            'id' : 'null',
-
-            'value': 'jwxjudriqtcnc'
-
-          }
-   },
-   },
-   'grid1': {
-  'view': {
-   'type': 'container',
-   'id': 'be3a4241-1042-422e-b201-357ef610924e'
+  'box_636b9513-b452-447a-80a3-8300bdf5237a' : {
+ 'view': {
+  'type': 'box',
+  'id': 'null',
+  'label':'Indirizzo'
+ },
+  'grid_c12c8643-eb5f-4e91-8334-2aee99b49bc3' : {
+ 'view': {
+  'type': 'container',
+  'id': 'c12c8643-eb5f-4e91-8334-2aee99b49bc3'
+ },
+  'grid_af286d80-dab4-41b2-ab05-c9a1212d08bf' : {
+ 'view': {
+  'type': 'container',
+  'id': 'af286d80-dab4-41b2-ab05-c9a1212d08bf'
+ },
+  'Via' : {  				 'view': {
+                   'type': 'input-text'
+                 },
+                 'type': {
+                   'fact-type':'TextualFactImpl',
+                   'required' : 'false'
+                 },
+                 'fact': {
+                   'id' : 'null',
+                   'value': 'dwylpsf'
+                 }
   },
-   'Civico' : {  				 'view': {
-
-            'type': 'input-text'
-
-          },
-
-          'type': {
-
-            'fact-type': 'class it.unifi.ing.stlab.reflection.impl.model.facts.TextualFactImpl',
-
-            'suffix' : 'anno/i'
-
-          },
-
-          'fact': {
-
-            'id' : 'null',
-
-            'value': 'fenqjvqqmxamvnfcfoxc'
-
-          }
-   },
-   },
-   },
-   },
-   },
-   },
+  },
+  'grid_0760386b-8358-4328-8325-50423b9bbd48' : {
+ 'view': {
+  'type': 'container',
+  'id': '0760386b-8358-4328-8325-50423b9bbd48'
+ },
+  'Civico' : {  				 'view': {
+                   'type': 'input-text'
+                 },
+                 'type': {
+                   'fact-type':'TextualFactImpl',
+                   'required' : 'false'
+                 },
+                 'fact': {
+                   'id' : 'null',
+                   'value': 'tbwtngskibfbgi'
+                 }
+  },
+  },
+  },
+  },
+  },
+  },
   }
+ };};
+
 };
 
+/* export const JSONPage = {
+  'personaProva': {
+    'box_4126923e-193e-460e-b82a-ef17b6f1dfe1' : {
+   'view': {
+    'type': 'box',
+    'id': 'null',
+    'label':'personaProva'
+   },
+    'grid_de52d44e-52c7-43b5-942f-5414bcf35dab' : {
+   'view': {
+    'type': 'container',
+    'id': 'de52d44e-52c7-43b5-942f-5414bcf35dab'
+   },
+    'grid_3db219a1-9442-4e13-803c-d29ff31aa8a5' : {
+   'view': {
+    'type': 'container',
+    'id': '3db219a1-9442-4e13-803c-d29ff31aa8a5'
+   },
+    'Nome' : {  				 'view': {
+                     'type': 'input-text'
+                   },
+                   'type': {
+                     'fact-type':'TextualFactImpl',
+                     'required' : 'false'
+                   },
+                   'fact': {
+                     'id' : 'null',
+                     'value': 'tkw'
+                   }
+    },
+    },
+    'grid_0d687b2c-cf23-4a50-b9e9-4a8bbf0b37ef' : {
+   'view': {
+    'type': 'container',
+    'id': '0d687b2c-cf23-4a50-b9e9-4a8bbf0b37ef'
+   },
+    'Cognome' : {  				 'view': {
+                     'type': 'input-text'
+                   },
+                   'type': {
+                     'fact-type':'TextualFactImpl',
+                     'required' : 'false'
+                   },
+                   'fact': {
+                     'id' : 'null',
+                     'value': 'go'
+                   }
+    },
+    },
+    'grid_e2669fad-f3bc-432f-978b-9d1a02ea86ef' : {
+   'view': {
+    'type': 'container',
+    'id': 'e2669fad-f3bc-432f-978b-9d1a02ea86ef'
+   },
+    'Sesso' : {                  'view': {
+                       'type': 'combo-input'
+                     },
+                     'type': {
+                     'fact-type': 'QualitativeFactImpl',
+                     'required' : 'false'
+                       'values': [
 
-/*
-{
+   'F',
+   'M',                    ],
+                       'sorting': 'as-is'
+                     },
+                     'fact': {
+                       'id': 'null',
+                       'value': 'F'
+                     }
+
+    },
+    },
+    'grid_bdd4a62f-6d87-4c32-88c6-ee9f2b58915b' : {
+   'view': {
+    'type': 'container',
+    'id': 'bdd4a62f-6d87-4c32-88c6-ee9f2b58915b'
+   },
+    'grid_4f95f965-f50a-480f-8d1f-eff488ac0141' : {
+   'view': {
+    'type': 'container',
+    'id': '4f95f965-f50a-480f-8d1f-eff488ac0141'
+   },
+    'Peso_0' : {  				 'view': {
+                     'type': 'std-input'
+                   },
+                   'type': {
+                     'fact-type':'QuantitativeFactImpl',
+                     'required' : 'false'
+                   },
+                   'fact': {
+                     'id' : 'null',
+                     'value': '23.0'
+                   }
+    },
+    'Peso_1' : {                  'view': {
+                       'type': 'combo-input'
+                     },
+                     'type': {
+                     'fact-type': 'QuantitativeFactImpl',
+                     'required' : 'false'
+                       'values': [
+
+   'kg',                    ],
+                       'sorting': 'as-is'
+                     },
+                     'fact': {
+                       'id': 'null',
+                       'value': 'kg'
+                     }
+
+    },
+    },
+    },
+    'box_15335441-90f0-43a3-a43c-8fe5e8722d70' : {
+   'view': {
+    'type': 'box',
+    'id': 'null',
+    'label':'Indirizzo'
+   },
+    'grid_7c12a185-b04a-4f78-814c-279601e3a2e1' : {
+   'view': {
+    'type': 'container',
+    'id': '7c12a185-b04a-4f78-814c-279601e3a2e1'
+   },
+    'grid_a5c67c72-6d4c-4960-b852-abcdd5c50548' : {
+   'view': {
+    'type': 'container',
+    'id': 'a5c67c72-6d4c-4960-b852-abcdd5c50548'
+   },
+    'Via' : {  				 'view': {
+                     'type': 'input-text'
+                   },
+                   'type': {
+                     'fact-type':'TextualFactImpl',
+                     'required' : 'false'
+                   },
+                   'fact': {
+                     'id' : 'null',
+                     'value': 'zmkocsxqblxdzjrdofc'
+                   }
+    },
+    },
+    'grid_9e95f879-8f92-4738-bcbf-f6eb25b0bfc9' : {
+   'view': {
+    'type': 'container',
+    'id': '9e95f879-8f92-4738-bcbf-f6eb25b0bfc9'
+   },
+    'Civico' : {  				 'view': {
+                     'type': 'input-text'
+                   },
+                   'type': {
+                     'fact-type':'TextualFactImpl',
+                     'required' : 'false'
+                   },
+                   'fact': {
+                     'id' : 'null',
+                     'value': 'j'
+                   }
+    },
+    },
+    },
+    },
+    },
+    },
+    }
+}; */
+
+/* export const oldJSONPage = {
   'pagina': {
     'view':  {
       'type': 'container'
@@ -249,12 +350,6 @@ export const JSONPage = {
       'view': {
         'type': 'tabbed-panel'
       },
-      'prova': [
-          {
-
-          },
-
-      ],
       'content': {
           'view' : {
             'type': 'tabs',
