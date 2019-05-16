@@ -13,10 +13,10 @@ import { InputPlainDynamicComponent } from '../abstract-components/input-plain-d
       <mat-form-field class="example-form-field">
         <input matInput class='value-input' type="text" placeholder="{{propertyName}}"
             [(ngModel)]="propertyValue" (ngModelChange)="this.notifyAll()">
-        /* <button mat-button class="cleaning-btn"
+         <button mat-button class="cleaning-btn"
            *ngIf="propertyValue" matSuffix mat-icon-button aria-label="Clear" (click)="propertyValue=''">
           <mat-icon>close</mat-icon>
-        </button> */
+        </button>
       </mat-form-field>
     </div>
 

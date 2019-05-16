@@ -11,6 +11,7 @@ import { InputComboDynamicComponent } from '../dynamic-components/components/abs
 import { InputTextDynamicComponent } from '../dynamic-components/components/abstract-components/input-text-dynamic.component';
 import { InputConditionalDynamicComponent } from '../dynamic-components/components/abstract-components/input-conditional-dynamic.component';
 import { LeafDynamicComponent } from '../dynamic-components/components/abstract-components/_input-dynamic.component';
+import { CompositeLeafDynamicComponent } from '../dynamic-components/components/abstract-components/composite-leaf-dynamic.component';
 
 
 @Injectable({
@@ -31,6 +32,8 @@ export class PageBuilder {
         this.componentFactory.getPlainContainerFactory(), name);
     return newDiv;
   }
+
+
 
   public addTabbedPanel(index: ContainerDynamicComponent, name: string): ContainerDynamicComponent {
     const newDiv: ContainerDynamicComponent = (
@@ -60,9 +63,14 @@ export class PageBuilder {
     index.addNavElement(component);
   }
 
-  public addLeafChildToContainer(parentElem: ContainerDynamicComponent, value: string|number) {
-    const newLeaf: InputPlainDynamicComponent = <InputPlainDynamicComponent>parentElem.addLeafChildComponent(
-        this.componentFactory.getPlainInputFactory(), value);
+  public addCompositeElem(parentElem: ContainerDynamicComponent, label, value, selectValues, selectedValue) {
+    const tmp = parentElem.addLeafChildComponent(
+        this.componentFactory.getCompositeComponentFactory(), null);
+    const newLeaf: CompositeLeafDynamicComponent = <CompositeLeafDynamicComponent> tmp;
+        newLeaf.propertyName = label;
+        newLeaf.propertyValue = value;
+        newLeaf.values = selectValues;
+        newLeaf.selectedValue =  selectedValue;
     return newLeaf;
   }
 

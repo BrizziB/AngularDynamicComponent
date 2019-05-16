@@ -2,7 +2,7 @@ import { DynamicComponent } from './__base-dynamic.component';
 import {
   Component, Input, OnInit, OnDestroy,
   ViewChild, ViewContainerRef,
-  ComponentRef, ComponentFactory
+  ComponentRef, ComponentFactory, ViewEncapsulation
 } from '@angular/core';
 import { LeafDynamicComponent } from './_input-dynamic.component';
 import { isNullOrUndefined } from 'util';
@@ -10,7 +10,8 @@ import { isNullOrUndefined } from 'util';
 
 @Component({
   selector: 'app-dynamic-div',
-  template: `no-template`
+  template: `no-template`,
+  encapsulation: ViewEncapsulation.None
 })
 export abstract class ContainerDynamicComponent extends DynamicComponent implements OnInit, OnDestroy {
 
@@ -20,7 +21,7 @@ export abstract class ContainerDynamicComponent extends DynamicComponent impleme
       this.containedLeaves = [];
   }
   protected containedComponents: ContainerDynamicComponent[];
-  protected containedLeaves: DynamicComponent[];
+  protected containedLeaves: LeafDynamicComponent[];
 
   @ViewChild('container', { read: ViewContainerRef })
   public container: ViewContainerRef;
@@ -44,7 +45,7 @@ export abstract class ContainerDynamicComponent extends DynamicComponent impleme
   }
 
 
-  public addLeafChildComponent(factory: ComponentFactory<LeafDynamicComponent>, value: string|number): DynamicComponent {
+  public addLeafChildComponent(factory: ComponentFactory<LeafDynamicComponent>, value: string|number): LeafDynamicComponent {
     const newComponentRef: ComponentRef<LeafDynamicComponent> = (this.container.createComponent(factory));
     const instance = newComponentRef.instance;
 
@@ -60,7 +61,7 @@ export abstract class ContainerDynamicComponent extends DynamicComponent impleme
     return this.containedComponents;
   }
 
-  public getContainedLeaves(): DynamicComponent[] {
+  public getContainedLeaves(): LeafDynamicComponent[] {
     return this.containedLeaves;
   }
 

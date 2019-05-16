@@ -7,7 +7,9 @@ import { MaterialTableComponent } from '../dynamic-components/components/materia
 import { MaterialComboInputComponent } from '../dynamic-components/components/material-components/material-combo-input.component';
 import { MaterialPlainInputComponent } from '../dynamic-components/components/material-components/material-plain-input.component';
 import { MaterialTextInputComponent } from '../dynamic-components/components/material-components/material-text-input.component';
-import { MaterialConditionalInputComponent } from '../dynamic-components/components/material-components/material-conditional-input.component';
+import { MaterialCompositeLeafComponent } from '../dynamic-components/components/material-components/material-composite-leaf.component';
+import { MaterialConditionalInputComponent
+     } from '../dynamic-components/components/material-components/material-conditional-input.component';
 
 
 export class MaterialComponentFactory extends AbstractComponentFactory{
@@ -40,6 +42,9 @@ export class MaterialComponentFactory extends AbstractComponentFactory{
     }
     public getConditionalInputFactory(): ComponentFactory<MaterialConditionalInputComponent> {
       return this.componentFactoryResolver.resolveComponentFactory(MaterialConditionalInputComponent);
+    }
+    public getCompositeComponentFactory(): ComponentFactory<MaterialCompositeLeafComponent> {
+      return this.componentFactoryResolver.resolveComponentFactory(MaterialCompositeLeafComponent);
     }
 
 

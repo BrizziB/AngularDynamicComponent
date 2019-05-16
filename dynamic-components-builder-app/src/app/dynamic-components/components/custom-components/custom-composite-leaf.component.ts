@@ -1,33 +1,22 @@
 import {
   Component, OnInit, OnDestroy, ComponentFactoryResolver} from '@angular/core';
 import { ContainerPlainDynamicComponent } from '../abstract-components/container-plain-dynamic.component';
+import { CompositeLeafDynamicComponent } from '../abstract-components/composite-leaf-dynamic.component';
 
 
 @Component({
-  selector: 'app-dynamic-mat-plain',
+  selector: 'app-dynamic-cust-comp-leaf',
   template: `
-      <div class='mat-plain-div'>
-          <ng-container
-              #container>
-          </ng-container>
+      <div class='plain-div'>
+
       </div>
   `,
-  styleUrls: null
 })
-export class MaterialPlainComponent extends ContainerPlainDynamicComponent implements OnInit, OnDestroy {
+export class  CustomCompositeLeafComponent extends CompositeLeafDynamicComponent  {
 
 
   constructor() {
       super();
   }
-
-
-
-
-
-
-
-
-
 
 }

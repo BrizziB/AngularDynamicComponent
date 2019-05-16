@@ -7,12 +7,12 @@ import { InputComboDynamicComponent } from '../abstract-components/input-combo-d
   selector: 'app-dynamic-mat-comboinput',
   template: `
   <div class='outer-div'>
-    <div class='property-div'>
+    <div *ngIf="!hideLabel" class='property-div'>
       <span> {{propertyName}}: </span>
     </div>
     <div class='value-div'>
       <mat-form-field>
-      <mat-label>{{propertyName}}</mat-label>
+      <mat-label *ngIf="!hideLabel">{{propertyName}}</mat-label>
       <mat-select [(ngModel)]="propertyValue" >
         <mat-option *ngFor="let entry of values" [value]="entry" (click)="this.notifyAll()"> <label> {{entry}} </label> </mat-option>
       </mat-select>
@@ -24,6 +24,9 @@ import { InputComboDynamicComponent } from '../abstract-components/input-combo-d
 
 })
 export class MaterialComboInputComponent extends InputComboDynamicComponent {
+
+
+
 
 
   constructor() {

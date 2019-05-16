@@ -6,7 +6,7 @@ import { InputComboDynamicComponent } from '../abstract-components/input-combo-d
   selector: 'app-dynamic-custom-comboinput',
   template: `
   <div class='combo-input-outer'>
-    <div class='property-div'>
+    <div *ngIf="!hideLabel"  class='property-div'>
       <span> {{propertyName}}: </span>
     </div>
     <div class='value-div'>

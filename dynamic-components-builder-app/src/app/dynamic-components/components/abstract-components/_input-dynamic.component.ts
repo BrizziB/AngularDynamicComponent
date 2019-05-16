@@ -1,12 +1,20 @@
 import { DynamicComponent } from './__base-dynamic.component';
-import { OnChanges, SimpleChanges, Input } from '@angular/core';
+import {Component,  ViewEncapsulation } from '@angular/core';
 import { InputConditionalDynamicComponent } from './input-conditional-dynamic.component';
 
-
+@Component({
+  selector: 'app-dynamic-leaf',
+  template: `no-template`,
+  encapsulation: ViewEncapsulation.None
+})
 export abstract class LeafDynamicComponent extends DynamicComponent{
 
-  propertyName: any;
-  propertyValue: any;
+
+
+  public propertyName: any;
+  public propertyValue: any;
+
+
 
   private conditionedComponents: InputConditionalDynamicComponent[];
 

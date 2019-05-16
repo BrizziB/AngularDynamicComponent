@@ -5,10 +5,11 @@ import { ContainerBoxDynamicComponent } from '../abstract-components/container-b
 @Component({
   selector: 'app-dynamic-mat-box', // *ngIf='getShowBox()'
   template: `
-      <div [hidden] = "isHidden"  class='mat-box-div'
+      <fieldset [hidden] = "isHidden"  class='mat-box-div'
       style='align-content: center;'>
+          <legend>{{legend}}</legend>
           <ng-container #container></ng-container>
-      </div>
+      </fieldset>
 
 
   `,
@@ -20,7 +21,8 @@ export class MaterialBoxComponent extends ContainerBoxDynamicComponent implement
       super();
   }
   protected objectKeys = Object.keys;
-  protected isHidden = true;
+  protected isHidden = false;
+
 
   public setHidden(hidden: boolean) {
     this.isHidden = hidden;

@@ -13,6 +13,16 @@ export abstract class ContainerBoxDynamicComponent extends ContainerDynamicCompo
   protected objectKeys = Object.keys;
   public hidden = false;
 
+  public legend: String;
+
+  public getLegend() {
+    return this.legend;
+  }
+
+  public setLegend(legend: String) {
+    this.legend = legend;
+  }
+
   public setHidden(hidden: boolean) {
     this.hidden = hidden;
   }

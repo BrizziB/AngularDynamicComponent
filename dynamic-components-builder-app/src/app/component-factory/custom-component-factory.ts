@@ -8,6 +8,7 @@ import { CustomComboInputComponent } from '../dynamic-components/components/cust
 import { CustomPlainInputComponent } from '../dynamic-components/components/custom-components/custom-plain-input.component';
 import { CustomTextInputComponent } from '../dynamic-components/components/custom-components/custom-text-input.component';
 import { CustomConditionalInputComponent } from '../dynamic-components/components/custom-components/custom-conditional-input.component';
+import { CustomCompositeLeafComponent } from '../dynamic-components/components/custom-components/custom-composite-leaf.component';
 
 
 export class CustomComponentFactory extends AbstractComponentFactory {
@@ -40,6 +41,10 @@ export class CustomComponentFactory extends AbstractComponentFactory {
     }
     public getConditionalInputFactory(): ComponentFactory<CustomConditionalInputComponent> {
       return this.componentFactoryResolver.resolveComponentFactory(CustomConditionalInputComponent);
+    }
+
+    public getCompositeComponentFactory(): ComponentFactory<CustomCompositeLeafComponent> {
+      return this.componentFactoryResolver.resolveComponentFactory(CustomCompositeLeafComponent);
     }
 
 

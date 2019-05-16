@@ -29,6 +29,8 @@ import { CustomTextInputComponent } from './dynamic-components/components/custom
 import { MaterialConditionalInputComponent
 } from './dynamic-components/components/material-components/material-conditional-input.component';
 import { CustomConditionalInputComponent } from './dynamic-components/components/custom-components/custom-conditional-input.component';
+import { MaterialCompositeLeafComponent } from './dynamic-components/components/material-components/material-composite-leaf.component';
+import { CustomCompositeLeafComponent } from './dynamic-components/components/custom-components/custom-composite-leaf.component';
 
 
 @NgModule({
@@ -42,6 +44,7 @@ import { CustomConditionalInputComponent } from './dynamic-components/components
     MaterialTableComponent,
     MaterialTextInputComponent,
     MaterialConditionalInputComponent,
+    MaterialCompositeLeafComponent,
 
     CustomBoxComponent,
     CustomComboInputComponent,
@@ -51,6 +54,7 @@ import { CustomConditionalInputComponent } from './dynamic-components/components
     CustomTableComponent,
     CustomTextInputComponent,
     CustomConditionalInputComponent,
+    CustomCompositeLeafComponent,
 
     BaseComponent
 
@@ -73,6 +77,7 @@ import { CustomConditionalInputComponent } from './dynamic-components/components
     MaterialTableComponent,
     MaterialTextInputComponent,
     MaterialConditionalInputComponent,
+    MaterialCompositeLeafComponent,
 
     CustomBoxComponent,
     CustomComboInputComponent,
@@ -82,6 +87,7 @@ import { CustomConditionalInputComponent } from './dynamic-components/components
     CustomTableComponent,
     CustomTextInputComponent,
     CustomConditionalInputComponent,
+    CustomCompositeLeafComponent
   ],
   providers: [PageBuildingService],
   bootstrap: [AppComponent]

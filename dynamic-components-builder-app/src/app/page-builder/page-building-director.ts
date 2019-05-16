@@ -9,6 +9,8 @@ import { InputComboDynamicComponent } from '../dynamic-components/components/abs
 import { MaterialTabbedComponent } from '../dynamic-components/components/material-components/material-tabbed-container.component';
 import { isNullOrUndefined } from 'util';
 import { InputTextDynamicComponent } from '../dynamic-components/components/abstract-components/input-text-dynamic.component';
+import { ContainerBoxDynamicComponent } from '../dynamic-components/components/abstract-components/container-box-dynamic.component';
+import { MaterialComboInputComponent } from '../dynamic-components/components/material-components/material-combo-input.component';
 
 @Injectable({
   providedIn: 'root'
@@ -50,15 +52,11 @@ export class PageBuildingDirector {
           switch (view.type) {
 
 
-  /*           case 'outer': {
-              console.log('variabile esterna');
-              this.keepAdding(element, currentContainer, nestingLevel);
-              break;
-            } */
             case ('composite-container'): {
+              // form[component][Object.keys(form[component])[1]]
               console.log('trovato grid con composite' + view.type);
               currentContainer = this.pageBuilder.addPlainDiv(nestingIdx, component);
-              // qui vedi come gestire la cosa, si hanno due componenti figlio da mettere adiacenti
+              this.addLeafComponents(form, component, currentContainer);
               break;
             }
 
@@ -71,7 +69,8 @@ export class PageBuildingDirector {
             case ('box'): { // genera un div standard
               console.log('trovato box ' + view.type);
               // dovrà essere un form, di quelli col nome scritto sul riquadro
-              currentContainer = this.pageBuilder.addPlainDiv(nestingIdx, component);
+              currentContainer = this.pageBuilder.addBox(nestingIdx, component);
+              (<ContainerBoxDynamicComponent>currentContainer).setLegend(form[component]['view']['label']);
               this.keepAdding(element, currentContainer, nestingLevel);
               break;
             }
@@ -157,6 +156,24 @@ export class PageBuildingDirector {
         this.keepAdding({ tmp }, currentContainer, nestingLevel);
       }
     }
+  }
+
+  private addLeafComponents(form, component, container) {
+    const leafIndexes: String[] = [];
+    leafIndexes.push(Object.keys(form[component])[1]);
+    leafIndexes.push(Object.keys(form[component])[2]);
+
+    const firstLeaf = form[component][Object.keys(form[component])[1]];
+    const secondLeaf = form[component][Object.keys(form[component])[2]];
+
+    const label = form[component].view.label;
+    const value = firstLeaf.fact.value;
+    const selectValues = secondLeaf.type.values;
+    const selectedValue = secondLeaf.fact.value;
+
+    this.pageBuilder.addCompositeElem(container, label, value, selectValues, selectedValue)
+
+
   }
 
 
