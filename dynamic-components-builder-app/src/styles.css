@@ -40,15 +40,41 @@ html, body {
 
 .mat-box-div{
   border-style: solid;
-  border-color: rgb(59, 59, 59);
+  border-color: rgb(92, 91, 91);
   border-width: 2px;
 
+  margin-left: 20px;
+  margin-right: 20px;
   margin-top: 20px;
   margin-bottom: 20px;
   padding: 4px;
+
+
 }
 
 
+/* inizio cosa vergognosa - questa è ganza   */
+.mat-box-div{
+  background-color: whitesmoke;
+}
+
+.mat-box-div .mat-box-div{
+  background-color: aliceblue;
+}
+
+.mat-box-div .mat-box-div .mat-box-div{
+  background-color: whitesmoke;
+}
+
+.mat-box-div .mat-box-div .mat-box-div .mat-box-div{
+  background-color: aliceblue;
+}
+
+.mat-box-div .mat-box-div .mat-box-div .mat-box-div .mat-box-div{
+  background-color: whitesmoke;
+}
+
+/* fine cosa vergognosa */
 
 mat-form-field {
   width: 50%;

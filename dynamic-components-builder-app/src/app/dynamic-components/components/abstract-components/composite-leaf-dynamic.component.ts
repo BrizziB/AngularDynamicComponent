@@ -13,6 +13,7 @@ export abstract class CompositeLeafDynamicComponent extends LeafDynamicComponent
   public objectKeys = Object.keys;
   public values: string[] = [];
   public selectedValue: string;
+  public showUnit = true;
 
   constructor() {
       super();

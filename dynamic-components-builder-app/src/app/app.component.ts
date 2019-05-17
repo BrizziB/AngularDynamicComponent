@@ -2,6 +2,7 @@ import {Component, OnInit, ViewChild} from '@angular/core';
 import { PageBuildingDirector } from './page-builder/page-building-director';
 import { PageBuildingService } from './services/page-building.service';
 import { BaseComponent } from './base.component';
+import { HttpResponse, HttpHeaders } from '@angular/common/http';
 
 
 
@@ -14,6 +15,8 @@ export class AppComponent implements OnInit {
 
   private title = 'Dynamical Components';
 
+
+
   constructor(
     private pageBuildingDirector: PageBuildingDirector,
     private pageBuildingService: PageBuildingService
@@ -25,8 +28,15 @@ export class AppComponent implements OnInit {
 
   ngOnInit(): void {
     this.pageBuildingDirector.init(this.child);
-    const pageScheme = this.pageBuildingService.getPage();
-    this.pageBuildingDirector.buildPageFromScheme(pageScheme);
+    let pageScheme = this.pageBuildingService.getPage().subscribe(
+      ((resp) => {
+        if (resp !== null) {
+          resp = '{' + resp;
+          pageScheme = resp;
+          this.pageBuildingDirector.buildPageFromScheme(pageScheme);
+        }
+      })
+    );
     }
 
 

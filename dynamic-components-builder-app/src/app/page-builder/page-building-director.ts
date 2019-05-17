@@ -111,7 +111,7 @@ export class PageBuildingDirector {
 
             case 'input-text': {
               console.log('trovata foglia output : ' + view.type);
-              this.pageBuilder.addTextInputChildToContainer(
+              this.pageBuilder.addStdInputChildToContainer(
                 nestingIdx, element, component);
               break;
             }
@@ -171,7 +171,7 @@ export class PageBuildingDirector {
     const selectValues = secondLeaf.type.values;
     const selectedValue = secondLeaf.fact.value;
 
-    this.pageBuilder.addCompositeElem(container, label, value, selectValues, selectedValue)
+    this.pageBuilder.addCompositeElem(container, label, value, selectValues, selectedValue);
 
 
   }

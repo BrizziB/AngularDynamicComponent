@@ -11,13 +11,19 @@ import { JSONPage } from '../mock/jsonPage';
 })
 export class PageBuildingService {
   httpOptions = {
-    headers: new HttpHeaders({ 'Content-Type': 'application/json' })
+    headers: new HttpHeaders({ 'Content-Type': 'application/json'})
   };
 
-  constructor() {}
+  constructor(private http: HttpClient) {}
 
-  public getPage(): Object {
+  public getPageMOCK(): Object {
     return JSONPage;
+  }
+
+  public getPage(): Observable<any> {
+    const url = 'http://localhost:8080/empedocle-cec-1.0.0/rest/view/get';
+    const req = this.http.get(url, {responseType: 'text'});
+    return req;
   }
 
 

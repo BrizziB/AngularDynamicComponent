@@ -31,6 +31,7 @@ import { MaterialConditionalInputComponent
 import { CustomConditionalInputComponent } from './dynamic-components/components/custom-components/custom-conditional-input.component';
 import { MaterialCompositeLeafComponent } from './dynamic-components/components/material-components/material-composite-leaf.component';
 import { CustomCompositeLeafComponent } from './dynamic-components/components/custom-components/custom-composite-leaf.component';
+import { HttpClientModule } from '@angular/common/http';
 
 
 @NgModule({
@@ -63,6 +64,7 @@ import { CustomCompositeLeafComponent } from './dynamic-components/components/cu
     BrowserModule,
     FormsModule,
     HttpModule,
+    HttpClientModule,
     ReactiveFormsModule,
     BrowserAnimationsModule,
     MaterialModule

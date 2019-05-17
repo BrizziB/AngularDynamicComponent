@@ -63,12 +63,17 @@ export class PageBuilder {
     index.addNavElement(component);
   }
 
-  public addCompositeElem(parentElem: ContainerDynamicComponent, label, value, selectValues, selectedValue) {
+  public addCompositeElem(parentElem: ContainerDynamicComponent,
+      label: String, value: Number, selectValues: string[], selectedValue: string) {
     const tmp = parentElem.addLeafChildComponent(
         this.componentFactory.getCompositeComponentFactory(), null);
     const newLeaf: CompositeLeafDynamicComponent = <CompositeLeafDynamicComponent> tmp;
         newLeaf.propertyName = label;
         newLeaf.propertyValue = value;
+        if (selectValues.length === 1 && selectValues[0] === '') {
+          newLeaf.showUnit = false;
+          console.log(newLeaf.getUUID());
+        }
         newLeaf.values = selectValues;
         newLeaf.selectedValue =  selectedValue;
     return newLeaf;

@@ -2,7 +2,7 @@
 
 // se il fact è già instanziato ed avvalorato si vede da 'fact' in cui è riportato valore e id de fact
 
-export const JSONPage = {
+ export const JSONPage = {
   personaProva: {
     'box_2c8d22b5-1942-44b9-a09a-549a0515f7bf': {
       view: {
@@ -179,7 +179,9 @@ export const JSONPage = {
   }
 };
 
-/* export const JSONPage = {'Cartella Elettronica Cefalee v1.9': {
+/*
+
+export const JSONPage = {'Cartella Elettronica Cefalee v1.9': {
 
   'box_da6f83cf-714b-409b-b30f-8f83fee23131' : {
  'view': {
@@ -6424,7 +6426,7 @@ export const JSONPage = {
   },
   },
   }
- }; */
+ };
 
 /* export const oldJSONPage = {
   'pagina': {

@@ -20,7 +20,7 @@ import { CompositeLeafDynamicComponent } from '../abstract-components/composite-
           <mat-icon>close</mat-icon>
         </button>
       </mat-form-field>
-      <mat-form-field class="unit-form">
+      <mat-form-field *ngIf="showUnit" class="unit-form">
       <mat-select [(ngModel)]="selectedValue" class="unit-select" >
         <mat-option *ngFor="let entry of values" [value]="entry" (click)="this.notifyAll()"> <label> {{entry}} </label> </mat-option>
       </mat-select>
@@ -31,7 +31,7 @@ import { CompositeLeafDynamicComponent } from '../abstract-components/composite-
   `,
   styleUrls: ['./styles/compositeLeaf.css']
 })
-export class MaterialCompositeLeafComponent extends CompositeLeafDynamicComponent {
+export class MaterialCompositeLeafComponent extends CompositeLeafDynamicComponent{
 
 
 
