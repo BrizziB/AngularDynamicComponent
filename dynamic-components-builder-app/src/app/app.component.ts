@@ -28,12 +28,10 @@ export class AppComponent implements OnInit {
 
   ngOnInit(): void {
     this.pageBuildingDirector.init(this.child);
-    let pageScheme = this.pageBuildingService.getPage().subscribe(
+    this.pageBuildingService.getPage().subscribe(
       ((resp) => {
         if (resp !== null) {
-          resp = '{' + resp;
-          pageScheme = resp;
-          this.pageBuildingDirector.buildPageFromScheme(pageScheme);
+          this.pageBuildingDirector.buildPageFromScheme(resp);
         }
       })
     );
