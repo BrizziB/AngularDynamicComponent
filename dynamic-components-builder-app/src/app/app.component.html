@@ -1,9 +1,35 @@
+<mat-toolbar class="toolbar"color="primary">
+    <mat-toolbar-row class="title-container">
+      <mat-icon class="icon" aria-hidden="false" color="accent">favorite</mat-icon>
+      <span>Angular Dynamical Component Builder</span>
+      <mat-icon class="icon" aria-hidden="false" color="accent">favorite</mat-icon>
+    </mat-toolbar-row>
+    <mat-toolbar-row class="select-container">
+        <mat-form-field>
+            <mat-label *ngIf="!this.typeSelected">Select Type</mat-label>
+            <mat-label *ngIf="this.typeSelected">The Type you chose:</mat-label>
+
+            <mat-select [(ngModel)]="selectedValue" class="select" >
+              <mat-option *ngFor="let type of this.types" (click)="typeSel()" [value]="type"> <label> {{type}} </label> </mat-option>
+          </mat-select>
+        </mat-form-field>
+        <button *ngIf="this.typeSelected" (click)="renderViewer()"
+              mat-raised-button class="btn" color="accent">Render Viewer</button>
+    </mat-toolbar-row>
+</mat-toolbar>
 <div id='app-outer-div'>
-
-  <div id='container-dynamic-content'>
-    <app-dynamic-base #child></app-dynamic-base>
-
-
+     <div id='container-dynamic-content'>
+      <mat-card id="spinner-card" *ngIf="loading">
+          <h2 class="loading-h2">Loading Viewer</h2>
+          <mat-card-content class="spinner-container">
+            <mat-progress-spinner [diameter]="200" class="margin"
+                [color]="color"
+                [mode]="mode"
+                [value]="value">
+            </mat-progress-spinner>
+          </mat-card-content>
+        </mat-card>
+    <app-dynamic-base #child [hidden]="loading"></app-dynamic-base>
   </div>
 
 </div>

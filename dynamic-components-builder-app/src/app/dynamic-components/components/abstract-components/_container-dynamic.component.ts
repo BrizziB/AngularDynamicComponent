@@ -44,6 +44,10 @@ export abstract class ContainerDynamicComponent extends DynamicComponent impleme
     return this.container;
   }
 
+  protected clear() {
+    this.container.clear();
+  }
+
 
   public addLeafChildComponent(factory: ComponentFactory<LeafDynamicComponent>, value: string|number): LeafDynamicComponent {
     const newComponentRef: ComponentRef<LeafDynamicComponent> = (this.container.createComponent(factory));

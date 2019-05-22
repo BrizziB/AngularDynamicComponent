@@ -15,7 +15,17 @@ export class AppComponent implements OnInit {
 
   private title = 'Dynamical Components';
 
+  public types = [
+    'personaProva',
+    'Cartella Elettronica Cefalee v1.9'
+  ];
 
+  selectedValue: string = null;
+  color = 'primary';
+  mode = 'indeterminate';
+  value = null;
+  loading = false;
+  typeSelected = false;
 
   constructor(
     private pageBuildingDirector: PageBuildingDirector,
@@ -26,15 +36,27 @@ export class AppComponent implements OnInit {
   protected child: BaseComponent; // è un componente cui si possono aggiungere dinamicamente altri componenti
   // del tutto simile ad un  PlainContainer
 
-  ngOnInit(): void {
+  renderViewer() {
+    this.child.reset();
+    this.pageBuildingDirector.reset();
+    this.loading = true;
     this.pageBuildingDirector.init(this.child);
-    this.pageBuildingService.getPage().subscribe(
+    this.pageBuildingService.getPage(this.selectedValue).subscribe(
       ((resp) => {
         if (resp !== null) {
           this.pageBuildingDirector.buildPageFromScheme(resp);
+          this.loading = false;
         }
       })
     );
+  }
+
+  typeSel() {
+    this.typeSelected = true;
+  }
+
+  ngOnInit(): void {
+
     }
 
 

@@ -18,6 +18,10 @@ export class BaseComponent extends ContainerPlainDynamicComponent implements OnI
       super();
   }
 
+  reset() {
+    this.clear();
+  }
+
 
 
 

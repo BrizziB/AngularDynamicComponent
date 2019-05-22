@@ -82,7 +82,7 @@ export class PageBuilder {
   public addStdInputChildToContainer(parentElem: ContainerDynamicComponent, elem: any, component: any) {
     const newLeaf: InputPlainDynamicComponent = <InputPlainDynamicComponent>parentElem.addLeafChildComponent(
         this.componentFactory.getPlainInputFactory(), elem);
-        newLeaf.propertyName = component;
+        newLeaf.propertyName = elem.view.label;
         newLeaf.propertyValue = elem.fact.value;
     return newLeaf;
   }
@@ -90,7 +90,7 @@ export class PageBuilder {
   public addTextInputChildToContainer(parentElem: ContainerDynamicComponent, elem: any, component: any) {
     const newLeaf: InputTextDynamicComponent = <InputTextDynamicComponent>parentElem.addLeafChildComponent(
         this.componentFactory.getTextInputFactory(), elem);
-        newLeaf.propertyName = component;
+        newLeaf.propertyName = elem.view.label;
         newLeaf.propertyValue = elem.fact.value;
     return newLeaf;
   }
@@ -113,7 +113,7 @@ export class PageBuilder {
   public addComboInputChildToContainer(parentElem: ContainerDynamicComponent, elem: any, component: any) {
     const newLeaf: InputComboDynamicComponent = <InputComboDynamicComponent>parentElem.addLeafChildComponent(
       this.componentFactory.getComboInputFactory(), elem); // non si riesce a passare una classe? (...)
-      newLeaf.propertyName = component;
+      newLeaf.propertyName = elem.view.label;
       newLeaf.values = elem.type.values;
       newLeaf.propertyValue = elem.fact.value;
   return newLeaf;

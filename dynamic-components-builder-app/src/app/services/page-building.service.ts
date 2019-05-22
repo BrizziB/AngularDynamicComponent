@@ -20,8 +20,7 @@ export class PageBuildingService {
     return JSONPage;
   }
 
-  public getPage(): Observable<any> {
-    const typeName = 'Cartella Elettronica Cefalee v1.9';
+  public getPage(typeName: String): Observable<any> {
     const url = 'http://localhost:8080/empedocle-cec-1.0.0/rest/view/get/' + typeName;
     const req = this.http.get(url, {responseType: 'json'});
     return req;

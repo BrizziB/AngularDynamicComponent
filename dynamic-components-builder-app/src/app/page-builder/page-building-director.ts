@@ -52,22 +52,27 @@ export class PageBuildingDirector {
           switch (view.type) {
 
 
+            // TODO aggiungi la gestione di Timed, c'è anche material datepicker
+
+            case ('list-container'): {
+              currentContainer = this.pageBuilder.addPlainDiv(nestingIdx, component);
+              this.parseList(form, component, currentContainer, nestingLevel);
+              break;
+            }
+
             case ('composite-container'): {
               // form[component][Object.keys(form[component])[1]]
-              console.log('trovato grid con composite' + view.type);
               currentContainer = this.pageBuilder.addPlainDiv(nestingIdx, component);
               this.addLeafComponents(form, component, currentContainer);
               break;
             }
 
             case ('container'): { // genera un div standard
-              console.log('trovato grid ' + view.type);
               currentContainer = this.pageBuilder.addPlainDiv(nestingIdx, component);
               this.keepAdding(element, currentContainer, nestingLevel);
               break;
             }
             case ('box'): { // genera un div standard
-              console.log('trovato box ' + view.type);
               // dovrà essere un form, di quelli col nome scritto sul riquadro
               currentContainer = this.pageBuilder.addBox(nestingIdx, component);
               (<ContainerBoxDynamicComponent>currentContainer).setLegend(form[component]['view']['label']);
@@ -75,27 +80,29 @@ export class PageBuildingDirector {
               break;
             }
             case 'tabbed-panel': {
-              console.log('trovato tabbed-panel ' + view.type);
               currentContainer = this.pageBuilder.addTabbedPanel(nestingIdx, component);
               this.keepAdding(element, currentContainer, nestingLevel);
               break;
             }
 
             case 'tabs': { // sempre contenuto in un tabbed-panel
-              console.log('trovato tabs array ' + view.type);
               this.addViewsToTabbedPage(element, nestingLevel, <ContainerTabbedDynamicComponent>nestingIdx, component);
               break;
             }
 
             case 'table': {
               console.log('trovato table' + view.type);
-              currentContainer = this.pageBuilder.addTable(nestingIdx, component);
               this.keepAdding(element, currentContainer, nestingLevel);
               break;
             }
 
+            case 'input-suggestion': {
+              this.pageBuilder.addStdInputChildToContainer(
+                nestingIdx, element, component);
+              break;
+            }
+
             case 'std-input': { // era std-input
-              console.log('trovata foglia output : ' + view.type);
               this.pageBuilder.addStdInputChildToContainer(
                 nestingIdx, element, component);
 
@@ -103,21 +110,18 @@ export class PageBuildingDirector {
             }
 
             case 'conditional-input': {
-              console.log('trovata foglia conditional : ' + view.type);
               this.pageBuilder.addConditionalInputChildToContainer(
                 nestingIdx, element, component);
               break;
             }
 
             case 'input-text': {
-              console.log('trovata foglia output : ' + view.type);
-              this.pageBuilder.addStdInputChildToContainer(
+              this.pageBuilder.addTextInputChildToContainer(
                 nestingIdx, element, component);
               break;
             }
 
             case 'combo-input': {
-              console.log('trovata foglia output : ' + view.type);
               this.pageBuilder.addComboInputChildToContainer(
                 nestingIdx, element, component);
               break;
@@ -136,6 +140,10 @@ export class PageBuildingDirector {
         }
       }
     }
+  }
+
+  public reset() {
+    this.divStack = [];
   }
 
 
@@ -172,8 +180,13 @@ export class PageBuildingDirector {
     const selectedValue = secondLeaf.fact.value;
 
     this.pageBuilder.addCompositeElem(container, label, value, selectValues, selectedValue);
+  }
 
-
+  private parseList(form, component, container, nestingLevel) {
+    const views: any[] = form[component]['content'];
+    views.forEach(elem => {
+      this.keepAdding({elem}, container, nestingLevel);
+    });
   }
 
 
