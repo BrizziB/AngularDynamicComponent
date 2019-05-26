@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { MaterialModule } from '../../../material.module';
 import { InputComboDynamicComponent } from '../abstract-components/input-combo-dynamic.component';
 
 

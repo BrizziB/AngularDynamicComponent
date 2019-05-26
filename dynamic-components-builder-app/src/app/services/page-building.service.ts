@@ -3,7 +3,7 @@ import { HttpClient, HttpHeaders, HttpResponse} from '@angular/common/http';
 import { Observable, of } from 'rxjs';
 import { isUndefined, isNullOrUndefined } from 'util';
 
-import { JSONPage } from '../mock/jsonPage';
+import { JSONPage } from '../dynamical-component-builder/mock/jsonPage';
 
 
 @Injectable({

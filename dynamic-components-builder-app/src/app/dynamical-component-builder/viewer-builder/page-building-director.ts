@@ -4,13 +4,8 @@ import { PageBuilder } from './page-builder';
 import { ContainerDynamicComponent } from '../dynamic-components/components/abstract-components/_container-dynamic.component';
 import { ContainerTabbedDynamicComponent } from '../dynamic-components/components/abstract-components/container-tabbed-dynamic.component';
 import { NavElement } from '../dynamic-components/non-component-leaves/navElement';
-import { InputPlainDynamicComponent } from '../dynamic-components/components/abstract-components/input-plain-dynamic.component';
-import { InputComboDynamicComponent } from '../dynamic-components/components/abstract-components/input-combo-dynamic.component';
-import { MaterialTabbedComponent } from '../dynamic-components/components/material-components/material-tabbed-container.component';
 import { isNullOrUndefined } from 'util';
-import { InputTextDynamicComponent } from '../dynamic-components/components/abstract-components/input-text-dynamic.component';
 import { ContainerBoxDynamicComponent } from '../dynamic-components/components/abstract-components/container-box-dynamic.component';
-import { MaterialComboInputComponent } from '../dynamic-components/components/material-components/material-combo-input.component';
 
 @Injectable({
   providedIn: 'root'
@@ -99,6 +94,13 @@ export class PageBuildingDirector {
             case 'input-suggestion': {
               this.pageBuilder.addStdInputChildToContainer(
                 nestingIdx, element, component);
+              break;
+            }
+
+            case 'temporal-input': { // era std-input
+              this.pageBuilder.addStdInputChildToContainer(
+                nestingIdx, element, component);
+
               break;
             }
 

@@ -1,5 +1,5 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { ContainerPlainDynamicComponent } from './dynamic-components/components/abstract-components/container-plain-dynamic.component';
+import { ContainerPlainDynamicComponent } from '../components/abstract-components/container-plain-dynamic.component';
 
 
 @Component({
