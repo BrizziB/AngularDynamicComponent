@@ -110,6 +110,7 @@ mat-form-field {
 
 .btn{
   width: 140px;
+  font-size: 16px;
   margin-right: 10px !important;
   transition: all 0.3s cubic-bezier(.25,.8,.25,1);
 

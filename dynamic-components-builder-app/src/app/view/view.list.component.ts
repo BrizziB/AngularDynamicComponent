@@ -1,5 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import {MatTableDataSource} from '@angular/material';
+import { HttpResponse } from '@angular/common/http';
+import { MatTableDataSource } from '@angular/material';
+import { ViewerListService } from '../services/viewer-list.service';
+import { Viewer } from '../model/Viewer';
+import { isNullOrUndefined } from 'util';
+import { Type } from '../model/Type';
 
 export interface PeriodicElement {
   name: string;
@@ -26,17 +31,39 @@ const ELEMENT_DATA: PeriodicElement[] = [
   templateUrl: './view.list.component.html',
   styleUrls: ['./view.list.component.css']
 })
-export class ViewListComponent implements OnInit{
+export class ViewListComponent implements OnInit {
 
-  displayedColumns: string[] = ['position', 'name', 'weight', 'symbol'];
-  dataSource = new MatTableDataSource(ELEMENT_DATA);
+  displayedColumns: string[] = ['name', 'description', 'type', 'actions'];
+  dataSource: MatTableDataSource<Viewer>;
+
+  viewerList: Viewer[];
+
+
+  constructor(
+    private viewerListService: ViewerListService
+  ) {}
+
 
   applyFilter(filterValue: string) {
     this.dataSource.filter = filterValue.trim().toLowerCase();
   }
 
   ngOnInit() {
+    // per usare dataSource basta fare tipo così:
 
+    this.viewerListService.getViewerList()
+      .subscribe((viewers: HttpResponse<Viewer[]>) => {
+        this.viewerList = viewers.body;
+        this.dataSource = new MatTableDataSource(viewers.body);
+      });
+  }
+
+  getType(type: Type): String{
+    if ( !isNullOrUndefined(type)) {
+      return type.name;
+    } else {
+      return 'no-type';
+    }
   }
 
 }
