@@ -11,8 +11,9 @@
 
   <div id="main-container">
 
-    <app-view-list></app-view-list>
+    <app-view-list *ngIf="showList" (showEditView)="showEditView()">   </app-view-list>
 
+    <app-view-edit *ngIf="showEdit" >   </app-view-edit>
 
 
   </div>
@@ -21,5 +22,5 @@
 </div>
 
 <div [hidden]="!showDynamicalViewer" id="dynamical-viewer" >
-    <app-dyn-viewer (closeClick)="showDynamicalViewer=false"></app-dyn-viewer>
-  </div>
+  <app-dyn-viewer (closeClick)="showDynamicalViewer=false"></app-dyn-viewer>
+</div>

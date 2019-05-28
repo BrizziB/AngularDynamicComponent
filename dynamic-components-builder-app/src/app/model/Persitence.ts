@@ -1,5 +1,5 @@
 
-export class PersistableImpl {
+export class Persistence {
   id: Number;
   uuid: String;
 }

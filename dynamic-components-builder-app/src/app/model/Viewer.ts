@@ -1,8 +1,8 @@
-import { PersistableImpl } from './PersistableImpl';
+import { Persistence } from './Persitence';
 import { Type } from './Type';
 
 export class Viewer {
-  persistable: PersistableImpl;
+  persistable: Persistence;
   type: Type;
   name: String;
   description: String;

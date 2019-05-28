@@ -1,0 +1,60 @@
+<div id="view-edit-container">
+    <mat-toolbar class="toolbar" >
+        <h1 >Creazione Vista</h1>
+        <div>
+            <button mat-raised-button  (click)="null" class="btn">Annulla</button>
+            <button mat-raised-button color="primary" (click)="null" class="btn">Valida</button>
+            <button *ngIf="true" mat-raised-button color="accent" (click)="null" class="btn">Anteprima</button>
+            <button *ngIf="true" mat-raised-button color="warn" (click)="null" class="btn">Salva</button>
+        </div>
+    </mat-toolbar>
+    <div id="view-options-div">
+        <mat-form-field class="input-form">
+            <mat-label>*Nome</mat-label>
+            <input matInput type="text" placeholder="Inserisci Nome" [(ngModel)]="viewName">
+            <button mat-button *ngIf="viewName" matSuffix mat-icon-button aria-label="Clear" (click)="viewName=''">
+              <mat-icon>close</mat-icon>
+            </button>
+        </mat-form-field>
+        <div id="type-selector">
+            <mat-form-field class="input-form">
+                <mat-label>Applica a</mat-label>
+                <mat-select [(value)]="viewType">
+                  <mat-option> questa lista va presa da servizi http</mat-option>
+                  <mat-option value="option1">Option 1</mat-option>
+                  <mat-option value="option2">Option 2</mat-option>
+                  <mat-option value="option3">Option 3</mat-option>
+                </mat-select>
+            </mat-form-field>
+            <mat-form-field *ngIf="viewType" class="generate-form">
+              <mat-label>Genera...</mat-label>
+              <mat-select>
+                <mat-option>
+                  <button mat-button  matSuffix mat-icon-button aria-label="asd" (click)="null">Genera Edit </button>
+                </mat-option>
+                <mat-option>
+                    <button mat-button  matSuffix mat-icon-button aria-label="asd2" (click)="null">Genera Output </button>
+                  </mat-option>
+              </mat-select>
+          </mat-form-field>
+
+        </div>
+
+      </div>
+    <div id="view-def-div">
+        <mat-tab-group id="tabbed-div">
+            <mat-tab label="*Definizione">
+                <mat-form-field class="txt-form">
+                  <textarea class="txt" matInput matAutosizeMinRows=10 placeholder=""></textarea>
+                </mat-form-field>
+            </mat-tab>
+            <mat-tab label="CSS">
+                <mat-form-field class="txt-form">
+                  <textarea class="txt" matInput matAutosizeMinRows=10 placeholder=""></textarea>
+                </mat-form-field>
+            </mat-tab>
+        </mat-tab-group>
+    </div>
+
+</div>
+

@@ -4,6 +4,13 @@
   align-content: space-around;
 }
 
+#page{
+  height: 100%;
+}
+#main-container{
+  height: 100%;
+}
+
 .toolbar-row{
   display: flex;
   justify-content: center;

@@ -1,9 +1,9 @@
-import { PersistableImpl } from './PersistableImpl';
+import { Persistence } from './Persitence';
 
 
 export class Type {
 
-  persistable: PersistableImpl;
+  persistable: Persistence;
   name: String;
   description: String;
   readOnly: Boolean;

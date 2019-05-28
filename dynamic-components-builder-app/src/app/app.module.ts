@@ -53,11 +53,15 @@ import { DynamicViewerComponent } from './view/dynamical-component-viewer/dynami
 
 import {ViewListComponent} from './view/view.list.component';
 import { ViewerListService } from './services/viewer-list.service';
+import { ViewEditComponent } from './view/view.edit.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     DynamicViewerComponent,
+    BaseComponent,
+    ViewListComponent,
+    ViewEditComponent,
 
   // componenti dinamici
     MaterialBoxComponent,
@@ -77,10 +81,9 @@ import { ViewerListService } from './services/viewer-list.service';
     CustomTableComponent,
     CustomTextInputComponent,
     CustomConditionalInputComponent,
-    CustomCompositeLeafComponent,
+    CustomCompositeLeafComponent
 
-    BaseComponent,
-    ViewListComponent
+
 
   ],
   imports: [
