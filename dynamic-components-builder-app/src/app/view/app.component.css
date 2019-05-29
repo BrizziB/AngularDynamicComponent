@@ -17,6 +17,7 @@
 }
 
 #dynamical-viewer{
+  z-index: 999;
   width: 800px;
 	height: 600px;
 	position: absolute;

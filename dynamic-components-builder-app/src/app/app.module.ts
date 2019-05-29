@@ -54,6 +54,7 @@ import { DynamicViewerComponent } from './view/dynamical-component-viewer/dynami
 import {ViewListComponent} from './view/view.list.component';
 import { ViewerListService } from './services/viewer-list.service';
 import { ViewEditComponent } from './view/view.edit.component';
+import { ViewerEditService } from './services/viewer-edit.service';
 
 @NgModule({
   declarations: [
@@ -119,7 +120,8 @@ import { ViewEditComponent } from './view/view.edit.component';
   ],
   providers: [
     PageBuildingService,
-    ViewerListService
+    ViewerListService,
+    ViewerEditService
   ],
   bootstrap: [AppComponent]
 })

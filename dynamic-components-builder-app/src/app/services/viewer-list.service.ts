@@ -18,7 +18,7 @@ export class ViewerListService {
 
 
   public getViewerList(): Observable<HttpResponse<Viewer[]>> {
-    const url = 'http://localhost:8080/empedocle-cec-1.0.0/rest/viewer/get-list/';
+    const url = 'http://localhost:8080/empedocle-cec-1.0.0/rest/viewer-list/get/';
     const req = this.http.get<Viewer[]> (url,
           {withCredentials: true, headers: this.httpOptions.headers, observe: 'response'}
       );
