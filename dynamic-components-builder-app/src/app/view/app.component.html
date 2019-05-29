@@ -4,7 +4,6 @@
       <h1>Migrazione Εmpεδοclε prova</h1>
     </mat-toolbar-row>
     <mat-toolbar-row class="toolbar-row">
-        <button  id="viewer-show-btn btn" (click)="showViewer()" mat-raised-button class="btn" >Mostra Viewer</button>
         <button  id="views-btn btn" (click)="showViewList()" mat-raised-button class="btn" >Viste</button>
     </mat-toolbar-row>
   </mat-toolbar>
@@ -21,6 +20,3 @@
 
 </div>
 
-<div [hidden]="!showDynamicalViewer" id="dynamical-viewer" >
-  <app-dyn-viewer (closeClick)="showDynamicalViewer=false"></app-dyn-viewer>
-</div>

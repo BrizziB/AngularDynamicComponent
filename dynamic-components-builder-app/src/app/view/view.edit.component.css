@@ -69,14 +69,29 @@
 
 .txt{
   max-width:100%;
-  max-height: 800px;
-  min-height: 200px;
+  min-height: 500px;
   margin:10px;
   border-radius: 5px;
 
 }
 
 
+.toolbar-row{
+  display: flex;
+  justify-content: center;
+}
+
+#dynamical-viewer{
+  z-index: 999;
+  width: 800px;
+	height: 600px;
+	position: absolute;
+	top:0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	margin: auto;
+}
 
 
 

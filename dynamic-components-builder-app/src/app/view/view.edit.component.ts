@@ -17,11 +17,15 @@ export interface SelectItem {
 })
 export class ViewEditComponent implements OnInit {
 
+  showDynamicalViewer = false;
+  generated = false;
+
   viewName: String;
   viewType: Type;
   typeName: String; // per semplicità
   typeList: SelectItem[];
-  dslContent: String;
+  dslContent: String = '';
+  CSSContent: String = '';
   cid: String;
 
   constructor(
@@ -29,7 +33,6 @@ export class ViewEditComponent implements OnInit {
   ) {  }
 
   ngOnInit() {
-    this.viewName = '';
     this.viewType = null;
     this.viewerEditService.getConversationID().subscribe(
       (cid: HttpResponse<String>) => {
@@ -42,12 +45,21 @@ export class ViewEditComponent implements OnInit {
     });
   }
 
+  protected closePage() {
+
+  }
+
   protected getViewerEdit() {
     if (!isNullOrUndefined(this.typeName) && !isNullOrUndefined(this.cid)) {
       this.viewerEditService.getViewerEdit(this.cid, this.typeName).subscribe(
         (resp: String) => {
           this.dslContent = resp;
-          console.log(this.dslContent);
+          this.generated = true;
+          this.viewerEditService.getViewerCSS(this.cid, this.typeName).subscribe(
+            (response: String) => {
+              this.CSSContent = response;
+            }
+          );
         }
       );
     } else {
@@ -55,8 +67,23 @@ export class ViewEditComponent implements OnInit {
     }
   }
 
+  protected saveViewer() {
+    if (!isNullOrUndefined(this.typeName) && !isNullOrUndefined(this.cid)) {
+      this.viewerEditService.saveViewer(this.cid, this.viewName).subscribe(
+        (resp: Boolean) => {
+          alert('saved: ' + resp);
+        }
+      );
+    }
+  }
+
+  protected getPreview() {
+    this.showDynamicalViewer = true;
+  }
+
   protected getViewerOutput(typeName: String) {
     alert('todo');
   }
+
 
 }

@@ -11,21 +11,14 @@ import { PageBuildingService } from '../../services/page-building.service';
   templateUrl: './dynamic.viewer.component.html',
   styleUrls: ['./dynamic.viewer.component.css']
 })
-export class DynamicViewerComponent {
+export class DynamicViewerComponent implements OnInit {
+  @Input() typeName: String;
   @Output() closeClick = new EventEmitter();
 
-
-  public types = [
-    'personaProva',
-    'Cartella Elettronica Cefalee v1.9'
-  ];
-
-  selectedValue: string = null;
   color = 'primary';
   mode = 'indeterminate';
   value = null;
   loading = false;
-  typeSelected = false;
 
   constructor(
     private pageBuildingDirector: PageBuildingDirector,
@@ -36,12 +29,10 @@ export class DynamicViewerComponent {
   protected child: BaseComponent; // è un componente cui si possono aggiungere dinamicamente altri componenti
   // del tutto simile ad un  PlainContainer
 
-  renderViewer() {
-    this.child.reset();
-    this.pageBuildingDirector.reset();
+  ngOnInit() {
     this.loading = true;
     this.pageBuildingDirector.init(this.child);
-    this.pageBuildingService.getPage(this.selectedValue).subscribe(
+    this.pageBuildingService.getPage(this.typeName).subscribe(
       ((resp) => {
         if (resp !== null) {
           this.pageBuildingDirector.buildPageFromScheme(resp);
@@ -52,15 +43,10 @@ export class DynamicViewerComponent {
   }
 
   closeModal() {
-    this.selectedValue = null;
-    this.typeSelected = false;
     this.child.reset();
     this.pageBuildingDirector.reset();
     this.closeClick.emit();
   }
 
-  typeSel() {
-    this.typeSelected = true;
-  }
 
 }

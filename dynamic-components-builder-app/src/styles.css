@@ -125,3 +125,10 @@ h1{
   font-weight: bold !important;
 }
 
+.value-input{
+  width: 95% !important;
+}
+
+.mat-form-field-wrapper{
+ width: 80%;
+}

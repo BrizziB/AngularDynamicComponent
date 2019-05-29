@@ -25,6 +25,14 @@ export class ViewerEditService {
     return req;
   }
 
+  public closeConversation(): Observable<HttpResponse<String>> {
+    const url = 'http://localhost:8080/empedocle-cec-1.0.0/rest/viewer-edit/conversation/end';
+    const req = this.http.get<String> (url,
+          {withCredentials: true, headers: this.httpOptions.headers, observe: 'response'}
+      );
+    return req;
+  }
+
   public getTypeList(cid: String): Observable<HttpResponse<SelectItem[]>> {
     const url = 'http://localhost:8080/empedocle-cec-1.0.0/rest/viewer-edit/type-list/get/?cid=' + cid;
     const req = this.http.get<SelectItem[]> (url,
@@ -37,6 +45,22 @@ export class ViewerEditService {
     const url = 'http://localhost:8080/empedocle-cec-1.0.0/rest/viewer-edit/viewer/edit/get/' + typeName + '/?cid=' + cid;
     const req = this.http.get (url,
           {withCredentials: true, responseType: 'text'}
+      );
+    return req;
+  }
+
+  public getViewerCSS(cid: String, typeName: String): Observable<String> {
+    const url = 'http://localhost:8080/empedocle-cec-1.0.0/rest/viewer-edit/viewer/css/get/' + typeName + '/?cid=' + cid;
+    const req = this.http.get (url,
+          {withCredentials: true, responseType: 'text'}
+      );
+    return req;
+  }
+
+  public saveViewer(cid: String, viewerName): Observable<Boolean> {
+    const url = 'http://localhost:8080/empedocle-cec-1.0.0/rest/viewer-edit/save/' + viewerName + '/?cid=' + cid;
+    const req = this.http.get<Boolean>(url,
+          {withCredentials: true, responseType: 'json'}
       );
     return req;
   }

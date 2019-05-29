@@ -95,3 +95,8 @@
 #hide-btn{
   width: 20px !important;
 }
+.viewer-title{
+  position: absolute;
+  top: 16px;
+  left: 25%;
+}

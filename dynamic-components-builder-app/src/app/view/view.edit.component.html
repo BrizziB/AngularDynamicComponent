@@ -3,9 +3,9 @@
         <h1 >Creazione Vista</h1>
         <div>
             <button mat-raised-button  (click)="null" class="btn">Annulla</button>
-            <button mat-raised-button color="primary" (click)="getViewerEdit()" class="btn">PROVA</button>
-            <button *ngIf="true" mat-raised-button color="accent" (click)="null" class="btn">Anteprima</button>
-            <button *ngIf="true" mat-raised-button color="warn" (click)="null" class="btn">Salva</button>
+            <button mat-raised-button color="primary" (click)="null" class="btn">Valida</button>
+            <button *ngIf="typeName && generated" mat-raised-button color="accent" (click)="getPreview()" class="btn">Anteprima</button>
+            <button *ngIf="viewName && typeName && generated" mat-raised-button color="warn" (click)="saveViewer()" class="btn">Salva</button>
         </div>
     </mat-toolbar>
     <div id="view-options-div">
@@ -24,18 +24,8 @@
                   <mat-option *ngFor="let type of typeList" [value]="type.label">{{type.label}}</mat-option>
                 </mat-select>
             </mat-form-field>
-            <mat-form-field *ngIf="typeName" class="generate-form">
-              <mat-label>Genera...</mat-label>
-              <mat-select>
-                <mat-option>
-                  <button mat-button  matSuffix mat-icon-button aria-label="asd" (click)="getViewerEdit()">Edit </button>
-                </mat-option>
-                <mat-option>
-                    <button mat-button  matSuffix mat-icon-button aria-label="asd2" (click)="null">Output </button>
-                  </mat-option>
-              </mat-select>
-          </mat-form-field>
-
+              <button *ngIf="typeName" class="btn" mat-raised-button  color="primary" aria-label="asd" (click)="getViewerEdit()">Genera Edit </button>
+              <button *ngIf="typeName" class="btn"  mat-raised-button  color="accent"  aria-label="asd2" (click)="null">Genera Output </button>
         </div>
 
       </div>
@@ -43,16 +33,21 @@
         <mat-tab-group id="tabbed-div">
             <mat-tab label="*Definizione">
                 <mat-form-field class="txt-form">
-                  <textarea class="txt" matInput matAutosizeMinRows=10 placeholder="">{{dslContent}}</textarea>
+                  <textarea class="txt" matInput placeholder="Type DSL" [value]="dslContent"></textarea>
                 </mat-form-field>
             </mat-tab>
             <mat-tab label="CSS">
                 <mat-form-field class="txt-form">
-                  <textarea class="txt" matInput matAutosizeMinRows=10 placeholder=""></textarea>
+                  <textarea class="txt" matInput  placeholder="Viewer CSS" [value]='CSSContent'></textarea>
                 </mat-form-field>
             </mat-tab>
         </mat-tab-group>
     </div>
 
+</div>
+
+
+<div *ngIf="showDynamicalViewer" id="dynamical-viewer" >
+  <app-dyn-viewer [typeName]="this.typeName" (closeClick)="showDynamicalViewer=false"></app-dyn-viewer>
 </div>
 

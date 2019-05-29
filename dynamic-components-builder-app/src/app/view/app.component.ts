@@ -10,13 +10,8 @@ import {Component, OnInit} from '@angular/core';
 })
 export class AppComponent implements OnInit {
 
-  showDynamicalViewer = false;
   showList = false;
   showEdit = false;
-
-  showViewer(): void {
-    this.showDynamicalViewer = true;
-  }
 
   showViewList(): void {
     this.showList = true;
@@ -38,10 +33,6 @@ export class AppComponent implements OnInit {
   showEditView(): void {
     this.hideViewList();
     this.showViewEdit();
-  }
-
-  hideViewer(): void {
-    this.showDynamicalViewer = false;
   }
 
   ngOnInit(): void {
