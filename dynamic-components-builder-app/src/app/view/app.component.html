@@ -1,10 +1,8 @@
 <div id="page">
   <mat-toolbar class="toolbar" color="primary">
     <mat-toolbar-row class="toolbar-row">
-      <h1>Migrazione Εmpεδοclε prova</h1>
-    </mat-toolbar-row>
-    <mat-toolbar-row class="toolbar-row">
-        <button  id="views-btn btn" (click)="showViewList()" mat-raised-button class="btn" >Viste</button>
+        <h1>Migrazione Εmpεδοclε prova</h1>
+        <button  class="views-btn btn" (click)="showViewList()" mat-raised-button >Viste</button>
     </mat-toolbar-row>
   </mat-toolbar>
 
@@ -12,7 +10,7 @@
 
     <app-view-list *ngIf="showList" (showEditView)="showEditView()">   </app-view-list>
 
-    <app-view-edit *ngIf="showEdit" >   </app-view-edit>
+    <app-view-edit *ngIf="showEdit" (showListView)="showListView()">   </app-view-edit>
 
 
   </div>

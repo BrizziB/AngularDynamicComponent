@@ -104,7 +104,7 @@ mat-form-field {
 
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
-  background: #ff4081;
+  background: #757de8;
 }
 
 
@@ -131,4 +131,18 @@ h1{
 
 .mat-form-field-wrapper{
  width: 80%;
+}
+
+.otherbtn{
+color: black;
+background-color: #757de8;
+}
+
+.littlebtn{
+  width: 30px;
+}
+
+.darkbtn{
+  color: white;
+  background-color: #002984;
 }

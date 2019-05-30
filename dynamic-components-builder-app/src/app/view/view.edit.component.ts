@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { HttpResponse } from '@angular/common/http';
 import { Type } from '../model/Type';
 import { ViewerEditService } from '../services/viewer-edit.service';
@@ -16,6 +16,7 @@ export interface SelectItem {
   styleUrls: ['./view.edit.component.css']
 })
 export class ViewEditComponent implements OnInit {
+  @Output() showListView = new EventEmitter();
 
   showDynamicalViewer = false;
   generated = false;
@@ -45,8 +46,22 @@ export class ViewEditComponent implements OnInit {
     });
   }
 
-  protected closePage() {
-
+  protected getViewerOutput() {
+    if (!isNullOrUndefined(this.typeName) && !isNullOrUndefined(this.cid)) {
+      this.viewerEditService.getViewerOutput(this.cid, this.typeName).subscribe(
+        (resp: String) => {
+          this.dslContent = resp;
+          this.generated = true;
+          this.viewerEditService.getViewerCSS(this.cid, this.typeName).subscribe(
+            (response: String) => {
+              this.CSSContent = response;
+            }
+          );
+        }
+      );
+    } else {
+      alert ('choose a type');
+    }
   }
 
   protected getViewerEdit() {
@@ -71,19 +86,42 @@ export class ViewEditComponent implements OnInit {
     if (!isNullOrUndefined(this.typeName) && !isNullOrUndefined(this.cid)) {
       this.viewerEditService.saveViewer(this.cid, this.viewName).subscribe(
         (resp: Boolean) => {
-          alert('saved: ' + resp);
+          alert('viewer salvato');
         }
       );
     }
   }
 
+  protected validateViewer() {
+    if (!isNullOrUndefined(this.typeName) && !isNullOrUndefined(this.cid)) {
+      this.viewerEditService.validateViewer(this.cid).subscribe(
+        (resp: Boolean) => {
+          if (resp === true) {
+          alert('validazione superata con successo');
+          } else {
+            alert('validazione fallita');
+          }
+        }
+      );
+    }
+  }
+
+  protected closeViewerEditor() {
+    this.viewerEditService.closeConversation(this.cid).subscribe(
+      (resp) => {
+        console.log(resp);
+        this.viewName = null;
+        this.typeName = null;
+        this.typeList = null;
+        this.dslContent = null;
+        this.CSSContent = null;
+        this.showListView.emit();
+      }
+    );
+  }
+
   protected getPreview() {
     this.showDynamicalViewer = true;
   }
-
-  protected getViewerOutput(typeName: String) {
-    alert('todo');
-  }
-
 
 }

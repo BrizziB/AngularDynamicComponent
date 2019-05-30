@@ -35,6 +35,11 @@ export class AppComponent implements OnInit {
     this.showViewEdit();
   }
 
+  showListView(): void {
+    this.hideViewEdit();
+    this.showViewList();
+  }
+
   ngOnInit(): void {
 
     }

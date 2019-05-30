@@ -1,7 +1,9 @@
 <div id="view-list-container">
     <mat-toolbar class="toolbar" >
         <h1 >Viste</h1>
-        <button mat-raised-button color="primary" (click)="addViewer()" class="btn">Aggiungi Vista</button>
+        <button mat-raised-button color="primary" matTooltip="Aggiungi nuova vista" (click)="addViewer()"  class="btn otherbtn">
+          Aggiungi <mat-icon>add_circle</mat-icon>
+        </button>
       </mat-toolbar>
       <mat-form-field id="table-top-header">
         <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
@@ -30,7 +32,9 @@
         <ng-container matColumnDef="actions">
           <th mat-header-cell *matHeaderCellDef> Azioni </th>
           <td mat-cell *matCellDef="let element">
-            <button mat-raised-button color="primary" (click)="viewViewer()" class="btn" >Visualizza</button>
+            <button mat-raised-button (click)="viewViewer()" class="otherbtn littlebtn btn" matTooltip="Visualizza" >
+                <mat-icon>zoom_in</mat-icon>
+            </button>
           </td>
         </ng-container>
 

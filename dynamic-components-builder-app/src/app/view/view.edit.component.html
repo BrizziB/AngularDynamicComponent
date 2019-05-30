@@ -2,10 +2,11 @@
     <mat-toolbar class="toolbar" >
         <h1 >Creazione Vista</h1>
         <div>
-            <button mat-raised-button  (click)="null" class="btn">Annulla</button>
-            <button mat-raised-button color="primary" (click)="null" class="btn">Valida</button>
-            <button *ngIf="typeName && generated" mat-raised-button color="accent" (click)="getPreview()" class="btn">Anteprima</button>
-            <button *ngIf="viewName && typeName && generated" mat-raised-button color="warn" (click)="saveViewer()" class="btn">Salva</button>
+            <button mat-raised-button  (click)="closeViewerEditor()" class="btn"> <mat-icon>skip_previous</mat-icon> Annulla</button>
+            <button mat-raised-button color="primary" (click)="validateViewer()" class="btn otherbtn"><mat-icon>check_circle</mat-icon> Valida</button>
+            <button *ngIf="typeName && generated" mat-raised-button (click)="getPreview()" class="otherbtn btn"><mat-icon>airplay</mat-icon>Anteprima</button>
+            <button *ngIf="viewName && typeName && generated" mat-raised-button  (click)="saveViewer()" class="darkbtn btn">
+                <mat-icon>check_circle</mat-icon>Salva</button>
         </div>
     </mat-toolbar>
     <div id="view-options-div">
@@ -25,7 +26,7 @@
                 </mat-select>
             </mat-form-field>
               <button *ngIf="typeName" class="btn" mat-raised-button  color="primary" aria-label="asd" (click)="getViewerEdit()">Genera Edit </button>
-              <button *ngIf="typeName" class="btn"  mat-raised-button  color="accent"  aria-label="asd2" (click)="null">Genera Output </button>
+              <button *ngIf="typeName" class="btn otherbtn"  mat-raised-button aria-label="asd2" (click)="getViewerOutput()">Genera Output </button>
         </div>
 
       </div>
