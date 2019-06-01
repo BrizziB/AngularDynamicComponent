@@ -41,5 +41,6 @@
         <tr mat-header-row *matHeaderRowDef="displayedColumns" class="head-row"></tr>
         <tr mat-row *matRowDef="let row; columns: displayedColumns;" class="body-row"></tr>
       </table>
+      <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" ></mat-paginator>
 
 </div>

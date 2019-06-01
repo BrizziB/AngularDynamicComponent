@@ -55,6 +55,7 @@ import {ViewListComponent} from './view/view.list.component';
 import { ViewerListService } from './services/viewer-list.service';
 import { ViewEditComponent } from './view/view.edit.component';
 import { ViewerEditService } from './services/viewer-edit.service';
+import { MatPaginator } from '@angular/material';
 
 @NgModule({
   declarations: [
@@ -63,6 +64,7 @@ import { ViewerEditService } from './services/viewer-edit.service';
     BaseComponent,
     ViewListComponent,
     ViewEditComponent,
+    MatPaginator,
 
   // componenti dinamici
     MaterialBoxComponent,

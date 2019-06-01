@@ -2,7 +2,9 @@
   <mat-toolbar class="toolbar"color="primary">
       <h2 class="viewer-title">{{typeName}}</h2>
       <span class="spacer"></span>
-      <button  id="hide-btn" (click)="closeModal()" mat-raised-button class="btn close-btn" color="accent">X</button>
+      <button  id="hide-btn" (click)="closeModal()" mat-raised-button class="btn close-btn">
+        <mat-icon> close </mat-icon>
+      </button>
   </mat-toolbar>
   <div id='app-outer-div'>
     <div id='container-dynamic-content'>

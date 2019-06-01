@@ -6,7 +6,7 @@
             <button mat-raised-button color="primary" (click)="validateViewer()" class="btn otherbtn"><mat-icon>check_circle</mat-icon> Valida</button>
             <button *ngIf="typeName && generated" mat-raised-button (click)="getPreview()" class="otherbtn btn"><mat-icon>airplay</mat-icon>Anteprima</button>
             <button *ngIf="viewName && typeName && generated" mat-raised-button  (click)="saveViewer()" class="darkbtn btn">
-                <mat-icon>check_circle</mat-icon>Salva</button>
+                <mat-icon>save</mat-icon>Salva</button>
         </div>
     </mat-toolbar>
     <div id="view-options-div">

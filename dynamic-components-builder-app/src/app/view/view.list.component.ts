@@ -1,6 +1,6 @@
-import { Component, OnInit, Output, EventEmitter} from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, ViewChild} from '@angular/core';
 import { HttpResponse } from '@angular/common/http';
-import { MatTableDataSource } from '@angular/material';
+import { MatTableDataSource, MatPaginator, MatSort } from '@angular/material';
 import { ViewerListService } from '../services/viewer-list.service';
 import { Viewer } from '../model/Viewer';
 import { isNullOrUndefined } from 'util';
@@ -12,6 +12,8 @@ import { Type } from '../model/Type';
   styleUrls: ['./view.list.component.css']
 })
 export class ViewListComponent implements OnInit {
+  @ViewChild(MatPaginator) paginator: MatPaginator;
+  @ViewChild(MatSort) sort: MatSort;
   @Output() showEditView = new EventEmitter();
 
   displayedColumns: string[] = ['name', 'description', 'type', 'actions'];
@@ -24,19 +26,28 @@ export class ViewListComponent implements OnInit {
   ) {}
 
 
+
   applyFilter(filterValue: string) {
     this.dataSource.filter = filterValue.trim().toLowerCase();
+
+    if (this.dataSource.paginator) {
+      this.dataSource.paginator.firstPage();
+    }
   }
 
   ngOnInit() {
     // per usare dataSource basta fare tipo così:
-
+    this.paginator.pageSize = 10;
+    this.paginator.showFirstLastButtons = true;
     this.viewerListService.getViewerList()
       .subscribe((viewers: HttpResponse<Viewer[]>) => {
         this.viewerList = viewers.body;
         this.dataSource = new MatTableDataSource(viewers.body);
+        this.dataSource.paginator = this.paginator;
+        this.dataSource.sort = this.sort;
       });
   }
+
 
   viewViewer() {
     alert('funzione non ancora implementata');
