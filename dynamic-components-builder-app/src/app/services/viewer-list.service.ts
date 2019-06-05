@@ -25,5 +25,13 @@ export class ViewerListService {
     return req;
   }
 
+  public test(): Observable<HttpResponse<String>> {
+    const url = 'http://localhost:8080/empedocle-cec-1.0.0/rest/viewer-list/test/';
+    const req = this.http.get<String>(url,
+          {withCredentials: true, headers: this.httpOptions.headers, observe: 'response'}
+      );
+    return req;
+  }
+
 
 }

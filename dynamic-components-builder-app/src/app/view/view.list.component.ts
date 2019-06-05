@@ -25,7 +25,12 @@ export class ViewListComponent implements OnInit {
     private viewerListService: ViewerListService
   ) {}
 
-
+  protected test() {
+    this.viewerListService.test()
+    .subscribe((viewers: HttpResponse<String>) => {
+      return;
+    });
+  }
 
   applyFilter(filterValue: string) {
     this.dataSource.filter = filterValue.trim().toLowerCase();
