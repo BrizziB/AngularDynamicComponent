@@ -1,7 +1,7 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { HttpResponse } from '@angular/common/http';
-import { Type } from '../model/Type';
-import { ViewerEditService } from '../services/viewer-edit.service';
+import { Type } from '../../../model/Type';
+import { ViewerEditService } from '../../../services/viewer-edit.service';
 import { isNullOrUndefined } from 'util';
 
 

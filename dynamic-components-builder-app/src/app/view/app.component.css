@@ -13,10 +13,12 @@
 
 .toolbar-row{
   display: flex;
-  justify-content: start;
+  justify-content: flex-start;
 }
 
 .views-btn{
   margin-left: 10%;
 }
+
+
 

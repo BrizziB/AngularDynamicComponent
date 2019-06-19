@@ -1,10 +1,10 @@
 import { Component, OnInit, Output, EventEmitter, ViewChild} from '@angular/core';
 import { HttpResponse } from '@angular/common/http';
 import { MatTableDataSource, MatPaginator, MatSort } from '@angular/material';
-import { ViewerListService } from '../services/viewer-list.service';
-import { Viewer } from '../model/Viewer';
+import { ViewerListService } from '../../../services/viewer-list.service';
+import { Viewer } from '../../../model/Viewer';
 import { isNullOrUndefined } from 'util';
-import { Type } from '../model/Type';
+import { Type } from '../../../model/Type';
 
 @Component({
   selector: 'app-view-list',

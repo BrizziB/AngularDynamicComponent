@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "dynamic-components-test-app": {
+    "dynamic-components-builder-app": {
       "root": "",
       "sourceRoot": "src",
       "projectType": "application",
@@ -13,7 +13,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/dynamic-components-test-app",
+            "outputPath": "dist/dynamic-components-builder-app",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -22,10 +22,17 @@
               "src/favicon.ico",
               "src/assets"
             ],
-            "styles": [
-              "src/styles.css"
-            ],
-            "scripts": []
+          "styles": [
+            "src/styles.css",
+            "node_modules/datatables.net-dt/css/jquery.dataTables.css",
+            "node_modules/bootstrap/dist/css/bootstrap.min.css"
+
+          ],
+          "scripts": [
+            "node_modules/jquery/dist/jquery.min.js",
+            "node_modules/datatables.net/js/jquery.dataTables.js",
+            "node_modules/bootstrap/dist/js/bootstrap.min.js"
+          ]
           },
           "configurations": {
             "production": {
@@ -50,18 +57,18 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "dynamic-components-test-app:build"
+            "browserTarget": "dynamic-components-builder-app:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "dynamic-components-test-app:build:production"
+              "browserTarget": "dynamic-components-builder-app:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "dynamic-components-test-app:build"
+            "browserTarget": "dynamic-components-builder-app:build"
           }
         },
         "test": {
@@ -95,7 +102,7 @@
         }
       }
     },
-    "dynamic-components-test-app-e2e": {
+    "dynamic-components-builder-app-e2e": {
       "root": "e2e/",
       "projectType": "application",
       "architect": {
@@ -103,11 +110,11 @@
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
             "protractorConfig": "e2e/protractor.conf.js",
-            "devServerTarget": "dynamic-components-test-app:serve"
+            "devServerTarget": "dynamic-components-builder-app:serve"
           },
           "configurations": {
             "production": {
-              "devServerTarget": "dynamic-components-test-app:serve:production"
+              "devServerTarget": "dynamic-components-builder-app:serve:production"
             }
           }
         },
@@ -123,5 +130,5 @@
       }
     }
   },
-  "defaultProject": "dynamic-components-test-app"
+  "defaultProject": "dynamic-components-builder-app"
 }

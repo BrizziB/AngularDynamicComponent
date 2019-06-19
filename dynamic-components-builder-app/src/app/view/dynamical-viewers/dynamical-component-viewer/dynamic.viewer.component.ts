@@ -2,7 +2,7 @@ import {Component, OnInit, ViewChild, Input, Output, EventEmitter} from '@angula
 
 import { BaseComponent } from '../dynamical-component-builder/dynamic-components/components/base.component';
 import { PageBuildingDirector } from '../dynamical-component-builder/viewer-builder/page-building-director';
-import { PageBuildingService } from '../../services/page-building.service';
+import { PageBuildingService } from '../../../services/page-building.service';
 
 
 

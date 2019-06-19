@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpResponse} from '@angular/common/http';
 import { Observable, of } from 'rxjs';
 import { isUndefined, isNullOrUndefined } from 'util';
-import { SelectItem } from '../view/view.edit.component';
+import { SelectItem } from '../view/views/material-views/view.edit.component';
 
 
 
