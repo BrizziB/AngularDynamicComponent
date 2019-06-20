@@ -36,6 +36,16 @@ html, body {
 
 }
 
+app-dynamic-base{
+  width:76%;
+}
+
+legend{
+  width: fit-content !important;
+  font-size: 16px !important;
+  font-weight: bold !important;
+}
+
 
 /* inizio cosa vergognosa - questa è ganza   */
 .mat-box-div{
@@ -56,6 +66,35 @@ html, body {
 
 .mat-box-div .mat-box-div .mat-box-div .mat-box-div .mat-box-div{
   background-color: whitesmoke;
+}
+
+.outer-div{
+  margin-top: 10px;
+}
+
+.boot-box-div{
+  width: 90%;
+  padding: 2%;
+  border-style: solid;
+  border-color: gray;
+  border-width: 1px;
+  background-color: white;
+}
+
+.boot-box-div .boot-box-div{
+  background-color: #f9f9f9;
+}
+
+.boot-box-div .boot-box-div .boot-box-div{
+  background-color: white;
+}
+
+.boot-box-div .boot-box-div .boot-box-div .boot-box-div{
+  background-color: #f9f9f9;
+}
+
+.boot-box-div .boot-box-div .boot-box-div .boot-box-div .boot-box-div{
+  background-color: white;
 }
 
 /* fine cosa vergognosa */

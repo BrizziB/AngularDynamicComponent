@@ -45,13 +45,31 @@ import { CustomTableComponent
 import { CustomTextInputComponent
 } from './view/dynamical-viewers/dynamical-component-builder/dynamic-components/components/custom-components/custom-text-input.component';
 import { CustomConditionalInputComponent
-
 } from './view/dynamical-viewers/dynamical-component-builder/dynamic-components/components/custom-components/custom-conditional-input.component';
 import { CustomCompositeLeafComponent
 } from './view/dynamical-viewers/dynamical-component-builder/dynamic-components/components/custom-components/custom-composite-leaf.component';
 
-import { DynamicViewerComponent } from './view//dynamical-viewers/dynamical-component-viewer/dynamic.viewer.component';
+import { BootstrapBoxComponent
+} from'./view/dynamical-viewers/dynamical-component-builder/dynamic-components/components/bootstrap-components/bootstrap-box-container.component';
+import { BootstrapComboInputComponent
+} from './view/dynamical-viewers/dynamical-component-builder/dynamic-components/components/bootstrap-components/bootstrap-combo-input.component';
+import { BootstrapPlainComponent
+} from './view/dynamical-viewers/dynamical-component-builder/dynamic-components/components/bootstrap-components/bootstrap-plain-container.component';
+import { BootstrapPlainInputComponent
+} from './view/dynamical-viewers/dynamical-component-builder/dynamic-components/components/bootstrap-components/bootstrap-plain-input.component';
+import { BootstrapTabbedComponent
+} from './view/dynamical-viewers/dynamical-component-builder/dynamic-components/components/bootstrap-components/bootstrap-tabbed-container.component';
+import { BootstrapTableComponent
+} from './view/dynamical-viewers/dynamical-component-builder/dynamic-components/components/bootstrap-components/bootstrap-table-container.component';
+import { BootstrapTextInputComponent
+} from './view/dynamical-viewers/dynamical-component-builder/dynamic-components/components/bootstrap-components/bootstrap-text-input.component';
+import { BootstrapConditionalInputComponent
+} from './view/dynamical-viewers/dynamical-component-builder/dynamic-components/components/bootstrap-components/bootstrap-conditional-input.component';
+import { BootstrapCompositeLeafComponent
+} from './view/dynamical-viewers/dynamical-component-builder/dynamic-components/components/bootstrap-components/bootstrap-composite-leaf.component';
 
+import { MaterialDynamicViewerComponent } from './view/dynamical-viewers/dynamical-component-viewer/material/dynamic.viewer.component';
+import { BootstrapDynamicViewerComponent } from './view/dynamical-viewers/dynamical-component-viewer/bootstrap/dynamic.viewer.component';
 import { ViewListComponent} from './view/views/material-views/view.list.component';
 import { ViewEditComponent } from './view/views/material-views/view.edit.component';
 
@@ -66,7 +84,8 @@ import { MatPaginator } from '@angular/material';
 @NgModule({
   declarations: [
     AppComponent,
-    DynamicViewerComponent,
+    MaterialDynamicViewerComponent,
+    BootstrapDynamicViewerComponent,
     BaseComponent,
     ViewListComponent,
     ViewEditComponent,
@@ -92,7 +111,17 @@ import { MatPaginator } from '@angular/material';
     CustomTableComponent,
     CustomTextInputComponent,
     CustomConditionalInputComponent,
-    CustomCompositeLeafComponent
+    CustomCompositeLeafComponent,
+
+    BootstrapBoxComponent,
+    BootstrapComboInputComponent,
+    BootstrapPlainComponent,
+    BootstrapPlainInputComponent,
+    BootstrapTabbedComponent,
+    BootstrapTableComponent,
+    BootstrapTextInputComponent,
+    BootstrapConditionalInputComponent,
+    BootstrapCompositeLeafComponent
 
 
 
@@ -127,7 +156,16 @@ import { MatPaginator } from '@angular/material';
     CustomTableComponent,
     CustomTextInputComponent,
     CustomConditionalInputComponent,
-    CustomCompositeLeafComponent
+    CustomCompositeLeafComponent,
+    BootstrapBoxComponent,
+    BootstrapComboInputComponent,
+    BootstrapPlainComponent,
+    BootstrapPlainInputComponent,
+    BootstrapTabbedComponent,
+    BootstrapTableComponent,
+    BootstrapTextInputComponent,
+    BootstrapConditionalInputComponent,
+    BootstrapCompositeLeafComponent
   ],
   providers: [
     PageBuildingService,

@@ -120,6 +120,7 @@ export class BootstrapViewEditComponent implements OnInit {
     );
   }
 
+
   protected getPreview() {
     this.showDynamicalViewer = true;
   }

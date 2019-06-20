@@ -10,7 +10,7 @@
           <button (click)="validateViewer()"  class=" btn-sm btn-info">
               Valida <i class="fas fa-check"></i>
           </button>
-          <button  *ngIf="typeName && generated" (click)="getPreview()" class="btn-sm btn-info">
+          <button  *ngIf="typeName && generated" (click)="getPreview()" data-toggle="modal" data-target="#modalPreview" class="btn-sm btn-info">
               Anteprima <i class="fas fa-desktop"></i>
           </button>
           <button *ngIf="viewName && typeName && generated" (click)="saveViewer()"  class=" btn-sm btn-primary">
@@ -63,7 +63,22 @@
 
 </div>
 
-<div *ngIf="showDynamicalViewer" id="dynamical-viewer" >
+<!-- <div *ngIf="showDynamicalViewer" id="dynamical-viewer" >
   <app-dyn-viewer [typeName]="this.typeName" (closeClick)="showDynamicalViewer=false"></app-dyn-viewer>
-</div>
+</div> -->
+
+<div *ngIf="showDynamicalViewer" class="modal fade" id="modalPreview">
+    <div class="modal-dialog modal-xl modal-dialog-centered modal-dialog-scrollable">
+      <div class="modal-content">
+          <div class="modal-header">
+            <h4 class="modal-title">{{this.typeName}}</h4>
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+          </div>
+          <div class="modal-body">
+            <app-dyn-boot-viewer [typeName]="this.typeName" ></app-dyn-boot-viewer>
+          </div>
+      </div>
+    </div>
+  </div>
+
 

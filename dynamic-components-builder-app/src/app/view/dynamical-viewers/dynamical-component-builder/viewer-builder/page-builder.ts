@@ -3,6 +3,7 @@ import {Injectable, ComponentFactoryResolver, ComponentRef, ComponentFactory} fr
 import { NavElement } from '../dynamic-components/non-component-leaves/navElement';
 import { AbstractComponentFactory } from '../component-factory/abstract-component-factory';
 import { MaterialComponentFactory } from '../component-factory/material-component-factory';
+import { BootstrapComponentFactory } from '../component-factory/bootstrap-component-factory';
 import { CustomComponentFactory } from '../component-factory/custom-component-factory';
 import { ContainerDynamicComponent } from '../dynamic-components/components/abstract-components/_container-dynamic.component';
 import { ContainerTabbedDynamicComponent } from '../dynamic-components/components/abstract-components/container-tabbed-dynamic.component';
@@ -23,7 +24,8 @@ export class PageBuilder {
 
   constructor(
     private componentFactoryResolver: ComponentFactoryResolver) {
-      this.componentFactory = new MaterialComponentFactory(componentFactoryResolver);
+      this.componentFactory = new BootstrapComponentFactory(componentFactoryResolver);
+      // this.componentFactory = new MaterialComponentFactory(componentFactoryResolver);
       // this.componentFactory = new CustomComponentFactory(componentFactoryResolver);
    }
 
