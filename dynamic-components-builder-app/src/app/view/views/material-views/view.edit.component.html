@@ -2,10 +2,10 @@
     <mat-toolbar class="toolbar" >
         <h1 >Creazione Vista</h1>
         <div>
-            <button mat-raised-button  (click)="closeViewerEditor()" class="btn"> <mat-icon>skip_previous</mat-icon> Annulla</button>
-            <button mat-raised-button color="primary" (click)="validateViewer()" class="btn otherbtn"><mat-icon>check_circle</mat-icon> Valida</button>
-            <button *ngIf="typeName && generated" mat-raised-button (click)="getPreview()" class="otherbtn btn"><mat-icon>airplay</mat-icon>Anteprima</button>
-            <button *ngIf="viewName && typeName && generated" mat-raised-button  (click)="saveViewer()" class="darkbtn btn">
+            <button mat-raised-button  (click)="closeViewerEditor()" class="btn views-btn"> <mat-icon>skip_previous</mat-icon> Annulla</button>
+            <button mat-raised-button color="primary" (click)="validateViewer()" class="btn views-btn otherbtn"><mat-icon>check_circle</mat-icon> Valida</button>
+            <button *ngIf="typeName && generated" mat-raised-button (click)="getPreview()" class="otherbtn views-btn btn"><mat-icon>airplay</mat-icon>Anteprima</button>
+            <button *ngIf="viewName && typeName && generated" mat-raised-button  (click)="saveViewer()" class="darkbtn views-btn btn">
                 <mat-icon>save</mat-icon>Salva</button>
         </div>
     </mat-toolbar>
@@ -25,8 +25,8 @@
                   <mat-option *ngFor="let type of typeList" [value]="type.label">{{type.label}}</mat-option>
                 </mat-select>
             </mat-form-field>
-              <button *ngIf="typeName" class="btn" mat-raised-button  color="primary" aria-label="asd" (click)="getViewerEdit()">Genera Edit </button>
-              <button *ngIf="typeName" class="btn otherbtn"  mat-raised-button aria-label="asd2" (click)="getViewerOutput()">Genera Output </button>
+              <button *ngIf="typeName" class="btn views-btn" mat-raised-button  color="primary" aria-label="asd" (click)="getViewerEdit()">Genera Edit </button>
+              <button *ngIf="typeName" class="btn otherbtn views-btn"  mat-raised-button aria-label="asd2" (click)="getViewerOutput()">Genera Output </button>
         </div>
 
       </div>

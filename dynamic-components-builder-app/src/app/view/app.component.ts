@@ -13,6 +13,8 @@ export class AppComponent implements OnInit {
   showList = false;
   showEdit = false;
 
+  isMaterial = false;
+
   showViewList(): void {
     this.showList = true;
     this.hideViewEdit();

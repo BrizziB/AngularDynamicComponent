@@ -1,9 +1,9 @@
 <div id="page">
-  <div *ngIf="false">
+  <div *ngIf="isMaterial">
   <mat-toolbar class="toolbar" color="primary">
     <mat-toolbar-row class="toolbar-row">
         <h1>Migrazione Εmpεδοclε prova</h1>
-        <button  class="views-btn btn" (click)="showViewList()" mat-raised-button >Viste</button>
+        <button  class="views-btn" (click)="showViewList()" mat-raised-button >Viste</button>
     </mat-toolbar-row>
   </mat-toolbar>
 
@@ -14,7 +14,7 @@
   </div>
   </div>
 
- <div *ngIf="true">
+ <div *ngIf="!isMaterial">
     <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
         <a class="navbar-brand" href="#">Εmpεδοclε</a>
 
@@ -57,9 +57,9 @@
         <div *ngIf="!showList && !showEdit" class=" d-flex justify-content-start">
             <div class="jumbotron jumbotron-fluid bg-transparent">
                 <div class="container">
-                  <h1  class="display-4 font-weight-bold">Εmpεδοclε</h1>
-                  <p class="lead">Sistema informativo per la gestione e la ricerca clinica — SOD Centro Cefalee (Direttore Prof. Pierangelo Geppetti)</p>
-                  <hr class="my-4">
+                  <h1 class="display-3 font-weight-bold">Εmpεδοclε</h1>
+                  <p class="lead subtitle">Sistema informativo per la gestione e la ricerca clinica — SOD Centro Cefalee (Direttore Prof. Pierangelo Geppetti)</p>
+                  <hr/>
                   <img src="../../assets/unifi-logo.png">
                 </div>
               </div>
