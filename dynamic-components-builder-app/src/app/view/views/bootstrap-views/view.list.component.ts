@@ -8,6 +8,7 @@ import { Type } from '../../../model/Type';
 import * as $ from 'jquery';
 import 'datatables.net';
 import { Subject } from 'rxjs';
+import { isNull } from '@angular/compiler/src/output/output_ast';
 
 
 @Component({
@@ -34,6 +35,31 @@ export class BootstrapViewListComponent implements OnInit, OnDestroy {
     });
   }
 
+  getViewerList() {
+    this.viewerListService.getViewerList()
+    .subscribe((viewers: HttpResponse<Viewer[]>) => {
+      if (!isNullOrUndefined(viewers.body)) {
+        this.viewerList = viewers.body;
+      }
+      // this.dtTrigger.next();
+    });
+  }
+  getNextList() {
+    this.viewerListService.getNextViewerList()
+    .subscribe((viewers: HttpResponse<Viewer[]>) => {
+      if (!isNullOrUndefined(viewers.body)) {
+        this.viewerList = viewers.body;
+      }
+    });
+  }
+  getPrevList() {
+    this.viewerListService.getPrevViewerList()
+    .subscribe((viewers: HttpResponse<Viewer[]>) => {
+      if (!isNullOrUndefined(viewers.body)) {
+        this.viewerList = viewers.body;
+      }
+    });
+  }
 
   ngOnInit() {
     this.dtOptions = {
@@ -41,11 +67,7 @@ export class BootstrapViewListComponent implements OnInit, OnDestroy {
       pageLength: 10,
       processing: true
     };
-    this.viewerListService.getViewerList()
-      .subscribe((viewers: HttpResponse<Viewer[]>) => {
-        this.viewerList = viewers.body;
-        this.dtTrigger.next();
-      });
+    this.getViewerList();
   }
 
   ngOnDestroy(): void {

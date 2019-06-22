@@ -18,7 +18,23 @@ export class ViewerListService {
 
 
   public getViewerList(): Observable<HttpResponse<Viewer[]>> {
-    const url = 'http://localhost:8080/empedocle-cec-1.0.0/rest/viewer-list/get/';
+    const url = 'http://localhost:8080/empedocle-cec-1.0.0/rest/viewer-list/get/list';
+    const req = this.http.get<Viewer[]> (url,
+          {withCredentials: true, headers: this.httpOptions.headers, observe: 'response'}
+      );
+    return req;
+  }
+
+  public getNextViewerList(): Observable<HttpResponse<Viewer[]>> {
+    const url = 'http://localhost:8080/empedocle-cec-1.0.0/rest/viewer-list/get/next';
+    const req = this.http.get<Viewer[]> (url,
+          {withCredentials: true, headers: this.httpOptions.headers, observe: 'response'}
+      );
+    return req;
+  }
+
+  public getPrevViewerList(): Observable<HttpResponse<Viewer[]>> {
+    const url = 'http://localhost:8080/empedocle-cec-1.0.0/rest/viewer-list/get/prev';
     const req = this.http.get<Viewer[]> (url,
           {withCredentials: true, headers: this.httpOptions.headers, observe: 'response'}
       );

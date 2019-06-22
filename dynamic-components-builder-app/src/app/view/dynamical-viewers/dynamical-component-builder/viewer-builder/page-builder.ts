@@ -25,7 +25,7 @@ export class PageBuilder {
   constructor(
     private componentFactoryResolver: ComponentFactoryResolver) {
       this.componentFactory = new BootstrapComponentFactory(componentFactoryResolver);
-      // this.componentFactory = new MaterialComponentFactory(componentFactoryResolver);
+      //  this.componentFactory = new MaterialComponentFactory(componentFactoryResolver);
       // this.componentFactory = new CustomComponentFactory(componentFactoryResolver);
    }
 

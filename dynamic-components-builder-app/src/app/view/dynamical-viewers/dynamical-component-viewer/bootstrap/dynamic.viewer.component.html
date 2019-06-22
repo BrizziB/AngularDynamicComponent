@@ -1,0 +1,8 @@
+<div id=viewer-container>
+  <div id='app-outer-div'>
+    <div id='container-dynamic-content ' class=" d-flex justify-content-center">
+      <div id="spinner-card" *ngIf="loading" class="spinner-border"></div>
+      <app-dynamic-base #child [hidden]="loading"></app-dynamic-base>
+    </div>
+  </div>
+</div>

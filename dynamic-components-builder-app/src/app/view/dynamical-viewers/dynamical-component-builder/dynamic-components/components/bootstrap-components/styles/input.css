@@ -1,0 +1,20 @@
+.property-div{
+  width: 30%
+}
+
+.value-div, .text-div{
+  width:70%;
+}
+
+label{
+  width: 300px;
+  margin-right: 20px;
+}
+
+.form-group{
+  width:100% !important;
+}
+
+.text-input{
+  width: 94%;
+}
