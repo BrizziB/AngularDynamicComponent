@@ -17,6 +17,7 @@ export interface SelectItem {
 })
 export class BootstrapViewEditComponent implements OnInit {
   @Output() showListView = new EventEmitter();
+  style = 'bootstrap';
 
   showDynamicalViewer = false;
   generated = false;

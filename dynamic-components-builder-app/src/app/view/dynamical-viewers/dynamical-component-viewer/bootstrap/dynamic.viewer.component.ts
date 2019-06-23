@@ -13,6 +13,7 @@ import { PageBuildingService } from '../../../../services/page-building.service'
 })
 export class BootstrapDynamicViewerComponent implements OnInit {
   @Input() typeName: String;
+  @Input() viewType: String;
   @Output() closeClick = new EventEmitter();
 
   loading = false;
@@ -28,7 +29,7 @@ export class BootstrapDynamicViewerComponent implements OnInit {
 
   ngOnInit() {
     this.loading = true;
-    this.pageBuildingDirector.init(this.child);
+    this.pageBuildingDirector.init(this.child, this.viewType);
     this.pageBuildingService.getPage(this.typeName).subscribe(
       ((resp) => {
         if (resp !== null) {

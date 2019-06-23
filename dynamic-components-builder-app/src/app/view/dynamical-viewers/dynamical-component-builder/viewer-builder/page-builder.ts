@@ -24,10 +24,28 @@ export class PageBuilder {
 
   constructor(
     private componentFactoryResolver: ComponentFactoryResolver) {
-      this.componentFactory = new BootstrapComponentFactory(componentFactoryResolver);
-      //  this.componentFactory = new MaterialComponentFactory(componentFactoryResolver);
-      // this.componentFactory = new CustomComponentFactory(componentFactoryResolver);
-   }
+
+  }
+
+  setFactory(factory: String) {
+    switch (factory) {
+      case 'material': {
+        this.componentFactory = new MaterialComponentFactory(this.componentFactoryResolver);
+        break;
+      }
+
+      case 'bootstrap': {
+        this.componentFactory = new BootstrapComponentFactory(this.componentFactoryResolver);
+        break;
+      }
+
+      default: {
+        this.componentFactory = new CustomComponentFactory(this.componentFactoryResolver);
+        break;
+      }
+
+    }
+  }
 
   public addPlainDiv(index: ContainerDynamicComponent, name: string): ContainerDynamicComponent {
     const newDiv: ContainerDynamicComponent = index.addDivChildComponent(

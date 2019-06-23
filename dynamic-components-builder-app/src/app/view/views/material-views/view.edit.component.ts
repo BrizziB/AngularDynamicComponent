@@ -15,8 +15,10 @@ export interface SelectItem {
   templateUrl: './view.edit.component.html',
   styleUrls: ['./view.edit.component.css']
 })
-export class ViewEditComponent implements OnInit {
+export class MaterialViewEditComponent implements OnInit {
   @Output() showListView = new EventEmitter();
+
+  style = 'material';
 
   showDynamicalViewer = false;
   generated = false;

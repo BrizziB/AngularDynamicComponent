@@ -17,9 +17,10 @@ export class PageBuildingDirector {
     this.divStack = [];
   }
 
-  public init(anchorComponent) {
+  public init(anchorComponent, type) {
     anchorComponent.context = new Object; // può essere un oggetto generico ottenuto dal json
     this.divStack.push(anchorComponent);
+    this.pageBuilder.setFactory(type);
   }
 
   public buildPageFromScheme(form: Object) {

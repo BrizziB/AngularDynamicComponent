@@ -70,11 +70,15 @@ import { BootstrapCompositeLeafComponent
 
 import { MaterialDynamicViewerComponent } from './view/dynamical-viewers/dynamical-component-viewer/material/dynamic.viewer.component';
 import { BootstrapDynamicViewerComponent } from './view/dynamical-viewers/dynamical-component-viewer/bootstrap/dynamic.viewer.component';
-import { ViewListComponent} from './view/views/material-views/view.list.component';
-import { ViewEditComponent } from './view/views/material-views/view.edit.component';
+
+import { MaterialViewListComponent} from './view/views/material-views/view.list.component';
+import { MaterialViewEditComponent } from './view/views/material-views/view.edit.component';
+import { MaterialHomeComponent } from './view/views/material-views/home.mat.component';
 
 import { BootstrapViewListComponent} from './view/views/bootstrap-views/view.list.component';
 import { BootstrapViewEditComponent } from './view/views/bootstrap-views/view.edit.component';
+import { BootstrapHomeComponent } from './view/views/bootstrap-views/home.boot.component';
+
 import { DataTablesModule } from 'angular-datatables';
 
 import { ViewerListService } from './services/viewer-list.service';
@@ -87,8 +91,12 @@ import { MatPaginator } from '@angular/material';
     MaterialDynamicViewerComponent,
     BootstrapDynamicViewerComponent,
     BaseComponent,
-    ViewListComponent,
-    ViewEditComponent,
+
+    MaterialHomeComponent,
+    MaterialViewListComponent,
+    MaterialViewEditComponent,
+
+    BootstrapHomeComponent,
     BootstrapViewListComponent,
     BootstrapViewEditComponent,
     MatPaginator,
@@ -103,6 +111,7 @@ import { MatPaginator } from '@angular/material';
     MaterialTextInputComponent,
     MaterialConditionalInputComponent,
     MaterialCompositeLeafComponent,
+
     CustomBoxComponent,
     CustomComboInputComponent,
     CustomPlainComponent,

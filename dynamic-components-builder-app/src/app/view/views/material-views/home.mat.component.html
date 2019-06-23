@@ -1,0 +1,38 @@
+<div id="page">
+  <mat-toolbar role="heading" class="toolbar" color="primary">
+    <mat-toolbar-row class="toolbar-row">
+        <h1 class="mat-h1">Εmpεδοclε</h1>
+        <button mat-button (click)="backHome()" >Home</button>
+        <button mat-button >Cartelle cliniche</button>
+        <button mat-button [matMenuTriggerFor]="config">Configurazione</button>
+        <mat-menu #config="matMenu">
+          <button mat-menu-item >Utenti</button>
+          <button mat-menu-item >Agenda</button>
+          <button mat-menu-item >Strutture visita</button>
+          <button mat-menu-item >Tipi</button>
+          <button mat-menu-item (click)="showViewList()">Viste</button>
+        </mat-menu>
+        <span class="spacer"></span>
+        <button mat-button [matMenuTriggerFor]="options">UNIFI DINFO</button>
+        <mat-menu #options="matMenu">
+          <button mat-menu-item >Profilo utente</button>
+          <button mat-menu-item >Logout</button>
+        </mat-menu>
+
+      </mat-toolbar-row>
+  </mat-toolbar>
+
+  <div id="main-container">
+    <div *ngIf="!showList && !showEdit" class="home-div">
+      <h1 id="title" class="mat-display-1">
+        Εmpεδοclε
+      </h1>
+      <p class="subtitle">Sistema informativo per la gestione e la ricerca clinica — SOD Centro Cefalee (Direttore Prof. Pierangelo Geppetti)</p>
+      <mat-divider></mat-divider>
+      <img src="../../assets/unifi-logo.png">
+    </div>
+    <app-view-list *ngIf="showList" (showEditView)="showEditView()">   </app-view-list>
+    <app-view-edit *ngIf="showEdit" (showListView)="showListView()">   </app-view-edit>
+  </div>
+</div>
+

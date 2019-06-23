@@ -11,7 +11,7 @@ import { Type } from '../../../model/Type';
   templateUrl: './view.list.component.html',
   styleUrls: ['./view.list.component.css']
 })
-export class ViewListComponent implements OnInit {
+export class MaterialViewListComponent implements OnInit {
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
   @Output() showEditView = new EventEmitter();
