@@ -13,6 +13,11 @@ export class BootstrapHomeComponent implements OnInit {
   showList = false;
   showEdit = false;
 
+  backHome() {
+    this.showEdit = false;
+    this.showList = false;
+  }
+
   showViewList(): void {
     this.showList = true;
     this.hideViewEdit();

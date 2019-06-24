@@ -14,7 +14,7 @@ export class MaterialHomeComponent implements OnInit {
   showList = false;
   showEdit = false;
 
-  backHome(){
+  backHome() {
     this.showEdit = false;
     this.showList = false;
     this.showHome = true;
